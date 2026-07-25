@@ -3,6 +3,7 @@
 import { HugeiconsIcon } from "@hugeicons/react";
 import { CpuIcon, Globe02Icon, SparklesIcon, SecurityCheckIcon } from "@hugeicons/core-free-icons";
 import { AnimatedGridPattern } from "./magicui/animated-grid-pattern";
+import { ComicText } from "./magicui/comic-text";
 
 export default function Hero() {
   return (
@@ -17,20 +18,19 @@ export default function Hero() {
       />
 
       <div className="relative z-10 max-w-[980px] mx-auto">
-        {/* Status Cue Pill */}
-        <div className="inline-flex items-center space-x-2 bg-white/80 backdrop-blur-md text-apple-ink px-4 py-1.5 rounded-apple-pill text-[14px] font-normal mb-6 border border-apple-hairline shadow-sm">
-          <span className="w-2 h-2 rounded-full bg-apple-blue animate-pulse"></span>
-          <span>Next-gen software architecture & web design studio</span>
+        {/* Display Hero Headline with ComicText Effect (Pill Removed) */}
+        <div className="max-w-[880px] mx-auto mb-6">
+          <h1 className="text-[44px] sm:text-[60px] font-semibold text-apple-ink apple-tight-hero leading-[1.1]">
+            We build the stuff your competitors will{" "}
+            <ComicText fontSize="text-[44px] sm:text-[60px] font-extrabold text-apple-blue">
+              copy next year.
+            </ComicText>
+          </h1>
         </div>
 
-        {/* Display Hero Headline - Apple Tight (-0.028em) */}
-        <h1 className="text-[44px] sm:text-[56px] font-semibold text-apple-ink apple-tight-hero max-w-[840px] mx-auto mb-4">
-          Software, Websites & AI Systems. Engineered for scale.
-        </h1>
-
         {/* Lead Tagline */}
-        <p className="text-[21px] sm:text-[28px] font-normal text-[#1d1d1f] max-w-[720px] mx-auto mb-8 tracking-[-0.01em] leading-snug">
-          We design & build custom systems, high-converting websites, dynamic rebrandings, and autonomous AI infrastructure.
+        <p className="text-[20px] sm:text-[26px] font-normal text-[#1d1d1f] max-w-[760px] mx-auto mb-10 tracking-[-0.01em] leading-relaxed">
+          Custom systems for companies that have outgrown their tools. Built by people who still enjoy the craft.
         </p>
 
         {/* Two Blue Pill CTA Grammar */}
