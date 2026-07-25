@@ -1,66 +1,48 @@
 "use client";
 
+import { useState } from "react";
 import { motion } from "framer-motion";
 import { cn } from "../../lib/utils";
 
 export function KineticText({
   text,
   className,
-  duration = 0.5,
-  stagger = 0.03,
 }) {
   const words = text.split(" ");
 
-  const containerVariants = {
-    hidden: { opacity: 0 },
-    visible: (i = 1) => ({
-      opacity: 1,
-      transition: { staggerChildren: stagger, delayChildren: 0.04 * i },
-    }),
-  };
+  return (
+    <span className={cn("inline-flex flex-wrap justify-center gap-x-[0.25em] gap-y-[0.1em]", className)}>
+      {words.map((word, wordIndex) => (
+        <span key={wordIndex} className="inline-block whitespace-nowrap">
+          {word.split("").map((char, charIndex) => (
+            <KineticChar key={charIndex} char={char} />
+          ))}
+        </span>
+      ))}
+    </span>
+  );
+}
 
-  const childVariants = {
-    visible: {
-      opacity: 1,
-      y: 0,
-      rotateX: 0,
-      transition: {
-        type: "spring",
-        damping: 12,
-        stiffness: 100,
-        duration: duration,
-      },
-    },
-    hidden: {
-      opacity: 0,
-      y: 20,
-      rotateX: -45,
-      transition: {
-        type: "spring",
-        damping: 12,
-        stiffness: 100,
-        duration: duration,
-      },
-    },
-  };
+function KineticChar({ char }) {
+  const [isHovered, setIsHovered] = useState(false);
 
   return (
-    <motion.div
-      aria-label={text}
-      className={cn("inline-flex flex-wrap justify-center gap-x-[0.28em] gap-y-[0.1em]", className)}
-      variants={containerVariants}
-      initial="hidden"
-      animate="visible"
+    <motion.span
+      onMouseEnter={() => setIsHovered(true)}
+      onMouseLeave={() => setIsHovered(false)}
+      animate={{
+        fontWeight: isHovered ? 800 : 600,
+        scale: isHovered ? 1.15 : 1,
+        y: isHovered ? -2 : 0,
+      }}
+      transition={{
+        type: "spring",
+        stiffness: 400,
+        damping: 25,
+      }}
+      className="inline-block cursor-default select-none transition-colors hover:text-apple-blue"
     >
-      {words.map((word, index) => (
-        <motion.span
-          key={index}
-          variants={childVariants}
-          className="inline-block transform-gpu"
-        >
-          {word}
-        </motion.span>
-      ))}
-    </motion.div>
+      {char}
+    </motion.span>
   );
 }
