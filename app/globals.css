@@ -1,0 +1,43 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  body {
+    background-color: #ffffff;
+    color: #1d1d1f;
+    font-family: SF Pro Text, Inter, -apple-system, BlinkMacSystemFont, sans-serif;
+    font-size: 17px;
+    line-height: 1.47;
+    letter-spacing: -0.022em;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-family: SF Pro Display, Inter, -apple-system, BlinkMacSystemFont, sans-serif;
+    font-weight: 600;
+  }
+}
+
+/* Apple Display Tight Letter Spacing Utility */
+.apple-tight-hero {
+  letter-spacing: -0.028em;
+  line-height: 1.07;
+}
+
+.apple-tight-display {
+  letter-spacing: -0.025em;
+  line-height: 1.10;
+}
+
+.apple-dense-leading {
+  line-height: 2.41;
+}
+
+/* Frosted glass backdrop support */
+.apple-frosted {
+  background-color: rgba(245, 245, 247, 0.8);
+  backdrop-filter: saturate(180%) blur(20px);
+  -webkit-backdrop-filter: saturate(180%) blur(20px);
+}
