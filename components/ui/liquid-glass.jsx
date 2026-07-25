@@ -7,7 +7,7 @@ import { cn } from "../../lib/utils";
 const LiquidGlassContext = React.createContext(null);
 
 const BINS = 24;
-const DISP_SCALE = 35;
+const DISP_SCALE = 65; // Increased scale for maximum liquid optical distortion
 const LIGHT_SOURCE = { x: 0.5, y: 0.0 }; // Fixed scene light source (top-center)
 
 // --- Viewport Wrapper Component ---
@@ -474,35 +474,35 @@ export const LiquidGlassButton = React.forwardRef(
         <span
           className="absolute inset-0 rounded-[inherit] pointer-events-none z-0"
           style={{
-            background: renderMode === "webgl" ? "transparent" : "color-mix(in srgb, white 25%, transparent)",
-            backdropFilter: renderMode === "webgl" ? "none" : "blur(12px) saturate(180%) brightness(1.05)",
-            WebkitBackdropFilter: renderMode === "webgl" ? "none" : "blur(12px) saturate(180%) brightness(1.05)",
-            backgroundImage: renderMode === "webgl" ? "none" : "radial-gradient(circle at calc(50% - var(--cos) * 50%) calc(50% - var(--sin) * 50%), rgba(255,255,255,0.2) 0%, transparent 60%)",
+            background: renderMode === "webgl" ? "transparent" : "color-mix(in srgb, white 40%, transparent)",
+            backdropFilter: renderMode === "webgl" ? "none" : "blur(18px) saturate(240%) brightness(1.12)",
+            WebkitBackdropFilter: renderMode === "webgl" ? "none" : "blur(18px) saturate(240%) brightness(1.12)",
+            backgroundImage: renderMode === "webgl" ? "none" : "radial-gradient(circle at calc(50% - var(--cos) * 50%) calc(50% - var(--sin) * 50%), rgba(255,255,255,0.45) 0%, transparent 65%)",
             boxShadow: `
-              inset 0 0 0 1px color-mix(in srgb, white calc(var(--rim-intensity) * 20%), transparent),
-              inset calc(var(--cos) * 1.8px) calc(var(--sin) * 3px) 0px -2px color-mix(in srgb, white calc(var(--rim-intensity) * 90%), transparent),
-              inset calc(var(--cos) * -2px) calc(var(--sin) * -2px) 0px -2px color-mix(in srgb, white calc(var(--rim-intensity) * 80%), transparent),
-              inset calc(var(--cos) * -3px) calc(var(--sin) * -8px) 1px -6px color-mix(in srgb, white calc(var(--rim-intensity) * 60%), transparent),
-              inset calc(var(--cos) * -0.3px) calc(var(--sin) * -1px) 4px 0px color-mix(in srgb, black 12%, transparent),
-              inset calc(var(--cos) * -1.5px) calc(var(--sin) * 2.5px) 0px -2px color-mix(in srgb, black 20%, transparent),
-              inset calc(var(--cos) * 0px) calc(var(--sin) * 3px) 4px -2px color-mix(in srgb, black 20%, transparent),
-              inset calc(var(--cos) * 2px) calc(var(--sin) * -6.5px) 1px -4px color-mix(in srgb, black 10%, transparent),
-              calc(var(--cos) * 4px) calc(var(--sin) * 4px) 10px 0px color-mix(in srgb, black 15%, transparent),
-              calc(var(--cos) * 9px) calc(var(--sin) * 9px) 18px 0px color-mix(in srgb, black 10%, transparent)
+              inset 0 0 0 1px color-mix(in srgb, white calc(var(--rim-intensity) * 40%), transparent),
+              inset calc(var(--cos) * 2.5px) calc(var(--sin) * 4px) 0px -1px color-mix(in srgb, white calc(var(--rim-intensity) * 95%), transparent),
+              inset calc(var(--cos) * -2.5px) calc(var(--sin) * -2.5px) 0px -1px color-mix(in srgb, white calc(var(--rim-intensity) * 85%), transparent),
+              inset calc(var(--cos) * -4px) calc(var(--sin) * -10px) 2px -5px color-mix(in srgb, white calc(var(--rim-intensity) * 75%), transparent),
+              inset calc(var(--cos) * -0.5px) calc(var(--sin) * -1.5px) 5px 0px color-mix(in srgb, black 15%, transparent),
+              inset calc(var(--cos) * -2px) calc(var(--sin) * 3px) 0px -2px color-mix(in srgb, black 25%, transparent),
+              inset calc(var(--cos) * 0px) calc(var(--sin) * 4px) 6px -2px color-mix(in srgb, black 25%, transparent),
+              inset calc(var(--cos) * 3px) calc(var(--sin) * -8px) 2px -4px color-mix(in srgb, black 15%, transparent),
+              calc(var(--cos) * 6px) calc(var(--sin) * 6px) 14px 0px color-mix(in srgb, black 20%, transparent),
+              calc(var(--cos) * 12px) calc(var(--sin) * 12px) 24px 0px color-mix(in srgb, black 12%, transparent)
             `
           }}
         />
 
         {/* Highlight outer rim */}
         <span
-          className="absolute inset-0 z-10 rounded-[inherit] p-[1px] pointer-events-none"
+          className="absolute inset-0 z-10 rounded-[inherit] p-[1.5px] pointer-events-none"
           style={{
             background: "var(--rim-gradient)",
             WebkitMask: "linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0)",
             WebkitMaskComposite: "xor",
             mask: "linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0)",
             maskComposite: "exclude",
-            opacity: "calc(0.62 + var(--rim-intensity) * 0.24)",
+            opacity: "calc(0.75 + var(--rim-intensity) * 0.25)",
           }}
         />
 

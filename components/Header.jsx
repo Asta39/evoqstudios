@@ -54,25 +54,25 @@ export default function Header() {
 
   return (
     <LiquidGlassViewport className="fixed top-5 left-0 right-0 z-50 px-4 flex justify-center pointer-events-none bg-transparent overflow-visible h-auto">
-      {/* Floating Navbar Pill with Liquid Glass */}
+      {/* Compact Liquid Glass Navigation Bar */}
       <LiquidGlassButton
         as="div"
-        className="pointer-events-auto relative rounded-full px-6 py-2 flex items-center justify-between w-full max-w-[720px] transition-all duration-300 shadow-[0_8px_30px_rgb(0,0,0,0.06)]"
+        className="pointer-events-auto relative rounded-full px-4 py-1.5 flex items-center justify-between gap-6 sm:gap-8 w-auto transition-all duration-300 shadow-[0_10px_35px_rgba(0,0,0,0.08)]"
       >
         {/* Logo */}
-        <a href="#" className="flex items-center hover:opacity-80 transition-opacity">
+        <a href="#" className="flex items-center hover:opacity-80 transition-opacity shrink-0">
           <Image
             src="/evoq-logo.png"
             alt="Evoq Studio Logo"
-            width={38}
-            height={38}
+            width={34}
+            height={34}
             className="object-contain"
             priority
           />
         </a>
 
         {/* Desktop Nav Links */}
-        <nav className="hidden sm:flex items-center space-x-1 text-[14px] font-medium text-apple-ink">
+        <nav className="hidden sm:flex items-center gap-1.5 text-[14px] font-medium text-apple-ink">
           {menuItems.map((item, idx) => (
             <div
               key={item.title}
@@ -82,12 +82,12 @@ export default function Header() {
             >
               <a
                 href={item.href}
-                className="px-4 py-2 rounded-full hover:bg-black/5 transition-colors inline-block text-apple-ink font-semibold"
+                className="px-3.5 py-1.5 rounded-full hover:bg-black/5 transition-colors inline-block text-apple-ink font-semibold whitespace-nowrap"
               >
                 {item.title}
               </a>
 
-              {/* Submenu Liquid Glass Dropdown Card */}
+              {/* Liquid Glass Dropdown Submenu Card */}
               <AnimatePresence>
                 {activeSubmenu === idx && item.submenu && (
                   <motion.div
@@ -95,11 +95,11 @@ export default function Header() {
                     animate={{ opacity: 1, y: 0, scale: 1 }}
                     exit={{ opacity: 0, y: 8, scale: 0.95 }}
                     transition={{ duration: 0.15, ease: "easeOut" }}
-                    className="absolute top-full left-1/2 -translate-x-1/2 mt-3 w-[340px] z-50 pointer-events-auto"
+                    className="absolute top-full left-1/2 -translate-x-1/2 mt-3 w-[320px] z-50 pointer-events-auto"
                   >
                     <LiquidGlassButton
                       as="div"
-                      className="rounded-2xl p-3 flex flex-col gap-1 w-full shadow-[0_12px_40px_rgba(0,0,0,0.12)] text-left"
+                      className="rounded-2xl p-2.5 flex flex-col gap-1 w-full shadow-[0_16px_40px_rgba(0,0,0,0.15)] text-left"
                     >
                       {item.submenu.map((sub) => (
                         <a
@@ -107,14 +107,14 @@ export default function Header() {
                           href={item.href}
                           className="flex items-start gap-3 p-2.5 rounded-xl hover:bg-black/5 transition-all group/item text-left w-full"
                         >
-                          <div className="w-8 h-8 rounded-lg bg-neutral-100/80 text-apple-ink flex items-center justify-center border border-black/5 group-hover/item:bg-white transition-colors shrink-0">
+                          <div className="w-8 h-8 rounded-lg bg-black/5 text-apple-ink flex items-center justify-center border border-black/5 group-hover/item:bg-white transition-colors shrink-0">
                             <HugeiconsIcon icon={sub.icon} size={16} strokeWidth={1.5} />
                           </div>
-                          <div>
-                            <div className="text-[13px] font-semibold text-apple-ink">
+                          <div className="flex-1 min-w-0">
+                            <div className="text-[13px] font-semibold text-apple-ink whitespace-nowrap">
                               {sub.title}
                             </div>
-                            <div className="text-[11px] text-[#6e6e73] font-normal leading-normal">
+                            <div className="text-[11px] text-[#6e6e73] font-normal leading-tight mt-0.5">
                               {sub.desc}
                             </div>
                           </div>
@@ -129,11 +129,11 @@ export default function Header() {
         </nav>
 
         {/* CTA & Mobile Toggle */}
-        <div className="flex items-center gap-3">
+        <div className="flex items-center gap-2.5 shrink-0">
           {/* CTA Button */}
           <a
             href="#contact"
-            className="inline-flex items-center justify-center space-x-2 bg-black text-white pl-4 pr-1.5 py-1.5 rounded-full text-[13px] font-medium hover:bg-neutral-800 active:scale-95 transition-all shadow-md group"
+            className="inline-flex items-center justify-center space-x-2 bg-black text-white pl-3.5 pr-1 py-1 rounded-full text-[13px] font-medium hover:bg-neutral-800 active:scale-95 transition-all shadow-md group whitespace-nowrap"
           >
             <span>Contact</span>
             <div className="w-5 h-5 rounded-full bg-white text-black flex items-center justify-center transition-transform group-hover:translate-x-0.5">
