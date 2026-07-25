@@ -1,134 +1,61 @@
 "use client";
 
-import { motion, useInView } from "framer-motion";
-import { ArrowRight } from "lucide-react";
-import { useRef } from "react";
+import { useState } from "react";
+import { AnimatedGridPattern } from "./magicui/animated-grid-pattern";
+import { KineticText } from "./magicui/kinetic-text";
 
-/* ---------------- WordsPullUp ---------------- */
-export const WordsPullUp = ({ text, className = "", showAsterisk = false, style }) => {
-  const ref = useRef(null);
-  const isInView = useInView(ref, { once: true });
-  const words = text.split(" ");
-
-  return (
-    <div ref={ref} className={`inline-flex flex-wrap ${className}`} style={style}>
-      {words.map((word, i) => {
-        const isLast = i === words.length - 1;
-        return (
-          <motion.span
-            key={i}
-            initial={{ y: 20, opacity: 0 }}
-            animate={isInView ? { y: 0, opacity: 1 } : {}}
-            transition={{ duration: 0.6, delay: i * 0.08, ease: [0.16, 1, 0.3, 1] }}
-            className="inline-block relative"
-            style={{ marginRight: isLast ? 0 : "0.25em" }}
-          >
-            {word}
-            {showAsterisk && isLast && (
-              <span className="absolute top-[0.65em] -right-[0.3em] text-[0.31em]">*</span>
-            )}
-          </motion.span>
-        );
-      })}
-    </div>
-  );
-};
-
-/* ---------------- WordsPullUpMultiStyle ---------------- */
-export const WordsPullUpMultiStyle = ({ segments, className = "", style }) => {
-  const ref = useRef(null);
-  const isInView = useInView(ref, { once: true });
-
-  const words = [];
-  segments.forEach((seg) => {
-    seg.text.split(" ").forEach((w) => {
-      if (w) words.push({ word: w, className: seg.className });
-    });
-  });
-
-  return (
-    <div ref={ref} className={`inline-flex flex-wrap justify-center ${className}`} style={style}>
-      {words.map((w, i) => (
-        <motion.span
-          key={i}
-          initial={{ y: 20, opacity: 0 }}
-          animate={isInView ? { y: 0, opacity: 1 } : {}}
-          transition={{ duration: 0.6, delay: i * 0.08, ease: [0.16, 1, 0.3, 1] }}
-          className={`inline-block ${w.className ?? ""}`}
-          style={{ marginRight: "0.25em" }}
-        >
-          {w.word}
-        </motion.span>
-      ))}
-    </div>
-  );
-};
-
-/* ---------------- Hero ---------------- */
 export default function Hero() {
+  const [isVideoError, setIsVideoError] = useState(false);
+
   return (
-    <section className="h-[calc(100vh-40px)] w-full px-2 sm:px-4 pb-4 mt-2">
-      <div className="relative h-full w-full overflow-hidden rounded-2xl md:rounded-[2rem]">
-        
-        {/* Background video */}
-        <video
-          autoPlay
-          loop
-          muted
-          playsInline
-          className="absolute inset-0 h-full w-full object-cover"
-          src="/hero-video.mp4"
-        />
+    <section className="relative bg-white text-apple-ink pt-28 pb-20 px-4 text-center overflow-hidden min-h-[90vh] flex flex-col items-center justify-center">
+      {/* Magic UI Animated Grid Background */}
+      <AnimatedGridPattern
+        numSquares={35}
+        maxOpacity={0.4}
+        duration={3}
+        repeatDelay={1}
+        className="[mask-image:radial-gradient(500px_circle_at_center,white,transparent)] inset-x-0 inset-y-[-30%] h-[150%] skew-y-12"
+      />
 
-        {/* Noise overlay */}
-        <div className="pointer-events-none absolute inset-0 opacity-[0.7] mix-blend-overlay bg-[url('https://grainy-gradients.vercel.app/noise.svg')]" />
+      <div className="relative z-10 max-w-[1140px] mx-auto w-full">
+        {/* Kinetic Text Heading */}
+        <div className="max-w-[880px] mx-auto mb-6">
+          <h1 className="text-[44px] sm:text-[60px] font-semibold text-apple-ink apple-tight-hero leading-[1.12]">
+            <KineticText
+              text="We build the stuff your competitors will copy next year."
+              className="text-apple-ink"
+            />
+          </h1>
+        </div>
 
-        {/* Gradient overlay */}
-        <div className="pointer-events-none absolute inset-0 bg-gradient-to-b from-black/20 via-transparent to-black/70" />
+        {/* Sub Heading Tagline */}
+        <p className="text-[19px] sm:text-[24px] font-normal text-[#1d1d1f] max-w-[760px] mx-auto mb-12 tracking-[-0.01em] leading-relaxed">
+          Custom systems for companies that have outgrown their tools. Built by people who still enjoy the craft.
+        </p>
 
-        {/* Hero content */}
-        <div className="absolute bottom-0 left-0 right-0 px-4 pb-2 sm:px-6 md:px-10 z-10">
-          <div className="grid grid-cols-12 items-end gap-4">
-            
-            {/* Left side - Company Name */}
-            <div className="col-span-12 lg:col-span-8">
-              <h1
-                className="font-medium leading-[0.85] tracking-[-0.07em] text-[26vw] sm:text-[24vw] md:text-[22vw] lg:text-[20vw] xl:text-[19vw] 2xl:text-[20vw]"
-                style={{ color: "#E1E0CC" }}
+        {/* Rounded Video Showcase Pedestal Container (Matching User Reference Image) */}
+        <div className="relative max-w-[1080px] mx-auto bg-white rounded-[28px] p-3 sm:p-4 border border-black/[0.08] shadow-[0_20px_50px_rgba(0,0,0,0.08)] overflow-hidden">
+          <div className="relative w-full aspect-[16/10] sm:aspect-[16/9.5] rounded-[20px] overflow-hidden bg-neutral-50 flex items-center justify-center border border-black/[0.04]">
+            {!isVideoError ? (
+              <video
+                poster="/Screenshot%202026-07-25%20at%2011.49.24%20AM.png"
+                autoPlay
+                loop
+                muted
+                playsInline
+                onError={() => setIsVideoError(true)}
+                className="w-full h-full object-cover object-top"
               >
-                <WordsPullUp text="Evoq" showAsterisk />
-              </h1>
-            </div>
-
-            {/* Right side - Tagline & CTA */}
-            <div className="col-span-12 flex flex-col gap-5 pb-6 lg:col-span-4 lg:pb-10">
-              
-              <motion.p
-                initial={{ y: 20, opacity: 0 }}
-                animate={{ y: 0, opacity: 1 }}
-                transition={{ duration: 0.8, delay: 0.5, ease: [0.16, 1, 0.3, 1] }}
-                className="text-xs text-white/80 sm:text-sm md:text-base font-medium"
-                style={{ lineHeight: 1.3 }}
-              >
-                Custom systems for companies that have outgrown their tools. Built by people who still enjoy the craft.
-              </motion.p>
-
-              <motion.a
-                href="https://wa.me/254115706542"
-                target="_blank"
-                rel="noopener noreferrer"
-                initial={{ y: 20, opacity: 0 }}
-                animate={{ y: 0, opacity: 1 }}
-                transition={{ duration: 0.8, delay: 0.7, ease: [0.16, 1, 0.3, 1] }}
-                className="group inline-flex items-center gap-2 self-start rounded-full bg-white py-1 pl-5 pr-1 text-sm font-semibold text-black transition-all hover:gap-3 sm:text-base"
-              >
-                Hit us up
-                <span className="flex h-9 w-9 items-center justify-center rounded-full bg-black transition-transform group-hover:scale-110 sm:h-10 sm:w-10">
-                  <ArrowRight className="h-4 w-4" style={{ color: "#E1E0CC" }} />
-                </span>
-              </motion.a>
-
-            </div>
+                <source src="/herovideo.mp4" type="video/mp4" />
+              </video>
+            ) : (
+              <img
+                src="/Screenshot%202026-07-25%20at%2011.49.24%20AM.png"
+                alt="Evoq System Dashboard Preview"
+                className="w-full h-full object-cover object-top"
+              />
+            )}
           </div>
         </div>
       </div>
