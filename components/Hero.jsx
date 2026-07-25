@@ -2,13 +2,23 @@
 
 import { HugeiconsIcon } from "@hugeicons/react";
 import { CpuIcon, Globe02Icon, SparklesIcon, SecurityCheckIcon } from "@hugeicons/core-free-icons";
+import { AnimatedGridPattern } from "./magicui/animated-grid-pattern";
 
 export default function Hero() {
   return (
-    <section className="bg-white text-apple-ink pt-16 pb-20 px-4 text-center overflow-hidden">
-      <div className="max-w-[980px] mx-auto">
+    <section className="relative bg-white text-apple-ink pt-28 pb-20 px-4 text-center overflow-hidden min-h-[90vh] flex items-center justify-center">
+      {/* Magic UI Animated Grid Background */}
+      <AnimatedGridPattern
+        numSquares={35}
+        maxOpacity={0.4}
+        duration={3}
+        repeatDelay={1}
+        className="[mask-image:radial-gradient(500px_circle_at_center,white,transparent)] inset-x-0 inset-y-[-30%] h-[150%] skew-y-12"
+      />
+
+      <div className="relative z-10 max-w-[980px] mx-auto">
         {/* Status Cue Pill */}
-        <div className="inline-flex items-center space-x-2 bg-apple-parchment text-apple-ink px-4 py-1.5 rounded-apple-pill text-[14px] font-normal mb-6 border border-apple-hairline">
+        <div className="inline-flex items-center space-x-2 bg-white/80 backdrop-blur-md text-apple-ink px-4 py-1.5 rounded-apple-pill text-[14px] font-normal mb-6 border border-apple-hairline shadow-sm">
           <span className="w-2 h-2 rounded-full bg-apple-blue animate-pulse"></span>
           <span>Next-gen software architecture & web design studio</span>
         </div>
@@ -40,7 +50,7 @@ export default function Hero() {
         </div>
 
         {/* System Render Pedestal Card with Apple Product Shadow */}
-        <div className="relative max-w-[900px] mx-auto bg-apple-parchment rounded-[24px] p-8 sm:p-12 border border-apple-hairline shadow-apple-product">
+        <div className="relative max-w-[900px] mx-auto bg-apple-parchment/90 backdrop-blur-md rounded-[24px] p-8 sm:p-12 border border-apple-hairline shadow-apple-product">
           <div className="grid grid-cols-2 sm:grid-cols-4 gap-6 text-left">
             {/* System Dev */}
             <div className="bg-white p-5 rounded-apple-lg border border-apple-divider">
