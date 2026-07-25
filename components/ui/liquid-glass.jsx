@@ -145,7 +145,6 @@ export const LiquidGlassViewport = React.forwardRef(
     }, []);
 
     const initWebGL = React.useCallback((canvas) => {
-      if (!bgImage) return false;
       try {
         const gl = canvas.getContext("webgl") || canvas.getContext("experimental-webgl");
         if (!gl) return false;
@@ -201,15 +200,17 @@ export const LiquidGlassViewport = React.forwardRef(
         };
         glTexRef.current = { bg: gl.createTexture() || undefined, disp: gl.createTexture() || undefined };
 
-        const img = new Image();
-        img.crossOrigin = "anonymous";
-        img.onload = () => {
-          if (!glRef.current || !glTexRef.current.bg) return;
-          bindTex(gl, glTexRef.current.bg, img, 0);
-          glReadyRef.current = true;
-        };
-        img.onerror = () => { glReadyRef.current = false; fallbackToCSSBlur(); };
-        img.src = bgImage;
+        if (bgImage) {
+          const img = new Image();
+          img.crossOrigin = "anonymous";
+          img.onload = () => {
+            if (!glRef.current || !glTexRef.current.bg) return;
+            bindTex(gl, glTexRef.current.bg, img, 0);
+            glReadyRef.current = true;
+          };
+          img.onerror = () => { glReadyRef.current = false; fallbackToCSSBlur(); };
+          img.src = bgImage;
+        }
         return true;
       } catch (err) {
         return false;
@@ -391,7 +392,7 @@ export const LiquidGlassViewport = React.forwardRef(
       <LiquidGlassContext.Provider value={contextValue}>
         <div
           ref={ref || containerRef}
-          className={cn("relative w-full overflow-hidden select-none", className)}
+          className={cn("relative w-full h-full overflow-hidden select-none", className)}
           {...props}
         >
           <canvas ref={canvasRef} className={cn("absolute inset-0 w-full h-full pointer-events-none z-0", mode === "webgl" ? "block" : "hidden")} />
@@ -431,9 +432,9 @@ export const LiquidGlassViewport = React.forwardRef(
 );
 LiquidGlassViewport.displayName = "LiquidGlassViewport";
 
-// --- Glass Button Component ---
+// --- Glass Button / Pill / Container Component ---
 export const LiquidGlassButton = React.forwardRef(
-  ({ className, children, ...props }, ref) => {
+  ({ as = "button", className, children, ...props }, ref) => {
     const context = React.useContext(LiquidGlassContext);
     const internalRef = React.useRef(null);
     const activeRef = ref || internalRef;
@@ -451,12 +452,13 @@ export const LiquidGlassButton = React.forwardRef(
     }, [context, activeRef, buttonId]);
 
     const renderMode = context ? context.mode : "svg";
+    const Component = as;
 
     return (
-      <button
+      <Component
         ref={activeRef}
         className={cn(
-          "relative select-none pointer-events-auto inline-flex items-center justify-center px-6 py-2.5 border-0 bg-transparent cursor-pointer outline-none origin-center transition-transform duration-[400ms] ease-[cubic-bezier(0.4,1.5,0.3,1)] active:scale-[0.96]",
+          "relative select-none pointer-events-auto inline-flex items-center justify-center border-0 bg-transparent outline-none origin-center transition-transform duration-[400ms] ease-[cubic-bezier(0.4,1.5,0.3,1)] active:scale-[0.96]",
           className
         )}
         style={{
@@ -475,7 +477,7 @@ export const LiquidGlassButton = React.forwardRef(
             background: renderMode === "webgl" ? "transparent" : "color-mix(in srgb, white 25%, transparent)",
             backdropFilter: renderMode === "webgl" ? "none" : "blur(12px) saturate(180%) brightness(1.05)",
             WebkitBackdropFilter: renderMode === "webgl" ? "none" : "blur(12px) saturate(180%) brightness(1.05)",
-            backgroundImage: renderMode === "webgl" ? "none" : "radial-gradient(circle at calc(50% - var(--cos) * 50%) calc(50% - var(--sin) * 50%), rgba(255,255,255,0.25) 0%, transparent 60%)",
+            backgroundImage: renderMode === "webgl" ? "none" : "radial-gradient(circle at calc(50% - var(--cos) * 50%) calc(50% - var(--sin) * 50%), rgba(255,255,255,0.2) 0%, transparent 60%)",
             boxShadow: `
               inset 0 0 0 1px color-mix(in srgb, white calc(var(--rim-intensity) * 20%), transparent),
               inset calc(var(--cos) * 1.8px) calc(var(--sin) * 3px) 0px -2px color-mix(in srgb, white calc(var(--rim-intensity) * 90%), transparent),
@@ -505,61 +507,11 @@ export const LiquidGlassButton = React.forwardRef(
         />
 
         {/* Inner Label wrapper */}
-        <span className="relative z-20 text-sm font-semibold tracking-wide text-black/85 select-none pointer-events-none flex items-center justify-center gap-2">
+        <span className="relative z-20 text-sm font-semibold tracking-wide text-black/85 select-none flex items-center justify-center gap-2 w-full h-full">
           {children}
         </span>
-      </button>
+      </Component>
     );
   }
 );
 LiquidGlassButton.displayName = "LiquidGlassButton";
-
-// --- Liquid Glass Card / Container Component ---
-export const LiquidGlassCard = React.forwardRef(
-  ({ className, children, ...props }, ref) => {
-    return (
-      <div
-        ref={ref}
-        className={cn(
-          "relative overflow-hidden transition-all duration-300 border-0 bg-transparent",
-          className
-        )}
-        style={{
-          "--cos": "0.2",
-          "--sin": "-0.5",
-          "--rim-intensity": "0.6",
-        }}
-        {...props}
-      >
-        {/* Specular layer / bevel highlight styles */}
-        <span
-          className="absolute inset-0 rounded-[inherit] pointer-events-none z-0"
-          style={{
-            background: "color-mix(in srgb, white 40%, transparent)",
-            backdropFilter: "blur(20px) saturate(200%) brightness(1.08)",
-            WebkitBackdropFilter: "blur(20px) saturate(200%) brightness(1.08)",
-            backgroundImage: "radial-gradient(circle at 50% 0%, rgba(255,255,255,0.45) 0%, transparent 70%)",
-            boxShadow: `
-              inset 0 0 0 1px rgba(255, 255, 255, 0.4),
-              inset 0 1.5px 0 0 rgba(255, 255, 255, 0.7),
-              inset 0 -1.5px 0 0 rgba(0, 0, 0, 0.05),
-              0 20px 40px -15px rgba(0, 0, 0, 0.08),
-              0 10px 20px -5px rgba(0, 0, 0, 0.04)
-            `
-          }}
-        />
-
-        {/* Outer glass border rim */}
-        <span
-          className="absolute inset-0 z-10 rounded-[inherit] p-[1px] pointer-events-none border border-white/40"
-        />
-
-        {/* Content */}
-        <div className="relative z-20 w-full h-full">
-          {children}
-        </div>
-      </div>
-    );
-  }
-);
-LiquidGlassCard.displayName = "LiquidGlassCard";
