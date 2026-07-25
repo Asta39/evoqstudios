@@ -8,17 +8,16 @@ export default function Header() {
   return (
     <header className="fixed top-5 left-0 right-0 z-50 px-4 flex justify-center pointer-events-none">
       <div className="pointer-events-auto bg-white/95 backdrop-blur-md rounded-full px-6 py-2.5 flex items-center justify-between shadow-[0_8px_30px_rgb(0,0,0,0.06)] border border-black/[0.04] w-full max-w-[680px]">
-        {/* Company Logo */}
-        <a href="#" className="flex items-center space-x-2 hover:opacity-80 transition-opacity">
+        {/* Company Logo Only (Increased Size, Text Removed) */}
+        <a href="#" className="flex items-center hover:opacity-80 transition-opacity">
           <Image
             src="/evoq-logo.png"
-            alt="Evoq Studio"
-            width={28}
-            height={28}
+            alt="Evoq Studio Logo"
+            width={42}
+            height={42}
             className="object-contain"
             priority
           />
-          <span className="font-semibold tracking-tight text-[17px] text-apple-ink">Evoq</span>
         </a>
 
         {/* Minimal Navigation Links */}
