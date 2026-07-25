@@ -3,7 +3,7 @@
 import { HugeiconsIcon } from "@hugeicons/react";
 import { CpuIcon, Globe02Icon, SparklesIcon, SecurityCheckIcon } from "@hugeicons/core-free-icons";
 import { AnimatedGridPattern } from "./magicui/animated-grid-pattern";
-import { ComicText } from "./magicui/comic-text";
+import { LineShadowText } from "./magicui/line-shadow-text";
 
 export default function Hero() {
   return (
@@ -18,13 +18,16 @@ export default function Hero() {
       />
 
       <div className="relative z-10 max-w-[980px] mx-auto">
-        {/* Display Hero Headline with ComicText Effect (Pill Removed) */}
+        {/* Display Hero Headline with Magic UI LineShadowText */}
         <div className="max-w-[880px] mx-auto mb-6">
-          <h1 className="text-[44px] sm:text-[60px] font-semibold text-apple-ink apple-tight-hero leading-[1.1]">
+          <h1 className="text-[44px] sm:text-[60px] font-semibold text-apple-ink apple-tight-hero leading-[1.15]">
             We build the stuff your competitors will{" "}
-            <ComicText fontSize="text-[44px] sm:text-[60px] font-extrabold text-apple-blue">
+            <LineShadowText
+              shadowColor="#0066cc"
+              className="text-apple-blue font-extrabold italic"
+            >
               copy next year.
-            </ComicText>
+            </LineShadowText>
           </h1>
         </div>
 
