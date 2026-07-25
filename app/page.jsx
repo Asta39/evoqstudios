@@ -5,6 +5,7 @@ const VideoHero = dynamic(() => import("../components/VideoHero"), { ssr: false 
 const VideoShowcase = dynamic(() => import("../components/VideoShowcase"), { ssr: false });
 const Features = dynamic(() => import("../components/Features"), { ssr: false });
 const TechOrbit = dynamic(() => import("../components/TechOrbit"), { ssr: false });
+const FileTreeSection = dynamic(() => import("../components/FileTreeSection"), { ssr: false });
 
 export default function Home() {
   return (
@@ -14,7 +15,9 @@ export default function Home() {
       <VideoShowcase />
       <Features />
       <TechOrbit />
+      <FileTreeSection />
     </main>
   );
 }
+
 
