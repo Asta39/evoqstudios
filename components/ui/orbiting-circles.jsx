@@ -1,74 +1,55 @@
 "use client";
 
-import { cn } from "../../lib/utils";
 import React from "react";
+import { cn } from "../../lib/utils";
 
 export function OrbitingCircles({
   className,
   children,
-  reverse = false,
+  reverse,
   duration = 20,
-  delay = 10,
   radius = 160,
   path = true,
   iconSize = 30,
   speed = 1,
+  ...props
 }) {
   const calculatedDuration = duration / speed;
-  const childArray = React.Children.toArray(children);
-
   return (
     <>
       {path && (
         <svg
           xmlns="http://www.w3.org/2000/svg"
           version="1.1"
-          className="pointer-events-none absolute inset-0 h-full w-full"
+          className="pointer-events-none absolute inset-0 w-full h-full"
         >
           <circle
-            className="stroke-black/10"
+            className="stroke-black/10 stroke-1"
             cx="50%"
             cy="50%"
             r={radius}
             fill="none"
-            strokeDasharray="4 4"
           />
         </svg>
       )}
-      {childArray.map((child, index) => {
-        const angle = (360 / childArray.length) * index;
+      {React.Children.map(children, (child, index) => {
+        const angle = (360 / React.Children.count(children)) * index;
         return (
           <div
-            key={index}
             style={{
-              "--duration": `${calculatedDuration}s`,
-              "--delay": `${-(calculatedDuration / childArray.length) * index}s`,
-              "--radius": `${radius}px`,
+              "--duration": calculatedDuration,
+              "--radius": radius,
+              "--angle": angle,
               "--icon-size": `${iconSize}px`,
             }}
             className={cn(
-              "absolute flex h-[var(--icon-size)] w-[var(--icon-size)] transform-gpu items-center justify-center rounded-full",
-              "top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2",
-              reverse
-                ? "animate-orbit-reverse"
-                : "animate-orbit",
+              "animate-orbit absolute flex w-[var(--icon-size)] h-[var(--icon-size)] transform-gpu items-center justify-center rounded-full",
+              reverse && "[animation-direction:reverse]",
               className
             )}
+            {...props}
           >
-            <div
-              className={cn(
-                reverse
-                  ? "animate-orbit"
-                  : "animate-orbit-reverse"
-              )}
-              style={{
-                "--duration": `${calculatedDuration}s`,
-                "--delay": `${-(calculatedDuration / childArray.length) * index}s`,
-                "--radius": "0px",
-              }}
-            >
-              {child}
-            </div>
+            {child}
           </div>
         );
       })}
