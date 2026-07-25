@@ -6,6 +6,7 @@ const VideoShowcase = dynamic(() => import("../components/VideoShowcase"), { ssr
 const Features = dynamic(() => import("../components/Features"), { ssr: false });
 const TechOrbit = dynamic(() => import("../components/TechOrbit"), { ssr: false });
 const FileTreeSection = dynamic(() => import("../components/FileTreeSection"), { ssr: false });
+const Testimonials = dynamic(() => import("../components/ui/testimonials"), { ssr: false });
 const CinematicFooter = dynamic(
   () => import("../components/ui/motion-footer").then((mod) => mod.CinematicFooter),
   { ssr: false }
@@ -22,6 +23,7 @@ export default function Home() {
         <Features />
         <TechOrbit />
         <FileTreeSection />
+        <Testimonials />
       </main>
 
       {/* Cinematic Reveal Footer */}
@@ -29,3 +31,4 @@ export default function Home() {
     </div>
   );
 }
+
