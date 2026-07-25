@@ -1,6 +1,7 @@
 "use client";
 
-import { CpuIcon, Globe02Icon, SparklesIcon, ShieldCheckIcon } from "hugeicons-react";
+import { HugeiconsIcon } from "@hugeicons/react";
+import { CpuIcon, Globe02Icon, SparklesIcon, SecurityCheckIcon } from "@hugeicons/core-free-icons";
 
 export default function Hero() {
   return (
@@ -44,7 +45,7 @@ export default function Hero() {
             {/* System Dev */}
             <div className="bg-white p-5 rounded-apple-lg border border-apple-divider">
               <div className="w-10 h-10 rounded-apple-pill bg-apple-parchment flex items-center justify-center text-apple-blue mb-4">
-                <CpuIcon size={20} strokeWidth={1.75} />
+                <HugeiconsIcon icon={CpuIcon} size={20} strokeWidth={1.75} />
               </div>
               <h3 className="text-[17px] font-semibold text-apple-ink mb-1">System Dev</h3>
               <p className="text-[14px] text-apple-muted48 leading-relaxed">Robust web & enterprise platforms.</p>
@@ -53,7 +54,7 @@ export default function Hero() {
             {/* Website Dev */}
             <div className="bg-white p-5 rounded-apple-lg border border-apple-divider">
               <div className="w-10 h-10 rounded-apple-pill bg-apple-parchment flex items-center justify-center text-apple-blue mb-4">
-                <Globe02Icon size={20} strokeWidth={1.75} />
+                <HugeiconsIcon icon={Globe02Icon} size={20} strokeWidth={1.75} />
               </div>
               <h3 className="text-[17px] font-semibold text-apple-ink mb-1">Website Dev</h3>
               <p className="text-[14px] text-apple-muted48 leading-relaxed">Speed-optimized digital experiences.</p>
@@ -62,7 +63,7 @@ export default function Hero() {
             {/* Rebranding */}
             <div className="bg-white p-5 rounded-apple-lg border border-apple-divider">
               <div className="w-10 h-10 rounded-apple-pill bg-apple-parchment flex items-center justify-center text-apple-blue mb-4">
-                <SparklesIcon size={20} strokeWidth={1.75} />
+                <HugeiconsIcon icon={SparklesIcon} size={20} strokeWidth={1.75} />
               </div>
               <h3 className="text-[17px] font-semibold text-apple-ink mb-1">Rebranding</h3>
               <p className="text-[14px] text-apple-muted48 leading-relaxed">Elevated global brand identity.</p>
@@ -71,7 +72,7 @@ export default function Hero() {
             {/* AI Systems */}
             <div className="bg-white p-5 rounded-apple-lg border border-apple-divider">
               <div className="w-10 h-10 rounded-apple-pill bg-apple-parchment flex items-center justify-center text-apple-blue mb-4">
-                <ShieldCheckIcon size={20} strokeWidth={1.75} />
+                <HugeiconsIcon icon={SecurityCheckIcon} size={20} strokeWidth={1.75} />
               </div>
               <h3 className="text-[17px] font-semibold text-apple-ink mb-1">AI Systems</h3>
               <p className="text-[14px] text-apple-muted48 leading-relaxed">Custom LLMs & automation workflows.</p>

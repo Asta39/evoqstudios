@@ -1,6 +1,6 @@
-import GlobalNav from "@/components/GlobalNav";
-import SubNav from "@/components/SubNav";
-import Hero from "@/components/Hero";
+import GlobalNav from "../components/GlobalNav";
+import SubNav from "../components/SubNav";
+import Hero from "../components/Hero";
 
 export default function Home() {
   return (

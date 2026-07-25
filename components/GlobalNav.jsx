@@ -1,6 +1,7 @@
 "use client";
 
-import { Search01Icon, ShoppingBag01Icon } from "hugeicons-react";
+import { HugeiconsIcon } from "@hugeicons/react";
+import { Search01Icon, ShoppingBag01Icon } from "@hugeicons/core-free-icons";
 
 export default function GlobalNav() {
   return (
@@ -32,11 +33,11 @@ export default function GlobalNav() {
 
         {/* Right Utility Cluster */}
         <div className="flex items-center space-x-5 text-[#cccccc]">
-          <button aria-label="Search studio capabilities" className="hover:text-white transition-colors">
-            <Search01Icon size={15} strokeWidth={1.75} />
+          <button aria-label="Search studio capabilities" className="hover:text-white transition-colors flex items-center">
+            <HugeiconsIcon icon={Search01Icon} size={15} strokeWidth={1.75} />
           </button>
-          <button aria-label="Client portal & inquiries" className="hover:text-white transition-colors">
-            <ShoppingBag01Icon size={15} strokeWidth={1.75} />
+          <button aria-label="Client portal & inquiries" className="hover:text-white transition-colors flex items-center">
+            <HugeiconsIcon icon={ShoppingBag01Icon} size={15} strokeWidth={1.75} />
           </button>
         </div>
       </div>

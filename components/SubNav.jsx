@@ -1,7 +1,5 @@
 "use client";
 
-import { ArrowRight01Icon } from "hugeicons-react";
-
 export default function SubNav() {
   return (
     <div className="sticky top-[44px] z-40 h-[52px] apple-frosted border-b border-apple-hairline">
