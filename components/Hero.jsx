@@ -3,7 +3,7 @@
 import { HugeiconsIcon } from "@hugeicons/react";
 import { CpuIcon, Globe02Icon, SparklesIcon, SecurityCheckIcon } from "@hugeicons/core-free-icons";
 import { AnimatedGridPattern } from "./magicui/animated-grid-pattern";
-import { LineShadowText } from "./magicui/line-shadow-text";
+import { KineticText } from "./magicui/kinetic-text";
 
 export default function Hero() {
   return (
@@ -18,23 +18,15 @@ export default function Hero() {
       />
 
       <div className="relative z-10 max-w-[980px] mx-auto">
-        {/* Display Hero Headline with Magic UI LineShadowText */}
-        <div className="max-w-[880px] mx-auto mb-6">
-          <h1 className="text-[44px] sm:text-[60px] font-semibold text-apple-ink apple-tight-hero leading-[1.15]">
-            We build the stuff your competitors will{" "}
-            <LineShadowText
-              shadowColor="#0066cc"
-              className="text-apple-blue font-extrabold italic"
-            >
-              copy next year.
-            </LineShadowText>
+        {/* Kinetic Text Heading (Clean monochrome, no blue, sub-tagline removed) */}
+        <div className="max-w-[880px] mx-auto mb-12">
+          <h1 className="text-[44px] sm:text-[60px] font-semibold text-apple-ink apple-tight-hero leading-[1.12]">
+            <KineticText
+              text="We build the stuff your competitors will copy next year."
+              className="text-apple-ink font-semibold"
+            />
           </h1>
         </div>
-
-        {/* Lead Tagline */}
-        <p className="text-[20px] sm:text-[26px] font-normal text-[#1d1d1f] max-w-[760px] mx-auto mb-10 tracking-[-0.01em] leading-relaxed">
-          Custom systems for companies that have outgrown their tools. Built by people who still enjoy the craft.
-        </p>
 
         {/* Two Blue Pill CTA Grammar */}
         <div className="flex items-center justify-center space-x-4 mb-16">
