@@ -2,7 +2,7 @@
 
 import { BentoCard, BentoGrid } from "./ui/bento-grid";
 import {
-  Code01Icon,
+  CodeIcon,
   BrowserIcon,
   AiCloud01Icon,
   PaintBoardIcon,
@@ -81,8 +81,8 @@ function AiBg() {
     { x: 66, y: 78 },
   ];
   const edges = [
-    [0, 1], [0, 2], [0, 3],
-    [2, 4], [2, 5],
+    { a: 0, b: 1 }, { a: 0, b: 2 }, { a: 0, b: 3 },
+    { a: 2, b: 4 }, { a: 2, b: 5 },
   ];
   return (
     <div className="absolute inset-0 bg-[#0a0a0b] overflow-hidden flex items-center justify-center">
@@ -91,11 +91,11 @@ function AiBg() {
         className="w-[90%] h-[80%] opacity-80"
         preserveAspectRatio="xMidYMid meet"
       >
-        {edges.map(([a, b], i) => (
+        {edges.map((edge, i) => (
           <line
             key={i}
-            x1={nodes[a].x} y1={nodes[a].y}
-            x2={nodes[b].x} y2={nodes[b].y}
+            x1={nodes[edge.a].x} y1={nodes[edge.a].y}
+            x2={nodes[edge.b].x} y2={nodes[edge.b].y}
             stroke="#ffffff"
             strokeOpacity="0.15"
             strokeWidth="0.6"
@@ -178,7 +178,7 @@ function IntegrationBg() {
 
 const features = [
   {
-    Icon: (props) => <HugeiconsIcon icon={Code01Icon} {...props} />,
+    Icon: (props) => <HugeiconsIcon icon={CodeIcon} {...props} />,
     name: "Custom Systems, End to End",
     description:
       "Backends, pipelines, and internal tools built to handle the complexity your off-the-shelf software can't.",
