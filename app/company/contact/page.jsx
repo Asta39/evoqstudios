@@ -55,6 +55,19 @@ export default function ContactPage() {
   const handleSubmit = (e) => {
     e.preventDefault();
     setSubmitted(true);
+
+    const messageText =
+      `*New Evoq Studio Project Inquiry*\n\n` +
+      `👤 *Name:* ${formData.name}\n` +
+      `✉️ *Email:* ${formData.email}\n` +
+      `🏢 *Company:* ${formData.company || "N/A"}\n` +
+      `🚀 *Project Type:* ${formData.projectType}\n` +
+      `💰 *Budget Range:* ${formData.budget}\n` +
+      `⏱️ *Timeline:* ${formData.timeline}\n\n` +
+      `📝 *Project Details:*\n${formData.message || "No additional details provided."}`;
+
+    const whatsappUrl = `https://wa.me/254115706542?text=${encodeURIComponent(messageText)}`;
+    window.open(whatsappUrl, "_blank");
   };
 
   return (
@@ -229,16 +242,24 @@ export default function ContactPage() {
                 <h3 className="text-2xl font-bold">Direct Contact</h3>
 
                 <div className="flex flex-col gap-4 text-xs">
+                  <a
+                    href="mailto:evoqcreativetecg@gmail.com"
+                    className="flex items-center gap-3 hover:text-white transition-colors"
+                  >
+                    <Mail className="w-4 h-4 text-neutral-400 shrink-0" />
+                    <span className="font-mono text-neutral-200 hover:underline">evoqcreativetecg@gmail.com</span>
+                  </a>
+                  <a
+                    href="https://wa.me/254115706542"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="flex items-center gap-3 hover:text-white transition-colors"
+                  >
+                    <MessageSquare className="w-4 h-4 text-emerald-400 shrink-0" />
+                    <span className="text-neutral-200 hover:underline font-mono">WhatsApp: +254 115 706 542</span>
+                  </a>
                   <div className="flex items-center gap-3">
-                    <Mail className="w-4 h-4 text-neutral-400" />
-                    <span className="font-mono text-neutral-200">hello@evoq.studio</span>
-                  </div>
-                  <div className="flex items-center gap-3">
-                    <MessageSquare className="w-4 h-4 text-neutral-400" />
-                    <span className="text-neutral-200">WhatsApp: +254 115 706 542</span>
-                  </div>
-                  <div className="flex items-center gap-3">
-                    <MapPin className="w-4 h-4 text-neutral-400" />
+                    <MapPin className="w-4 h-4 text-neutral-400 shrink-0" />
                     <span className="text-neutral-200">Remote-First Studio • Global Delivery</span>
                   </div>
                 </div>
