@@ -184,12 +184,12 @@ export function CinematicFooter() {
       <div className="relative z-10 max-w-[1240px] mx-auto w-full pt-8 border-t border-white/10 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-neutral-500 font-medium">
         <span>© {new Date().getFullYear()} Evoq Studio. All rights reserved.</span>
         <div className="flex items-center gap-6">
-          <a href="#" className="hover:text-neutral-300 transition-colors">
+          <Link href="/privacy-policy" className="hover:text-neutral-300 transition-colors">
             Privacy Policy
-          </a>
-          <a href="#" className="hover:text-neutral-300 transition-colors">
+          </Link>
+          <Link href="/terms-of-service" className="hover:text-neutral-300 transition-colors">
             Terms of Service
-          </a>
+          </Link>
         </div>
       </div>
     </footer>

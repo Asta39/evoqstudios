@@ -8,16 +8,42 @@ import {
   Workflow,
   Zap,
   CheckCircle2,
-  Terminal,
+  Terminal as TerminalIcon,
   Database,
   Layers,
 } from "lucide-react";
+import { InteractiveTerminal } from "../../../components/ui/interactive-terminal";
 
 const Header = dynamic(() => import("../../../components/Header"), { ssr: false });
 const CinematicFooter = dynamic(
   () => import("../../../components/ui/motion-footer").then((mod) => mod.CinematicFooter),
   { ssr: false }
 );
+
+const backendLogs = [
+  { type: "cmd", text: "node dist/server.js" },
+  { type: "info", text: "[Node.js Express] API Gateway listening on port 4000" },
+  { type: "cmd", text: "python3 -m uvicorn ml_service:app --port 8000 --workers 4" },
+  { type: "info", text: "[FastAPI Worker] PyTorch GPU acceleration pipeline initialized" },
+  { type: "success", text: "✔ Executed ML document extraction job #8492 in 34ms" },
+  { type: "info", text: "[Redis Queue] Pub/Sub broadcast event delivered to 1,200 active sockets" },
+];
+
+const backendCode = `# ml_service.py - FastAPI Machine Learning Inference Engine
+from fastapi import FastAPI, BackgroundTasks
+from pydantic import BaseModel
+
+app = FastAPI(title="Evoq Async ML Worker")
+
+class ExtractionRequest(BaseModel):
+    document_id: str
+    raw_text: str
+
+@app.post("/api/v1/analyze")
+async function analyze_document(req: ExtractionRequest, bg_tasks: BackgroundTasks):
+    entities = await run_bert_entity_pipeline(req.raw_text)
+    bg_tasks.add_task(dispatch_webhook_callback, req.document_id, entities)
+    return {"status": "success", "entities": len(entities), "latency_ms": 34}`;
 
 const nodejsUseCases = [
   "Real-time applications (WebSockets, live data streaming, active chat)",
@@ -47,7 +73,7 @@ export default function NodejsPythonPage() {
         <Header />
 
         {/* Hero Section */}
-        <section className="max-w-[1240px] mx-auto pt-8 pb-20 flex flex-col items-center text-center">
+        <section className="max-w-[1240px] mx-auto pt-8 pb-16 flex flex-col items-center text-center">
           <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-black/5 border border-black/5 text-xs font-semibold text-apple-ink mb-6">
             <Server className="w-3.5 h-3.5 text-emerald-500" />
             <span>Stack • Node.js & Python</span>
@@ -61,6 +87,47 @@ export default function NodejsPythonPage() {
           <p className="text-lg sm:text-xl text-neutral-600 max-w-[720px] mb-10 leading-relaxed font-normal">
             Scalable backends built with Node.js and Python — chosen for the right job, not out of habit.
           </p>
+        </section>
+
+        {/* Live Terminal Section */}
+        <section className="max-w-[1240px] mx-auto py-12 border-t border-black/[0.06]">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+            {/* Left Column: Interactive Terminal */}
+            <div className="lg:col-span-7">
+              <InteractiveTerminal
+                title="Node.js API Gateway & FastAPI Microservice Pipeline"
+                logs={backendLogs}
+                codeSnippet={backendCode}
+              />
+            </div>
+
+            {/* Right Column: Explanatory Text */}
+            <div className="lg:col-span-5 flex flex-col gap-6">
+              <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-emerald-500/10 border border-emerald-500/20 text-xs font-semibold text-emerald-600 w-fit">
+                <TerminalIcon className="w-3.5 h-3.5" />
+                <span>Polyglot Backend Pipeline</span>
+              </div>
+
+              <h2 className="text-3xl font-bold text-apple-ink tracking-tight">
+                High-Speed I/O Combined with Deep ML Inference
+              </h2>
+
+              <p className="text-sm text-neutral-600 leading-relaxed font-normal">
+                By delegating real-time client requests to Node.js and heavy AI compute to asynchronous Python worker pools, we achieve high-speed throughput without blocking the event loop.
+              </p>
+
+              <div className="flex flex-col gap-3 pt-2">
+                <div className="flex items-center gap-2.5 text-xs font-medium text-neutral-700">
+                  <CheckCircle2 className="w-4 h-4 text-emerald-500 shrink-0" />
+                  <span>Node.js handles non-blocking client connections & WebSockets</span>
+                </div>
+                <div className="flex items-center gap-2.5 text-xs font-medium text-neutral-700">
+                  <CheckCircle2 className="w-4 h-4 text-emerald-500 shrink-0" />
+                  <span>Python FastAPI runs GPU-accelerated tensor calculations</span>
+                </div>
+              </div>
+            </div>
+          </div>
         </section>
 
         {/* Node.js vs Python Stack Cards */}
@@ -113,26 +180,6 @@ export default function NodejsPythonPage() {
                 ))}
               </div>
             </div>
-          </div>
-        </section>
-
-        {/* Integration Patterns */}
-        <section className="max-w-[1240px] mx-auto py-16 border-t border-black/[0.06]">
-          <h3 className="text-2xl sm:text-3xl font-semibold text-apple-ink tracking-tight mb-8 text-center">
-            Microservice Integration Architecture
-          </h3>
-
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-            {integrationPatterns.map((ip, idx) => (
-              <div key={idx} className="p-5 rounded-2xl bg-white border border-black/10 shadow-sm flex items-start gap-3">
-                <div className="w-7 h-7 rounded-lg bg-black text-white font-bold text-xs flex items-center justify-center shrink-0 mt-0.5">
-                  {idx + 1}
-                </div>
-                <p className="text-xs text-neutral-700 font-medium leading-relaxed">
-                  {ip}
-                </p>
-              </div>
-            ))}
           </div>
         </section>
       </main>

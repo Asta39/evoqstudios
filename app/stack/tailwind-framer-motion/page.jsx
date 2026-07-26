@@ -11,13 +11,42 @@ import {
   Sliders,
   Eye,
   ArrowRight,
+  Terminal as TerminalIcon,
 } from "lucide-react";
+import { InteractiveTerminal } from "../../../components/ui/interactive-terminal";
 
 const Header = dynamic(() => import("../../../components/Header"), { ssr: false });
 const CinematicFooter = dynamic(
   () => import("../../../components/ui/motion-footer").then((mod) => mod.CinematicFooter),
   { ssr: false }
 );
+
+const motionLogs = [
+  { type: "cmd", text: "npx tailwindcss --input input.css --output dist.css --minified" },
+  { type: "info", text: "[Tailwind JIT] Scanned 184 component files in 12ms (Bundle size: 9.8kB)" },
+  { type: "cmd", text: "framer-motion --eval spring-physics" },
+  { type: "success", text: "✔ Calculated spring trajectory (stiffness: 220, damping: 20) in 3ms" },
+  { type: "info", text: "[Hardware Acceleration] Promoted transform & opacity to GPU compositing layer" },
+  { type: "success", text: "✔ 60 FPS animation render cycle confirmed on mobile viewports" },
+];
+
+const motionCode = `// SpringCard.jsx - GPU-Accelerated Tactile Card
+import { motion } from "framer-motion";
+
+export function SpringCard({ children }: { children: React.ReactNode }) {
+  return (
+    <motion.div
+      initial={{ opacity: 0, y: 20, scale: 0.96 }}
+      whileInView={{ opacity: 1, y: 0, scale: 1 }}
+      whileHover={{ y: -4, scale: 1.01 }}
+      viewport={{ once: true }}
+      transition={{ type: "spring", stiffness: 220, damping: 20 }}
+      className="p-6 rounded-2xl bg-white/80 backdrop-blur-xl border border-black/10 shadow-lg"
+    >
+      {children}
+    </motion.div>
+  );
+}`;
 
 const tailwindBenefits = [
   "Design system tokens map directly to consistent utility classes",
@@ -47,7 +76,7 @@ export default function TailwindFramerMotionPage() {
         <Header />
 
         {/* Hero Section */}
-        <section className="max-w-[1240px] mx-auto pt-8 pb-20 flex flex-col items-center text-center">
+        <section className="max-w-[1240px] mx-auto pt-8 pb-16 flex flex-col items-center text-center">
           <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-black/5 border border-black/5 text-xs font-semibold text-apple-ink mb-6">
             <Sparkles className="w-3.5 h-3.5 text-sky-500" />
             <span>Stack • Tailwind & Framer Motion</span>
@@ -61,6 +90,47 @@ export default function TailwindFramerMotionPage() {
           <p className="text-lg sm:text-xl text-neutral-600 max-w-[720px] mb-10 leading-relaxed font-normal">
             Utility-first styling with Tailwind CSS. Meaningful motion with Framer Motion. Together, they create interfaces that feel alive.
           </p>
+        </section>
+
+        {/* Live Terminal Section */}
+        <section className="max-w-[1240px] mx-auto py-12 border-t border-black/[0.06]">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+            {/* Left Column: Interactive Terminal */}
+            <div className="lg:col-span-7">
+              <InteractiveTerminal
+                title="Tailwind JIT Compiler & Framer Motion Physics Engine"
+                logs={motionLogs}
+                codeSnippet={motionCode}
+              />
+            </div>
+
+            {/* Right Column: Explanatory Text */}
+            <div className="lg:col-span-5 flex flex-col gap-6">
+              <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-purple-500/10 border border-purple-500/20 text-xs font-semibold text-purple-600 w-fit">
+                <TerminalIcon className="w-3.5 h-3.5" />
+                <span>GPU-Accelerated UI Engine</span>
+              </div>
+
+              <h2 className="text-3xl font-bold text-apple-ink tracking-tight">
+                60 FPS Smooth Spring Physics & Sub-10kB Bundles
+              </h2>
+
+              <p className="text-sm text-neutral-600 leading-relaxed font-normal">
+                By combining Tailwind's instant JIT class compilation with Framer Motion GPU hardware acceleration, we achieve tactile, butter-smooth 60 FPS UI transitions without layout repaints.
+              </p>
+
+              <div className="flex flex-col gap-3 pt-2">
+                <div className="flex items-center gap-2.5 text-xs font-medium text-neutral-700">
+                  <CheckCircle2 className="w-4 h-4 text-purple-500 shrink-0" />
+                  <span>JIT compiler keeps total CSS bundle under 10kB</span>
+                </div>
+                <div className="flex items-center gap-2.5 text-xs font-medium text-neutral-700">
+                  <CheckCircle2 className="w-4 h-4 text-purple-500 shrink-0" />
+                  <span>Spring physics calculations offloaded to GPU hardware layers</span>
+                </div>
+              </div>
+            </div>
+          </div>
         </section>
 
         {/* Tailwind & Framer Motion Grid */}
@@ -141,15 +211,6 @@ export default function TailwindFramerMotionPage() {
                 </p>
               </div>
             ))}
-          </div>
-        </section>
-
-        {/* Closing Quote Banner */}
-        <section className="max-w-[1240px] mx-auto py-12">
-          <div className="p-10 rounded-3xl bg-neutral-50 border border-black/10 text-center">
-            <blockquote className="text-xl sm:text-2xl font-medium text-apple-ink tracking-tight">
-              “Great design is invisible. Great motion is felt.”
-            </blockquote>
           </div>
         </section>
       </main>

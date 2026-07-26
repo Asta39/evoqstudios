@@ -10,13 +10,35 @@ import {
   CheckCircle2,
   Lock,
   Layers,
+  Terminal as TerminalIcon,
 } from "lucide-react";
+import { InteractiveTerminal } from "../../../components/ui/interactive-terminal";
 
 const Header = dynamic(() => import("../../../components/Header"), { ssr: false });
 const CinematicFooter = dynamic(
   () => import("../../../components/ui/motion-footer").then((mod) => mod.CinematicFooter),
   { ssr: false }
 );
+
+const dbLogs = [
+  { type: "cmd", text: "psql -h aws-rds-cluster -U evoq_app -d evoq_production" },
+  { type: "info", text: "[PostgreSQL 16.2] Connected to Primary Multi-AZ Relational Instance" },
+  { type: "cmd", text: "SELECT * FROM transactions WHERE tenant_id = 't_8412' AND status = 'settled';" },
+  { type: "success", text: "✔ Returned 1,420 records in 2.4ms (Covering B-Tree Index Scan)" },
+  { type: "cmd", text: "redis-cli GET user_session:auth_90124" },
+  { type: "success", text: "✔ REDIS CACHE HIT: token_valid=true (0.3ms latency)" },
+];
+
+const dbCode = `-- PostgreSQL Covering Index & RLS Multi-Tenant Policy
+CREATE INDEX CONCURRENTLY idx_transactions_tenant_status 
+ON transactions (tenant_id, status) 
+INCLUDE (amount, created_at);
+
+ALTER TABLE transactions ENABLE ROW LEVEL SECURITY;
+
+CREATE POLICY tenant_isolation_policy ON transactions
+  FOR ALL
+  USING (tenant_id = current_setting('app.current_tenant_id'));`;
 
 const postgresFeatures = [
   "ACID compliance for mission-critical relational data & transactions",
@@ -46,7 +68,7 @@ export default function PostgresqlRedisPage() {
         <Header />
 
         {/* Hero Section */}
-        <section className="max-w-[1240px] mx-auto pt-8 pb-20 flex flex-col items-center text-center">
+        <section className="max-w-[1240px] mx-auto pt-8 pb-16 flex flex-col items-center text-center">
           <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-black/5 border border-black/5 text-xs font-semibold text-apple-ink mb-6">
             <Database className="w-3.5 h-3.5 text-blue-600" />
             <span>Stack • PostgreSQL & Redis</span>
@@ -60,6 +82,47 @@ export default function PostgresqlRedisPage() {
           <p className="text-lg sm:text-xl text-neutral-600 max-w-[720px] mb-10 leading-relaxed font-normal">
             Reliable relational data storage with PostgreSQL. Sub-millisecond caching and session state with Redis.
           </p>
+        </section>
+
+        {/* Live Terminal Section */}
+        <section className="max-w-[1240px] mx-auto py-12 border-t border-black/[0.06]">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+            {/* Left Column: Interactive Terminal */}
+            <div className="lg:col-span-7">
+              <InteractiveTerminal
+                title="PostgreSQL 16 & Redis 7 Performance Sandbox"
+                logs={dbLogs}
+                codeSnippet={dbCode}
+              />
+            </div>
+
+            {/* Right Column: Explanatory Text */}
+            <div className="lg:col-span-5 flex flex-col gap-6">
+              <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-blue-500/10 border border-blue-500/20 text-xs font-semibold text-blue-600 w-fit">
+                <TerminalIcon className="w-3.5 h-3.5" />
+                <span>High-Concurrency Data Layer</span>
+              </div>
+
+              <h2 className="text-3xl font-bold text-apple-ink tracking-tight">
+                Sub-Millisecond Query Response & Cache Hits
+              </h2>
+
+              <p className="text-sm text-neutral-600 leading-relaxed font-normal">
+                By maintaining single-source relational truth in PostgreSQL while offloading high-frequency session authentication and rate limiting to Redis, database CPU usage drops by over 80%.
+              </p>
+
+              <div className="flex flex-col gap-3 pt-2">
+                <div className="flex items-center gap-2.5 text-xs font-medium text-neutral-700">
+                  <CheckCircle2 className="w-4 h-4 text-blue-600 shrink-0" />
+                  <span>Covering indexes & JSONB queries execute in sub-3ms</span>
+                </div>
+                <div className="flex items-center gap-2.5 text-xs font-medium text-neutral-700">
+                  <CheckCircle2 className="w-4 h-4 text-blue-600 shrink-0" />
+                  <span>Redis in-memory caching returns session tokens in 0.3ms</span>
+                </div>
+              </div>
+            </div>
+          </div>
         </section>
 
         {/* Postgres & Redis Cards */}
@@ -112,26 +175,6 @@ export default function PostgresqlRedisPage() {
                 ))}
               </div>
             </div>
-          </div>
-        </section>
-
-        {/* Data Architecture Principles */}
-        <section className="max-w-[1240px] mx-auto py-16 border-t border-black/[0.06]">
-          <h3 className="text-2xl sm:text-3xl font-semibold text-apple-ink tracking-tight mb-8 text-center">
-            Data Architecture Commitments
-          </h3>
-
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-            {dataArchitecture.map((da, idx) => (
-              <div key={idx} className="p-5 rounded-2xl bg-white border border-black/10 shadow-sm flex items-start gap-3">
-                <div className="w-7 h-7 rounded-lg bg-black text-white font-bold text-xs flex items-center justify-center shrink-0 mt-0.5">
-                  {idx + 1}
-                </div>
-                <p className="text-xs text-neutral-700 font-medium leading-relaxed">
-                  {da}
-                </p>
-              </div>
-            ))}
           </div>
         </section>
       </main>
