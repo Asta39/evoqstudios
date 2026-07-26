@@ -113,6 +113,40 @@ export const evoqStudioNodes = [
           { name: "layout.jsx" },
           { name: "page.jsx" },
           { name: "globals.css" },
+          {
+            name: "services",
+            nodes: [
+              { name: "system-development/page.jsx" },
+              { name: "website-development/page.jsx" },
+              { name: "ai-agents-workflows/page.jsx" },
+              { name: "brand-ui-rebranding/page.jsx" },
+            ],
+          },
+          {
+            name: "company",
+            nodes: [
+              { name: "about/page.jsx" },
+              { name: "capabilities/page.jsx" },
+              { name: "architecture/page.jsx" },
+              { name: "contact/page.jsx" },
+            ],
+          },
+          {
+            name: "stack",
+            nodes: [
+              { name: "nextjs-react/page.jsx" },
+              { name: "nodejs-python/page.jsx" },
+              { name: "postgresql-redis/page.jsx" },
+              { name: "tailwind-framer-motion/page.jsx" },
+            ],
+          },
+          {
+            name: "legal",
+            nodes: [
+              { name: "privacy-policy/page.jsx" },
+              { name: "terms-of-service/page.jsx" },
+            ],
+          },
         ],
       },
       {
@@ -124,11 +158,17 @@ export const evoqStudioNodes = [
           { name: "FileTreeSection.jsx" },
           { name: "Features.jsx" },
           { name: "TechOrbit.jsx" },
+          { name: "ZenoShowcaseSection.jsx" },
+          { name: "LunaGraphicsSearchConsoleSection.jsx" },
+          { name: "AiKpiCardsSection.jsx" },
           {
             name: "ui",
             nodes: [
-              { name: "liquid-glass.jsx" },
+              { name: "interactive-terminal.jsx" },
               { name: "filesystem-item.jsx" },
+              { name: "motion-footer.jsx" },
+              { name: "testimonials.jsx" },
+              { name: "liquid-glass.jsx" },
             ],
           },
           {
