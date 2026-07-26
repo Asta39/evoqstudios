@@ -15,6 +15,7 @@ import {
   CheckCircle2,
   AlertTriangle,
 } from "lucide-react";
+import { ZenoShowcaseSection } from "../../../components/ZenoShowcaseSection";
 
 const Header = dynamic(() => import("../../../components/Header"), { ssr: false });
 const CinematicFooter = dynamic(
@@ -254,6 +255,9 @@ export default function SystemDevelopmentPage() {
             })}
           </div>
         </section>
+
+        {/* Zeno Unified System Platform Section */}
+        <ZenoShowcaseSection />
 
         {/* Case Study Teaser */}
         <section id="case-study" className="max-w-[1240px] mx-auto py-16">
