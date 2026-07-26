@@ -116,17 +116,17 @@ export default function AboutPage() {
             </div>
 
             <ImagesBadge
-              text="Hover to inspect design tokens"
+              text="Hover to inspect live client platforms"
               images={[
-                "https://assets.aceternity.com/pro/agenforce-2.webp",
-                "https://assets.aceternity.com/pro/minimal-3-min.webp",
-                "https://assets.aceternity.com/pro/bento-4.png",
+                "/showcase-zeno.png",
+                "/showcase-luna.png",
+                "/showcase-nova.jpg",
               ]}
               folderSize={{ width: 48, height: 36 }}
               teaserImageSize={{ width: 40, height: 28 }}
-              hoverImageSize={{ width: 140, height: 108 }}
+              hoverImageSize={{ width: 150, height: 100 }}
               hoverTranslateY={-110}
-              hoverSpread={50}
+              hoverSpread={55}
             />
           </div>
         </section>
