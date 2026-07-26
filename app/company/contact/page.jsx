@@ -14,6 +14,8 @@ import {
   MapPin,
 } from "lucide-react";
 
+import WorldMap from "../../../components/ui/world-map";
+
 const Header = dynamic(() => import("../../../components/Header"), { ssr: false });
 const CinematicFooter = dynamic(
   () => import("../../../components/ui/motion-footer").then((mod) => mod.CinematicFooter),
@@ -283,6 +285,47 @@ export default function ContactPage() {
             </div>
 
           </div>
+        </section>
+
+        {/* Global Standards & Local Market Connectivity */}
+        <section className="max-w-[1240px] mx-auto py-16 border-t border-black/[0.06]">
+          <div className="max-w-4xl mx-auto text-center mb-10">
+            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-black/5 border border-black/5 text-xs font-semibold text-apple-ink mb-3">
+              <Globe className="w-3.5 h-3.5 text-apple-blue" />
+              <span>Global Delivery • Local Impact</span>
+            </div>
+            <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-apple-ink tracking-tight mb-4">
+              Bringing Global Standards to the Local Market.
+            </h2>
+            <p className="text-base sm:text-lg text-neutral-600 max-w-2xl mx-auto leading-relaxed font-normal">
+              We bridge Silicon Valley engineering standards with boutique local craft, delivering high-performance platforms across global hubs to Nairobi.
+            </p>
+          </div>
+
+          <WorldMap
+            dots={[
+              {
+                start: { lat: 37.7749, lng: -122.4194 }, // San Francisco
+                end: { lat: -1.2921, lng: 36.8219 }, // Nairobi
+              },
+              {
+                start: { lat: 51.5074, lng: -0.1278 }, // London
+                end: { lat: -1.2921, lng: 36.8219 }, // Nairobi
+              },
+              {
+                start: { lat: 38.7223, lng: -9.1393 }, // Lisbon
+                end: { lat: -1.2921, lng: 36.8219 }, // Nairobi
+              },
+              {
+                start: { lat: 28.6139, lng: 77.209 }, // New Delhi
+                end: { lat: -1.2921, lng: 36.8219 }, // Nairobi
+              },
+              {
+                start: { lat: 40.7128, lng: -74.006 }, // New York
+                end: { lat: -1.2921, lng: 36.8219 }, // Nairobi
+              },
+            ]}
+          />
         </section>
 
         {/* FAQ Section */}
