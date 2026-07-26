@@ -7,6 +7,7 @@ import { cn } from "../../lib/utils";
 export function ImagesBadge({
   text,
   images,
+  imageLinks = [],
   className,
   href,
   target,
@@ -25,6 +26,15 @@ export function ImagesBadge({
   // Calculate folder tab dimensions proportionally
   const tabWidth = folderSize.width * 0.375;
   const tabHeight = folderSize.height * 0.25;
+
+  const handleCardClick = (e, index) => {
+    const link = imageLinks[index];
+    if (link) {
+      e.preventDefault();
+      e.stopPropagation();
+      window.open(link, "_blank", "noopener,noreferrer");
+    }
+  };
 
   const Component = href ? "a" : "div";
 
@@ -65,6 +75,7 @@ export function ImagesBadge({
         {/* Images that pop out */}
         {displayImages.map((image, index) => {
           const totalImages = displayImages.length;
+          const cardLink = imageLinks[index];
 
           // Calculate rotation based on index
           const baseRotation =
@@ -95,7 +106,11 @@ export function ImagesBadge({
           return (
             <motion.div
               key={index}
-              className="absolute top-0.5 left-1/2 origin-bottom overflow-hidden rounded-[3px] bg-white shadow-sm ring-1 shadow-black/10 ring-black/10 dark:bg-neutral-800 dark:shadow-white/10 dark:ring-white/10"
+              onClick={(e) => handleCardClick(e, index)}
+              className={cn(
+                "absolute top-0.5 left-1/2 origin-bottom overflow-hidden rounded-[4px] bg-white shadow-md ring-1 shadow-black/10 ring-black/10 dark:bg-neutral-800 dark:shadow-white/10 dark:ring-white/10 transition-transform",
+                cardLink && isHovered && "hover:scale-105 hover:z-30 cursor-pointer"
+              )}
               animate={{
                 x: `calc(-50% + ${isHovered ? hoverX : 0}px)`,
                 y: isHovered ? hoverY : teaseY,

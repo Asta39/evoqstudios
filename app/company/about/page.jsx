@@ -116,11 +116,16 @@ export default function AboutPage() {
             </div>
 
             <ImagesBadge
-              text="Hover to inspect live client platforms"
+              text="Hover & tap cards to open live platforms"
               images={[
                 "/showcase-zeno.png",
                 "/showcase-luna.png",
                 "/showcase-nova.jpg",
+              ]}
+              imageLinks={[
+                "https://zenoaccounts.com",
+                "https://lunagraphics.co.ke",
+                "https://novaluxuryeventske.com",
               ]}
               folderSize={{ width: 48, height: 36 }}
               teaserImageSize={{ width: 40, height: 28 }}
