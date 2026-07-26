@@ -16,6 +16,8 @@ import {
   Zap,
 } from "lucide-react";
 
+import { LunaGraphicsSearchConsoleSection } from "../../../components/LunaGraphicsSearchConsoleSection";
+
 const Header = dynamic(() => import("../../../components/Header"), { ssr: false });
 const CinematicFooter = dynamic(
   () => import("../../../components/ui/motion-footer").then((mod) => mod.CinematicFooter),
@@ -236,6 +238,9 @@ export default function WebsiteDevelopmentPage() {
             </div>
           </div>
         </section>
+
+        {/* Luna Graphics Search Console Growth Audit Section */}
+        <LunaGraphicsSearchConsoleSection />
 
         {/* Process Overview */}
         <section className="max-w-[1240px] mx-auto py-16 border-t border-black/[0.06]">
