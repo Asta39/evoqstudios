@@ -14,6 +14,8 @@ import {
   Building,
 } from "lucide-react";
 
+import { AsciiArtHeroBackground } from "../../../components/ui/ascii-art-text";
+
 const Header = dynamic(() => import("../../../components/Header"), { ssr: false });
 const CinematicFooter = dynamic(
   () => import("../../../components/ui/motion-footer").then((mod) => mod.CinematicFooter),
@@ -75,21 +77,9 @@ export default function AboutPage() {
       <main className="relative z-10 w-full min-h-screen bg-white rounded-b-[2rem] sm:rounded-b-[3rem] shadow-[0_25px_60px_rgba(0,0,0,0.12)] border-b border-black/5 pt-28 pb-20 px-4 sm:px-6 lg:px-12">
         <Header />
 
-        {/* Hero Section */}
-        <section className="max-w-[1240px] mx-auto pt-8 pb-20 flex flex-col items-center text-center">
-          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-black/5 border border-black/5 text-xs font-semibold text-apple-ink mb-6">
-            <Compass className="w-3.5 h-3.5 text-apple-blue" />
-            <span>About Evoq Studio</span>
-          </div>
-
-          <h1 className="text-4xl sm:text-6xl md:text-7xl font-bold text-apple-ink tracking-tight leading-[1.08] max-w-[920px] mb-6">
-            Engineering Meets Design. <br />
-            <span className="text-neutral-400">We Build the Future, Pixel by Pixel.</span>
-          </h1>
-
-          <p className="text-lg sm:text-xl text-neutral-600 max-w-[720px] mb-10 leading-relaxed font-normal">
-            Evoq is an independent digital studio where rigorous systems engineering meets boutique creative craft.
-          </p>
+        {/* ASCII Art Hero Section */}
+        <section className="max-w-[1240px] mx-auto pt-4 pb-16">
+          <AsciiArtHeroBackground />
         </section>
 
         {/* Our Story */}
