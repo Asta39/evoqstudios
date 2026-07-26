@@ -15,6 +15,7 @@ import {
 } from "lucide-react";
 
 import { AsciiArtHeroBackground } from "../../../components/ui/ascii-art-text";
+import { ImagesBadge } from "../../../components/ui/images-badge";
 
 const Header = dynamic(() => import("../../../components/Header"), { ssr: false });
 const CinematicFooter = dynamic(
@@ -101,6 +102,32 @@ export default function AboutPage() {
             <p>
               Our vision for the next decade is clear: to remain an elite, agile team that sets the benchmark for web performance, intelligent automation, and timeless digital aesthetics.
             </p>
+          </div>
+
+          {/* Interactive Images Badge Showcase */}
+          <div className="mt-10 p-6 rounded-2xl bg-neutral-50 border border-black/5 flex flex-col sm:flex-row items-center justify-between gap-6">
+            <div>
+              <span className="text-xs font-semibold uppercase tracking-wider text-apple-blue block mb-1">
+                Design System Library
+              </span>
+              <h4 className="text-base font-semibold text-apple-ink">
+                Interactive Design System Tokens & Asset Bundles
+              </h4>
+            </div>
+
+            <ImagesBadge
+              text="Hover to inspect design tokens"
+              images={[
+                "https://assets.aceternity.com/pro/agenforce-2.webp",
+                "https://assets.aceternity.com/pro/minimal-3-min.webp",
+                "https://assets.aceternity.com/pro/bento-4.png",
+              ]}
+              folderSize={{ width: 48, height: 36 }}
+              teaserImageSize={{ width: 40, height: 28 }}
+              hoverImageSize={{ width: 140, height: 108 }}
+              hoverTranslateY={-110}
+              hoverSpread={50}
+            />
           </div>
         </section>
 
