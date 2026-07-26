@@ -7,6 +7,6 @@ export default function robots() {
       allow: "/",
       disallow: ["/api/", "/_next/"],
     },
-    sitemap: "https://evoq.studio/sitemap.xml",
+    sitemap: "https://evoqcreative.co.ke/sitemap.xml",
   };
 }

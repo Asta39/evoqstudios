@@ -1,7 +1,7 @@
 import "./globals.css";
 
 export const metadata = {
-  metadataBase: new URL("https://evoq.studio"),
+  metadataBase: new URL("https://evoqcreative.co.ke"),
   title: {
     default: "Evoq Studio — Software Engineering, Digital Platforms & AI Systems",
     template: "%s | Evoq Studio",
@@ -18,7 +18,7 @@ export const metadata = {
     "Nairobi Kenya Tech Studio",
     "Enterprise Software Solutions",
   ],
-  authors: [{ name: "Evoq Studio", url: "https://evoq.studio" }],
+  authors: [{ name: "Evoq Studio", url: "https://evoqcreative.co.ke" }],
   creator: "Evoq Studio",
   publisher: "Evoq Studio",
   formatDetection: {
@@ -35,7 +35,7 @@ export const metadata = {
     title: "Evoq Studio — Software Engineering, Digital Platforms & AI Systems",
     description:
       "Boutique digital studio engineering performance-first web applications, enterprise ERP systems, and autonomous AI workflows.",
-    url: "https://evoq.studio",
+    url: "https://evoqcreative.co.ke",
     siteName: "Evoq Studio",
     images: [
       {
@@ -72,9 +72,9 @@ const jsonLdSchema = {
   "@context": "https://schema.org",
   "@type": "ProfessionalService",
   name: "Evoq Studio",
-  image: "https://evoq.studio/evoq-logo.png",
-  "@id": "https://evoq.studio/#organization",
-  url: "https://evoq.studio",
+  image: "https://evoqcreative.co.ke/evoq-logo.png",
+  "@id": "https://evoqcreative.co.ke/#organization",
+  url: "https://evoqcreative.co.ke",
   telephone: "+254115706542",
   email: "evoqcreativetecg@gmail.com",
   priceRange: "$$$",

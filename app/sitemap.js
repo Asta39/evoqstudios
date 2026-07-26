@@ -1,7 +1,7 @@
 export const dynamic = "force-static";
 
 export default function sitemap() {
-  const baseUrl = "https://evoq.studio";
+  const baseUrl = "https://evoqcreative.co.ke";
 
   const routes = [
     "",
