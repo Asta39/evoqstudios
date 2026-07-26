@@ -16,6 +16,8 @@ import {
   FileCode2,
 } from "lucide-react";
 
+import { LampContainer } from "../../../components/ui/lamp";
+
 const Header = dynamic(() => import("../../../components/Header"), { ssr: false });
 const CinematicFooter = dynamic(
   () => import("../../../components/ui/motion-footer").then((mod) => mod.CinematicFooter),
@@ -91,21 +93,34 @@ export default function ArchitecturePage() {
       <main className="relative z-10 w-full min-h-screen bg-white rounded-b-[2rem] sm:rounded-b-[3rem] shadow-[0_25px_60px_rgba(0,0,0,0.12)] border-b border-black/5 pt-28 pb-20 px-4 sm:px-6 lg:px-12">
         <Header />
 
-        {/* Hero Section */}
-        <section className="max-w-[1240px] mx-auto pt-8 pb-20 flex flex-col items-center text-center">
-          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-black/5 border border-black/5 text-xs font-semibold text-apple-ink mb-6">
-            <FileCode2 className="w-3.5 h-3.5 text-apple-blue" />
-            <span>Architecture Philosophy</span>
-          </div>
+        {/* Hero Section with Lamp Effect */}
+        <section className="max-w-[1240px] mx-auto pt-4 pb-12">
+          <LampContainer>
+            <motion.div
+              initial={{ opacity: 0.5, y: 100 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{
+                delay: 0.3,
+                duration: 0.8,
+                ease: "easeInOut",
+              }}
+              className="flex flex-col items-center text-center"
+            >
+              <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-white/10 border border-white/15 text-xs font-semibold text-cyan-300 mb-6">
+                <FileCode2 className="w-3.5 h-3.5" />
+                <span>Architecture Philosophy</span>
+              </div>
 
-          <h1 className="text-4xl sm:text-6xl md:text-7xl font-bold text-apple-ink tracking-tight leading-[1.08] max-w-[920px] mb-6">
-            How We Build. <br />
-            <span className="text-neutral-400">The Evoq Architecture Philosophy.</span>
-          </h1>
+              <h1 className="bg-gradient-to-br from-slate-100 via-slate-200 to-slate-400 py-2 bg-clip-text text-center text-4xl sm:text-6xl md:text-7xl font-bold tracking-tight text-transparent leading-[1.08] max-w-[920px] mb-6">
+                How We Build. <br />
+                <span className="text-cyan-400">The Evoq Architecture Philosophy.</span>
+              </h1>
 
-          <p className="text-lg sm:text-xl text-neutral-600 max-w-[720px] mb-10 leading-relaxed font-normal">
-            Our systematic approach to engineering software systems that are scalable, maintainable, secure, and aligned with business growth.
-          </p>
+              <p className="text-lg sm:text-xl text-slate-300 max-w-[720px] leading-relaxed font-normal">
+                Our systematic approach to engineering software systems that are scalable, maintainable, secure, and aligned with business growth.
+              </p>
+            </motion.div>
+          </LampContainer>
         </section>
 
         {/* Design Principles */}
