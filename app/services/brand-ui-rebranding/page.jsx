@@ -15,6 +15,8 @@ import {
   FileCheck,
 } from "lucide-react";
 
+import { Compare } from "../../../components/ui/compare";
+
 const Header = dynamic(() => import("../../../components/Header"), { ssr: false });
 const CinematicFooter = dynamic(
   () => import("../../../components/ui/motion-footer").then((mod) => mod.CinematicFooter),
@@ -145,6 +147,33 @@ export default function BrandUiRebrandingPage() {
                 </p>
               </div>
             ))}
+          </div>
+        </section>
+
+        {/* Before & After Refactoring Code / UI Comparison Section */}
+        <section className="max-w-[1240px] mx-auto py-16 border-t border-black/[0.06]">
+          <div className="mb-10 text-center">
+            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-rose-500/10 border border-rose-500/20 text-xs font-semibold text-rose-600 mb-3">
+              <Sparkles className="w-3.5 h-3.5" />
+              <span>Interactive Refactoring Audit</span>
+            </div>
+            <h3 className="text-2xl sm:text-4xl font-bold text-apple-ink tracking-tight mb-3">
+              Legacy Code vs. Evoq Refined Systems
+            </h3>
+            <p className="text-sm text-neutral-600 max-w-[680px] mx-auto leading-relaxed font-normal">
+              Hover or drag the slider below to compare legacy, unoptimized code with our deterministic, type-safe Next.js & UI architecture.
+            </p>
+          </div>
+
+          <div className="flex justify-center p-4 sm:p-8 bg-neutral-950 rounded-3xl border border-white/10 shadow-2xl">
+            <Compare
+              firstImage="https://assets.aceternity.com/code-problem.png"
+              secondImage="https://assets.aceternity.com/code-solution.png"
+              firstImageClassName="object-cover object-left-top"
+              secondImageClassname="object-cover object-left-top"
+              className="h-[280px] w-full max-w-[800px] md:h-[480px]"
+              slideMode="hover"
+            />
           </div>
         </section>
 
