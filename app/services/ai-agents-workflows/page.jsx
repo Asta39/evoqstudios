@@ -17,6 +17,8 @@ import {
   CheckCircle2,
 } from "lucide-react";
 
+import { AiKpiCardsSection } from "../../../components/AiKpiCardsSection";
+
 const Header = dynamic(() => import("../../../components/Header"), { ssr: false });
 const CinematicFooter = dynamic(
   () => import("../../../components/ui/motion-footer").then((mod) => mod.CinematicFooter),
@@ -178,6 +180,9 @@ export default function AiAgentsWorkflowsPage() {
             })}
           </div>
         </section>
+
+        {/* AI Performance KPI Cards Section */}
+        <AiKpiCardsSection />
 
         {/* How It Works */}
         <section className="max-w-[1240px] mx-auto py-16 border-t border-black/[0.06]">
