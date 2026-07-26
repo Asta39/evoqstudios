@@ -174,9 +174,9 @@ export function CinematicFooter() {
 
         {/* Huge Branding Text */}
         <div className="pt-8">
-          <h1 className="text-[18vw] font-bold text-center leading-none tracking-tighter text-white/10 select-none pointer-events-none">
+          <div className="text-[18vw] font-bold text-center leading-none tracking-tighter text-white/10 select-none pointer-events-none" aria-hidden="true">
             EVOQ
-          </h1>
+          </div>
         </div>
       </div>
 
