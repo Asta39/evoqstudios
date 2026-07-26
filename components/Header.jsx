@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import Image from "next/image";
+import Link from "next/link";
 import { motion, AnimatePresence } from "framer-motion";
 import { HugeiconsIcon } from "@hugeicons/react";
 import {
@@ -17,33 +18,37 @@ import {
 const menuItems = [
   {
     title: "Services",
-    href: "#services",
+    href: "/company/capabilities",
     submenu: [
       {
         title: "System Development",
         desc: "High-performance backends & databases.",
+        href: "/services/system-development",
         icon: DatabaseIcon,
       },
       {
         title: "Website Development",
         desc: "Sleek, lightning-fast static & dynamic apps.",
+        href: "/services/website-development",
         icon: Globe02Icon,
       },
       {
         title: "AI Systems",
         desc: "Intelligent agent workflows & integrations.",
+        href: "/services/ai-agents-workflows",
         icon: SparklesIcon,
       },
       {
         title: "Brand Rebranding",
         desc: "Modern visual identities for scale.",
+        href: "/services/brand-ui-rebranding",
         icon: SecurityCheckIcon,
       },
     ],
   },
   {
     title: "About",
-    href: "#about",
+    href: "/company/about",
   },
 ];
 
@@ -58,7 +63,7 @@ export default function Header() {
         <div className="pointer-events-auto relative bg-white/80 backdrop-blur-xl border border-white/60 shadow-[0_10px_35px_rgba(0,0,0,0.08)] rounded-full px-4 py-1.5 flex items-center justify-between gap-6 sm:gap-8 w-auto transition-all duration-300">
           
           {/* Logo */}
-          <a href="#" className="flex items-center hover:opacity-80 transition-opacity shrink-0">
+          <Link href="/" className="flex items-center hover:opacity-80 transition-opacity shrink-0">
             <Image
               src="/evoq-logo.png"
               alt="Evoq Studio Logo"
@@ -67,7 +72,7 @@ export default function Header() {
               className="object-contain"
               priority
             />
-          </a>
+          </Link>
 
           {/* Desktop Nav Links */}
           <nav className="hidden sm:flex items-center gap-1.5 text-[14px] font-medium text-apple-ink">
@@ -78,12 +83,12 @@ export default function Header() {
                 onMouseEnter={() => item.submenu && setActiveSubmenu(idx)}
                 onMouseLeave={() => setActiveSubmenu(null)}
               >
-                <a
+                <Link
                   href={item.href}
                   className="px-4 py-1.5 rounded-full hover:bg-black/5 transition-colors inline-block text-apple-ink font-semibold whitespace-nowrap"
                 >
                   {item.title}
-                </a>
+                </Link>
 
                 {/* Submenu Glass Dropdown Card */}
                 <AnimatePresence>
@@ -96,9 +101,9 @@ export default function Header() {
                       className="absolute top-full left-1/2 -translate-x-1/2 mt-3 w-[320px] bg-white/95 backdrop-blur-2xl rounded-2xl p-2.5 shadow-[0_20px_50px_rgba(0,0,0,0.12)] border border-black/5 flex flex-col gap-1 z-50"
                     >
                       {item.submenu.map((sub) => (
-                        <a
+                        <Link
                           key={sub.title}
-                          href={item.href}
+                          href={sub.href}
                           className="flex items-start gap-3 p-2.5 rounded-xl hover:bg-black/5 transition-all group/item text-left w-full"
                         >
                           <div className="w-8 h-8 rounded-lg bg-black/5 text-apple-ink flex items-center justify-center border border-black/5 group-hover/item:bg-white transition-colors shrink-0">
@@ -112,7 +117,7 @@ export default function Header() {
                               {sub.desc}
                             </div>
                           </div>
-                        </a>
+                        </Link>
                       ))}
                     </motion.div>
                   )}
@@ -121,22 +126,22 @@ export default function Header() {
             ))}
           </nav>
 
-          {/* CTA Button matching Reference Image & Mobile Toggle */}
+          {/* CTA Button & Mobile Toggle */}
           <div className="flex items-center gap-2.5 shrink-0">
-            {/* Contact Us CTA Button matching Reference Image */}
-            <a
-              href="#contact"
+            {/* Contact Us CTA Button */}
+            <Link
+              href="/company/contact"
               className="inline-flex items-center justify-center gap-3 bg-black text-white pl-4 pr-1.5 py-1.5 rounded-full text-[13px] font-medium hover:bg-neutral-800 active:scale-95 transition-all shadow-md group whitespace-nowrap"
             >
               <span>Contact us</span>
               <div className="w-7 h-7 rounded-full bg-white text-black flex items-center justify-center transition-transform group-hover:translate-x-0.5 shadow-sm">
                 <HugeiconsIcon icon={ArrowRight01Icon} size={14} strokeWidth={2.5} />
               </div>
-            </a>
+            </Link>
 
             {/* Mobile Menu Icon */}
             <button
-              onClick={() => setMobileMenuOpen(false ? () => {} : () => setMobileMenuOpen(true))}
+              onClick={() => setMobileMenuOpen(true)}
               className="sm:hidden w-8 h-8 rounded-full flex items-center justify-center hover:bg-black/5 text-apple-ink transition-colors"
             >
               <HugeiconsIcon icon={Menu01Icon} size={18} strokeWidth={1.75} />
@@ -166,13 +171,15 @@ export default function Header() {
             >
               <div>
                 <div className="flex items-center justify-between mb-8">
-                  <Image
-                    src="/evoq-logo.png"
-                    alt="Evoq Studio"
-                    width={32}
-                    height={32}
-                    className="object-contain"
-                  />
+                  <Link href="/" onClick={() => setMobileMenuOpen(false)}>
+                    <Image
+                      src="/evoq-logo.png"
+                      alt="Evoq Studio"
+                      width={32}
+                      height={32}
+                      className="object-contain"
+                    />
+                  </Link>
                   <button
                     onClick={() => setMobileMenuOpen(false)}
                     className="w-8 h-8 rounded-full flex items-center justify-center hover:bg-black/5 text-apple-ink transition-colors"
@@ -184,24 +191,24 @@ export default function Header() {
                 <nav className="flex flex-col gap-6">
                   {menuItems.map((item) => (
                     <div key={item.title} className="space-y-3">
-                      <a
+                      <Link
                         href={item.href}
                         onClick={() => setMobileMenuOpen(false)}
                         className="text-[17px] font-semibold text-apple-ink tracking-tight hover:text-apple-blue transition-colors"
                       >
                         {item.title}
-                      </a>
+                      </Link>
                       {item.submenu && (
                         <div className="pl-3 border-l border-black/10 flex flex-col gap-3">
                           {item.submenu.map((sub) => (
-                            <a
+                            <Link
                               key={sub.title}
-                              href={item.href}
+                              href={sub.href}
                               onClick={() => setMobileMenuOpen(false)}
                               className="text-[14px] text-[#6e6e73] font-medium hover:text-apple-ink transition-colors"
                             >
                               {sub.title}
-                            </a>
+                            </Link>
                           ))}
                         </div>
                       )}
@@ -210,13 +217,13 @@ export default function Header() {
                 </nav>
               </div>
 
-              <a
-                href="#contact"
+              <Link
+                href="/company/contact"
                 onClick={() => setMobileMenuOpen(false)}
                 className="w-full py-3 bg-black text-white text-center rounded-xl font-semibold text-[14px] hover:bg-neutral-800 transition-colors shadow-md"
               >
                 Contact us
-              </a>
+              </Link>
             </motion.div>
           </>
         )}

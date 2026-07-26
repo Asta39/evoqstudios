@@ -2,6 +2,7 @@
 
 import { motion } from "framer-motion";
 import Image from "next/image";
+import Link from "next/link";
 import { ArrowUpRight, MessageSquare, Mail, Github, Twitter, Linkedin } from "lucide-react";
 
 export function CinematicFooter() {
@@ -44,13 +45,13 @@ export function CinematicFooter() {
               <ArrowUpRight className="w-4 h-4 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
             </a>
 
-            <a
-              href="mailto:contact@evoqstudio.com"
+            <Link
+              href="/company/contact"
               className="inline-flex items-center gap-2 px-6 py-3.5 rounded-full bg-white/10 text-white font-medium text-sm hover:bg-white/20 transition-all border border-white/10"
             >
               <Mail className="w-4 h-4 text-neutral-300" />
-              <span>Send Email</span>
-            </a>
+              <span>Send Inquiry</span>
+            </Link>
           </div>
         </div>
 
@@ -63,24 +64,24 @@ export function CinematicFooter() {
             </h4>
             <ul className="flex flex-col gap-2.5 text-sm text-neutral-300">
               <li>
-                <a href="#services" className="hover:text-white transition-colors">
+                <Link href="/services/system-development" className="hover:text-white transition-colors">
                   System Development
-                </a>
+                </Link>
               </li>
               <li>
-                <a href="#services" className="hover:text-white transition-colors">
+                <Link href="/services/website-development" className="hover:text-white transition-colors">
                   Website Development
-                </a>
+                </Link>
               </li>
               <li>
-                <a href="#services" className="hover:text-white transition-colors">
+                <Link href="/services/ai-agents-workflows" className="hover:text-white transition-colors">
                   AI Agents & Workflows
-                </a>
+                </Link>
               </li>
               <li>
-                <a href="#services" className="hover:text-white transition-colors">
+                <Link href="/services/brand-ui-rebranding" className="hover:text-white transition-colors">
                   Brand & UI Rebranding
-                </a>
+                </Link>
               </li>
             </ul>
           </div>
@@ -92,24 +93,24 @@ export function CinematicFooter() {
             </h4>
             <ul className="flex flex-col gap-2.5 text-sm text-neutral-300">
               <li>
-                <a href="#about" className="hover:text-white transition-colors">
+                <Link href="/company/about" className="hover:text-white transition-colors">
                   About Evoq
-                </a>
+                </Link>
               </li>
               <li>
-                <a href="#features" className="hover:text-white transition-colors">
+                <Link href="/company/capabilities" className="hover:text-white transition-colors">
                   Capabilities
-                </a>
+                </Link>
               </li>
               <li>
-                <a href="#architecture" className="hover:text-white transition-colors">
+                <Link href="/company/architecture" className="hover:text-white transition-colors">
                   Architecture
-                </a>
+                </Link>
               </li>
               <li>
-                <a href="#contact" className="hover:text-white transition-colors">
-                  Contact
-                </a>
+                <Link href="/company/contact" className="hover:text-white transition-colors">
+                  Contact Us
+                </Link>
               </li>
             </ul>
           </div>
@@ -120,10 +121,26 @@ export function CinematicFooter() {
               Stack
             </h4>
             <ul className="flex flex-col gap-2.5 text-sm text-neutral-300">
-              <li>Next.js / React</li>
-              <li>Node.js / Python</li>
-              <li>PostgreSQL / Redis</li>
-              <li>Tailwind / Framer Motion</li>
+              <li>
+                <Link href="/stack/nextjs-react" className="hover:text-white transition-colors">
+                  Next.js / React
+                </Link>
+              </li>
+              <li>
+                <Link href="/stack/nodejs-python" className="hover:text-white transition-colors">
+                  Node.js / Python
+                </Link>
+              </li>
+              <li>
+                <Link href="/stack/postgresql-redis" className="hover:text-white transition-colors">
+                  PostgreSQL / Redis
+                </Link>
+              </li>
+              <li>
+                <Link href="/stack/tailwind-framer-motion" className="hover:text-white transition-colors">
+                  Tailwind / Framer Motion
+                </Link>
+              </li>
             </ul>
           </div>
 
