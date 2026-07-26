@@ -1,193 +1,7 @@
 "use client";
 
 import React, { useState } from "react";
-import { CheckCircle2, AlertTriangle, Settings, Layers, Server, Activity } from "lucide-react";
-
-const dataComponents = [
-  { date: '29 Sep, 2023', tooltip: 'Operational' },
-  { date: '30 Sep, 2023', tooltip: 'Operational' },
-  { date: '1 Oct, 2023', tooltip: 'Operational' },
-  { date: '2 Oct, 2023', tooltip: 'Operational' },
-  { date: '3 Oct, 2023', tooltip: 'Operational' },
-  { date: '4 Oct, 2023', tooltip: 'Operational' },
-  { date: '5 Oct, 2023', tooltip: 'Operational' },
-  { date: '6 Oct, 2023', tooltip: 'Operational' },
-  { date: '7 Oct, 2023', tooltip: 'Operational' },
-  { date: '8 Oct, 2023', tooltip: 'Operational' },
-  { date: '9 Oct, 2023', tooltip: 'Operational' },
-  { date: '10 Oct, 2023', tooltip: 'Operational' },
-  { date: '11 Oct, 2023', tooltip: 'Operational' },
-  { date: '12 Oct, 2023', tooltip: 'Operational' },
-  { date: '13 Oct, 2023', tooltip: 'Operational' },
-  { date: '14 Oct, 2023', tooltip: 'Operational' },
-  { date: '15 Oct, 2023', tooltip: 'Operational' },
-  { date: '16 Oct, 2023', tooltip: 'Operational' },
-  { date: '17 Oct, 2023', tooltip: 'Maintenance' },
-  { date: '18 Oct, 2023', tooltip: 'Operational' },
-  { date: '19 Oct, 2023', tooltip: 'Operational' },
-  { date: '20 Oct, 2023', tooltip: 'Operational' },
-  { date: '21 Oct, 2023', tooltip: 'Operational' },
-  { date: '22 Oct, 2023', tooltip: 'Operational' },
-  { date: '23 Oct, 2023', tooltip: 'Operational' },
-  { date: '24 Oct, 2023', tooltip: 'Operational' },
-  { date: '25 Oct, 2023', tooltip: 'Operational' },
-  { date: '26 Oct, 2023', tooltip: 'Operational' },
-  { date: '27 Oct, 2023', tooltip: 'Operational' },
-  { date: '28 Oct, 2023', tooltip: 'Operational' },
-  { date: '29 Oct, 2023', tooltip: 'Not measured' },
-  { date: '30 Oct, 2023', tooltip: 'Not measured' },
-  { date: '31 Oct, 2023', tooltip: 'Not measured' },
-  { date: '1 Nov, 2023', tooltip: 'Operational' },
-  { date: '2 Nov, 2023', tooltip: 'Operational' },
-  { date: '3 Nov, 2023', tooltip: 'Operational' },
-  { date: '4 Nov, 2023', tooltip: 'Operational' },
-  { date: '5 Nov, 2023', tooltip: 'Operational' },
-  { date: '6 Nov, 2023', tooltip: 'Operational' },
-  { date: '7 Nov, 2023', tooltip: 'Operational' },
-  { date: '8 Nov, 2023', tooltip: 'Operational' },
-  { date: '9 Nov, 2023', tooltip: 'Operational' },
-  { date: '10 Nov, 2023', tooltip: 'Operational' },
-  { date: '11 Nov, 2023', tooltip: 'Operational' },
-  { date: '12 Nov, 2023', tooltip: 'Operational' },
-  { date: '13 Nov, 2023', tooltip: 'Operational' },
-  { date: '14 Nov, 2023', tooltip: 'Operational' },
-  { date: '15 Nov, 2023', tooltip: 'Operational' },
-  { date: '16 Nov, 2023', tooltip: 'Operational' },
-  { date: '17 Nov, 2023', tooltip: 'Operational' },
-  { date: '18 Nov, 2023', tooltip: 'Operational' },
-  { date: '19 Nov, 2023', tooltip: 'Operational' },
-  { date: '20 Nov, 2023', tooltip: 'Operational' },
-  { date: '21 Nov, 2023', tooltip: 'Operational' },
-  { date: '22 Nov, 2023', tooltip: 'Operational' },
-  { date: '23 Nov, 2023', tooltip: 'Operational' },
-  { date: '24 Nov, 2023', tooltip: 'Operational' },
-  { date: '25 Nov, 2023', tooltip: 'Operational' },
-  { date: '26 Nov, 2023', tooltip: 'Operational' },
-  { date: '27 Nov, 2023', tooltip: 'Operational' },
-  { date: '28 Nov, 2023', tooltip: 'Operational' },
-  { date: '29 Nov, 2023', tooltip: 'Operational' },
-  { date: '30 Nov, 2023', tooltip: 'Operational' },
-  { date: '1 Dec, 2023', tooltip: 'Operational' },
-  { date: '2 Dec, 2023', tooltip: 'Operational' },
-  { date: '3 Dec, 2023', tooltip: 'Operational' },
-  { date: '4 Dec, 2023', tooltip: 'Operational' },
-  { date: '5 Dec, 2023', tooltip: 'Operational' },
-  { date: '6 Dec, 2023', tooltip: 'Operational' },
-  { date: '7 Dec, 2023', tooltip: 'Operational' },
-  { date: '8 Dec, 2023', tooltip: 'Operational' },
-  { date: '9 Dec, 2023', tooltip: 'Operational' },
-  { date: '10 Dec, 2023', tooltip: 'Operational' },
-  { date: '11 Dec, 2023', tooltip: 'Downtime' },
-  { date: '12 Dec, 2023', tooltip: 'Downtime' },
-  { date: '13 Dec, 2023', tooltip: 'Operational' },
-  { date: '14 Dec, 2023', tooltip: 'Operational' },
-  { date: '15 Dec, 2023', tooltip: 'Operational' },
-  { date: '16 Dec, 2023', tooltip: 'Operational' },
-  { date: '17 Dec, 2023', tooltip: 'Operational' },
-  { date: '18 Dec, 2023', tooltip: 'Operational' },
-  { date: '19 Dec, 2023', tooltip: 'Operational' },
-  { date: '20 Dec, 2023', tooltip: 'Operational' },
-  { date: '21 Dec, 2023', tooltip: 'Operational' },
-  { date: '22 Dec, 2023', tooltip: 'Operational' },
-  { date: '23 Dec, 2023', tooltip: 'Operational' },
-  { date: '24 Dec, 2023', tooltip: 'Operational' },
-  { date: '25 Dec, 2023', tooltip: 'Operational' },
-  { date: '26 Dec, 2023', tooltip: 'Operational' },
-  { date: '27 Dec, 2023', tooltip: 'Operational' },
-];
-
-const dataBlocks = [
-  { date: '29 Sep, 2023', tooltip: 'Operational' },
-  { date: '30 Sep, 2023', tooltip: 'Operational' },
-  { date: '1 Oct, 2023', tooltip: 'Operational' },
-  { date: '2 Oct, 2023', tooltip: 'Operational' },
-  { date: '3 Oct, 2023', tooltip: 'Operational' },
-  { date: '4 Oct, 2023', tooltip: 'Operational' },
-  { date: '5 Oct, 2023', tooltip: 'Operational' },
-  { date: '6 Oct, 2023', tooltip: 'Operational' },
-  { date: '7 Oct, 2023', tooltip: 'Operational' },
-  { date: '8 Oct, 2023', tooltip: 'Operational' },
-  { date: '9 Oct, 2023', tooltip: 'Operational' },
-  { date: '10 Oct, 2023', tooltip: 'Operational' },
-  { date: '11 Oct, 2023', tooltip: 'Operational' },
-  { date: '12 Oct, 2023', tooltip: 'Downtime' },
-  { date: '13 Oct, 2023', tooltip: 'Operational' },
-  { date: '14 Oct, 2023', tooltip: 'Operational' },
-  { date: '15 Oct, 2023', tooltip: 'Operational' },
-  { date: '16 Oct, 2023', tooltip: 'Operational' },
-  { date: '17 Oct, 2023', tooltip: 'Downtime' },
-  { date: '18 Oct, 2023', tooltip: 'Operational' },
-  { date: '19 Oct, 2023', tooltip: 'Operational' },
-  { date: '20 Oct, 2023', tooltip: 'Operational' },
-  { date: '21 Oct, 2023', tooltip: 'Operational' },
-  { date: '22 Oct, 2023', tooltip: 'Operational' },
-  { date: '23 Oct, 2023', tooltip: 'Operational' },
-  { date: '24 Oct, 2023', tooltip: 'Operational' },
-  { date: '25 Oct, 2023', tooltip: 'Operational' },
-  { date: '26 Oct, 2023', tooltip: 'Operational' },
-  { date: '27 Oct, 2023', tooltip: 'Operational' },
-  { date: '28 Oct, 2023', tooltip: 'Operational' },
-  { date: '29 Oct, 2023', tooltip: 'Operational' },
-  { date: '30 Oct, 2023', tooltip: 'Operational' },
-  { date: '31 Oct, 2023', tooltip: 'Operational' },
-  { date: '1 Nov, 2023', tooltip: 'Operational' },
-  { date: '2 Nov, 2023', tooltip: 'Operational' },
-  { date: '3 Nov, 2023', tooltip: 'Operational' },
-  { date: '4 Nov, 2023', tooltip: 'Operational' },
-  { date: '5 Nov, 2023', tooltip: 'Operational' },
-  { date: '6 Nov, 2023', tooltip: 'Operational' },
-  { date: '7 Nov, 2023', tooltip: 'Operational' },
-  { date: '8 Nov, 2023', tooltip: 'Operational' },
-  { date: '9 Nov, 2023', tooltip: 'Operational' },
-  { date: '10 Nov, 2023', tooltip: 'Operational' },
-  { date: '11 Nov, 2023', tooltip: 'Operational' },
-  { date: '12 Nov, 2023', tooltip: 'Downtime' },
-  { date: '13 Nov, 2023', tooltip: 'Operational' },
-  { date: '14 Nov, 2023', tooltip: 'Operational' },
-  { date: '15 Nov, 2023', tooltip: 'Operational' },
-  { date: '16 Nov, 2023', tooltip: 'Operational' },
-  { date: '17 Nov, 2023', tooltip: 'Operational' },
-  { date: '18 Nov, 2023', tooltip: 'Operational' },
-  { date: '19 Nov, 2023', tooltip: 'Operational' },
-  { date: '20 Nov, 2023', tooltip: 'Operational' },
-  { date: '21 Nov, 2023', tooltip: 'Operational' },
-  { date: '22 Nov, 2023', tooltip: 'Operational' },
-  { date: '23 Nov, 2023', tooltip: 'Operational' },
-  { date: '24 Nov, 2023', tooltip: 'Downtime' },
-  { date: '25 Nov, 2023', tooltip: 'Operational' },
-  { date: '26 Nov, 2023', tooltip: 'Operational' },
-  { date: '27 Nov, 2023', tooltip: 'Operational' },
-  { date: '28 Nov, 2023', tooltip: 'Operational' },
-  { date: '29 Nov, 2023', tooltip: 'Operational' },
-  { date: '30 Nov, 2023', tooltip: 'Operational' },
-  { date: '1 Dec, 2023', tooltip: 'Operational' },
-  { date: '2 Dec, 2023', tooltip: 'Operational' },
-  { date: '3 Dec, 2023', tooltip: 'Operational' },
-  { date: '4 Dec, 2023', tooltip: 'Operational' },
-  { date: '5 Dec, 2023', tooltip: 'Operational' },
-  { date: '6 Dec, 2023', tooltip: 'Operational' },
-  { date: '7 Dec, 2023', tooltip: 'Operational' },
-  { date: '8 Dec, 2023', tooltip: 'Operational' },
-  { date: '9 Dec, 2023', tooltip: 'Operational' },
-  { date: '10 Dec, 2023', tooltip: 'Operational' },
-  { date: '11 Dec, 2023', tooltip: 'Operational' },
-  { date: '12 Dec, 2023', tooltip: 'Operational' },
-  { date: '13 Dec, 2023', tooltip: 'Operational' },
-  { date: '14 Dec, 2023', tooltip: 'Operational' },
-  { date: '15 Dec, 2023', tooltip: 'Operational' },
-  { date: '16 Dec, 2023', tooltip: 'Operational' },
-  { date: '17 Dec, 2023', tooltip: 'Operational' },
-  { date: '18 Dec, 2023', tooltip: 'Operational' },
-  { date: '19 Dec, 2023', tooltip: 'Operational' },
-  { date: '20 Dec, 2023', tooltip: 'Operational' },
-  { date: '21 Dec, 2023', tooltip: 'Operational' },
-  { date: '22 Dec, 2023', tooltip: 'Downtime' },
-  { date: '23 Dec, 2023', tooltip: 'Operational' },
-  { date: '24 Dec, 2023', tooltip: 'Downtime' },
-  { date: '25 Dec, 2023', tooltip: 'Operational' },
-  { date: '26 Dec, 2023', tooltip: 'Operational' },
-  { date: '27 Dec, 2023', tooltip: 'Operational' },
-];
+import { CheckCircle2, Activity } from "lucide-react";
 
 const colorMapping = {
   Operational: 'bg-emerald-500',
@@ -196,15 +10,49 @@ const colorMapping = {
   'Not measured': 'bg-neutral-400',
 };
 
-const combinedDataComponents = dataComponents.map((item) => ({
-  ...item,
-  color: colorMapping[item.tooltip],
-}));
+// Generate 90-day telemetry timeline starting May 1, 2026
+function generateDatesFromMay2026(overrides = {}) {
+  const list = [];
+  const startDate = new Date(2026, 4, 1); // May 1, 2026
 
-const combinedDataBlocks = dataBlocks.map((item) => ({
-  ...item,
-  color: colorMapping[item.tooltip],
-}));
+  for (let i = 0; i < 90; i++) {
+    const d = new Date(startDate);
+    d.setDate(startDate.getDate() + i);
+
+    const formattedDate = d.toLocaleDateString("en-GB", {
+      day: "numeric",
+      month: "short",
+      year: "numeric",
+    });
+
+    const status = overrides[i] || "Operational";
+
+    list.push({
+      date: formattedDate,
+      tooltip: status,
+      color: colorMapping[status],
+    });
+  }
+  return list;
+}
+
+const combinedDataComponents = generateDatesFromMay2026({
+  17: "Maintenance",
+  28: "Not measured",
+  29: "Not measured",
+  30: "Not measured",
+  72: "Downtime",
+  73: "Downtime",
+});
+
+const combinedDataBlocks = generateDatesFromMay2026({
+  11: "Downtime",
+  16: "Downtime",
+  43: "Downtime",
+  55: "Downtime",
+  83: "Downtime",
+  85: "Downtime",
+});
 
 function Block({ color, tooltip, date }) {
   const [hovered, setHovered] = useState(false);
@@ -275,7 +123,7 @@ export function ZenoShowcaseSection() {
 
           <div className="flex items-center gap-2 text-xs font-medium text-emerald-400 bg-emerald-500/10 px-3.5 py-1.5 rounded-full border border-emerald-500/20 w-fit">
             <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse" />
-            <span>Operational (Dec 2023 - Present)</span>
+            <span>Operational (May 2026 – Present)</span>
           </div>
         </div>
 
@@ -294,8 +142,8 @@ export function ZenoShowcaseSection() {
               <Tracker data={module.data} />
 
               <div className="flex items-center justify-between text-[11px] text-neutral-500 font-mono pt-1">
-                <span>90 days ago</span>
-                <span>Today</span>
+                <span>1 May, 2026</span>
+                <span>Today (26 Jul, 2026)</span>
               </div>
             </div>
           ))}
