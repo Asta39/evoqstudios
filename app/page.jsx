@@ -8,6 +8,7 @@ const VideoShowcase = dynamic(() => import("../components/VideoShowcase"), { ssr
 const Features = dynamic(() => import("../components/Features"), { ssr: false });
 const TechOrbit = dynamic(() => import("../components/TechOrbit"), { ssr: false });
 const FileTreeSection = dynamic(() => import("../components/FileTreeSection"), { ssr: false });
+const MacbookScroll = dynamic(() => import("../components/ui/macbook-scroll").then((mod) => mod.MacbookScroll), { ssr: false });
 const Testimonials = dynamic(() => import("../components/ui/testimonials"), { ssr: false });
 const CinematicFooter = dynamic(
   () => import("../components/ui/motion-footer").then((mod) => mod.CinematicFooter),
@@ -25,6 +26,16 @@ export default function Home() {
         <Features />
         <TechOrbit />
         <FileTreeSection />
+        <MacbookScroll
+          src="/macbook-zeno-invoices.png"
+          title={
+            <span className="text-apple-ink font-bold">
+              Production Systems Showcase. <br />
+              <span className="text-neutral-400">Architected for Speed & Reliability.</span>
+            </span>
+          }
+          showGradient={false}
+        />
         <Testimonials />
       </main>
 
