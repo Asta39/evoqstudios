@@ -167,7 +167,8 @@ export default function AboutPage() {
           </div>
         </section>
 
-        {/* Team Section */}
+        {/* Team Section (Commented Out) */}
+        {/*
         <section className="max-w-[1240px] mx-auto py-16 border-t border-black/[0.06]">
           <div className="mb-12 flex flex-col sm:flex-row sm:items-end justify-between gap-4">
             <div>
@@ -211,6 +212,7 @@ export default function AboutPage() {
             ))}
           </div>
         </section>
+        */}
 
         {/* Studio Culture */}
         <section className="max-w-[1240px] mx-auto py-16 border-t border-black/[0.06]">
