@@ -15,6 +15,9 @@ import {
   Boxes,
 } from "lucide-react";
 
+import { ShootingStars } from "../../../components/ui/shooting-stars";
+import { StarsBackground } from "../../../components/ui/stars-background";
+
 const Header = dynamic(() => import("../../../components/Header"), { ssr: false });
 const CinematicFooter = dynamic(
   () => import("../../../components/ui/motion-footer").then((mod) => mod.CinematicFooter),
@@ -94,21 +97,26 @@ export default function CapabilitiesPage() {
       <main className="relative z-10 w-full min-h-screen bg-white rounded-b-[2rem] sm:rounded-b-[3rem] shadow-[0_25px_60px_rgba(0,0,0,0.12)] border-b border-black/5 pt-28 pb-20 px-4 sm:px-6 lg:px-12">
         <Header />
 
-        {/* Hero Section */}
-        <section className="max-w-[1240px] mx-auto pt-8 pb-20 flex flex-col items-center text-center">
-          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-black/5 border border-black/5 text-xs font-semibold text-apple-ink mb-6">
-            <Boxes className="w-3.5 h-3.5 text-apple-blue" />
-            <span>Capabilities Index</span>
+        {/* Hero Section with Shooting Stars & Star Background */}
+        <section className="relative w-full max-w-[1240px] mx-auto min-h-[28rem] rounded-3xl bg-neutral-950 flex flex-col items-center justify-center text-center p-8 sm:p-14 overflow-hidden border border-white/10 shadow-2xl mb-12">
+          <StarsBackground starDensity={0.0002} />
+          <ShootingStars minSpeed={15} maxSpeed={35} starColor="#1a73e8" trailColor="#7c4dff" />
+
+          <div className="relative z-10 flex flex-col items-center text-center">
+            <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-white/10 border border-white/15 text-xs font-semibold text-white mb-6">
+              <Boxes className="w-3.5 h-3.5 text-apple-blue" />
+              <span>Capabilities Index</span>
+            </div>
+
+            <h1 className="text-4xl sm:text-6xl md:text-7xl font-bold tracking-tight text-white leading-[1.08] max-w-[920px] mb-6">
+              Everything We Do. <br />
+              <span className="text-neutral-400">Full-Stack Digital Execution.</span>
+            </h1>
+
+            <p className="text-lg sm:text-xl text-neutral-300 max-w-[720px] leading-relaxed font-normal">
+              A full-stack digital studio for ambitious teams. From strategy to cloud deployment, we cover the entire digital lifecycle.
+            </p>
           </div>
-
-          <h1 className="text-4xl sm:text-6xl md:text-7xl font-bold text-apple-ink tracking-tight leading-[1.08] max-w-[920px] mb-6">
-            Everything We Do. <br />
-            <span className="text-neutral-400">Full-Stack Digital Execution.</span>
-          </h1>
-
-          <p className="text-lg sm:text-xl text-neutral-600 max-w-[720px] mb-10 leading-relaxed font-normal">
-            A full-stack digital studio for ambitious teams. From strategy to cloud deployment, we cover the entire digital lifecycle.
-          </p>
         </section>
 
         {/* Capability Categories */}
