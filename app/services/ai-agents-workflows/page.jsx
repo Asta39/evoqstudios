@@ -13,8 +13,13 @@ import {
   Lock,
   ChevronDown,
   ArrowRight,
-  ShieldAlert,
+  ShieldCheck,
   CheckCircle2,
+  QrCode,
+  ScanLine,
+  CreditCard,
+  Building2,
+  Zap,
 } from "lucide-react";
 
 import { AiKpiCardsSection } from "../../../components/AiKpiCardsSection";
@@ -25,84 +30,127 @@ const CinematicFooter = dynamic(
   { ssr: false }
 );
 
+const productionRails = [
+  {
+    title: "M-Pesa Daraja API & Payments",
+    subtitle: "STK Push, C2B/B2C & Reconciliation",
+    desc: "Instant payment callbacks, automated ledger balancing, and AI fallback agents handling high-concurrency mobile money transactions.",
+    badge: "Financial Infrastructure",
+    icon: CreditCard,
+    accent: "bg-emerald-500/10 text-emerald-600 border-emerald-500/20",
+  },
+  {
+    title: "KRA eTIMS & iTax Compliance",
+    subtitle: "Automated Tax Invoice Generation & QR Verification",
+    desc: "Real-time compliance agents that validate electronic tax invoices, verify KRA PINs, and sign eTIMS payloads directly into ERP systems.",
+    badge: "Tax Infrastructure",
+    icon: QrCode,
+    accent: "bg-rose-500/10 text-rose-600 border-rose-500/20",
+  },
+  {
+    title: "BRS & KYC Verification",
+    subtitle: "Business Registration Service Lookup",
+    desc: "Automated business verification workflows checking company registration numbers, director IDs, and legal status via official API rails.",
+    badge: "Government & Legal",
+    icon: Building2,
+    accent: "bg-blue-500/10 text-blue-600 border-blue-500/20",
+  },
+  {
+    title: "Document & National ID OCR",
+    subtitle: "Identity & Bank Statement Parsing",
+    desc: "Computer vision and vision-LLMs parsing Kenyan National IDs, KRA certificates, utility bills, and multi-page bank statements into structured JSON.",
+    badge: "Document AI",
+    icon: ScanLine,
+    accent: "bg-purple-500/10 text-purple-600 border-purple-500/20",
+  },
+  {
+    title: "Paystack & Pan-African Gateways",
+    subtitle: "Multi-Currency Card & Bank Transfers",
+    desc: "Seamless integration with Paystack, Flutterwave, and regional banking webhooks for multi-currency settlement and automated subscription billing.",
+    badge: "Payment Rails",
+    icon: Zap,
+    accent: "bg-amber-500/10 text-amber-600 border-amber-500/20",
+  },
+];
+
 const agentTypes = [
   {
-    title: "Customer Support Agents",
-    desc: "24/7 intelligent agents trained on your documentation, product catalog, and brand voice.",
+    title: "M-Pesa & Payment Reconciliation Agents",
+    desc: "Autonomous agents matching M-Pesa transaction codes with bank statements and internal accounting software in real-time.",
     icon: Bot,
   },
   {
-    title: "Research & Summarization",
-    desc: "Scan long-form PDFs, extract structured insights, and compile executive summaries in seconds.",
+    title: "OCR & KYB Document Parsing Agents",
+    desc: "Extract structured data from scanned National IDs, KRA PIN certificates, and audited financial statements with 99%+ accuracy.",
     icon: FileText,
   },
   {
-    title: "Workflow Automation",
-    desc: "Connect internal tools, webhooks, and APIs to execute multi-step business actions automatically.",
+    title: "eTIMS & Tax Invoice Validation Workflows",
+    desc: "Connect internal ERPs and point-of-sale systems to validate KRA tax signatures and flag compliance discrepancies instantly.",
     icon: Workflow,
   },
   {
-    title: "Data Processing Agents",
-    desc: "Clean, classify, enrich, and route inbound customer data at enterprise scale.",
+    title: "Enterprise Data Pipeline Agents",
+    desc: "Clean, classify, enrich, and route inbound customer financial & inventory data at high scale.",
     icon: Database,
   },
   {
-    title: "Code Assistants",
-    desc: "Internal Copilot-style tools fine-tuned on your internal repositories and architecture rules.",
+    title: "Internal Developer Copilots",
+    desc: "Copilot-style assistants trained on your internal repos, API specs (Daraja, Paystack, KRA), and architecture rules.",
     icon: Code2,
   },
 ];
 
 const buildSteps = [
-  { num: "01", title: "Define", desc: "Identify decision points, constraints, and operational KPIs." },
-  { num: "02", title: "Model Selection", desc: "Choose optimal LLM (GPT-4, Claude, Llama 3) for cost & latency." },
-  { num: "03", title: "Prompt Engineering", desc: "Craft deterministic, context-aware system prompts with guardrails." },
-  { num: "04", title: "Integration", desc: "Connect agent functions to production APIs, vector databases, & webhooks." },
-  { num: "05", title: "Monitor & Improve", desc: "Track conversation logs, accuracy scores, and human fallback triggers." },
+  { num: "01", title: "Define Rails", desc: "Identify API endpoints (M-Pesa, KRA eTIMS, Paystack, BRS) & data constraints." },
+  { num: "02", title: "Model Selection", desc: "Choose optimal vision & reasoning LLMs (GPT-4o, Claude 3.5 Sonnet) for speed & precision." },
+  { num: "03", title: "Prompt Guardrails", desc: "Craft deterministic system prompts with zero-hallucination guardrails for financial data." },
+  { num: "04", title: "API Integration", desc: "Connect agent functions to webhooks, vector databases, and production microservices." },
+  { num: "05", title: "Monitor & Audit", desc: "Track execution logs, accuracy scores, and human-in-the-loop fallback triggers." },
 ];
 
 const useCases = [
   {
-    sector: "E-Commerce",
-    impact: "Automated product description generation reduced content team workload by 70%.",
+    sector: "Fintech & Lending",
+    impact: "Automated M-Pesa statement parsing & KRA PIN verification cut loan approval turnaround from 24 hours to 45 seconds.",
   },
   {
-    sector: "SaaS Platform",
-    impact: "AI onboarding agent increased trial-to-paid user conversion by 22%.",
+    sector: "Retail & Supply Chain",
+    impact: "Automated KRA eTIMS invoice generation & QR signing processed over 40,000 monthly transactions without human error.",
   },
   {
-    sector: "Legal & Regulatory",
-    impact: "Contract review agent flagged compliance risks in minutes instead of 4 days.",
+    sector: "Logistics & Enterprise",
+    impact: "National ID & BRS registry OCR parsing reduced merchant onboarding friction by 82%.",
   },
 ];
 
 const trustItems = [
-  "Human-in-the-loop design for high-stakes decisions",
-  "Data privacy — zero training on client data without explicit consent",
-  "Transparent logging and explainable agent execution steps",
-  "Automated fallback to human support agents when confidence is low",
+  "Human-in-the-loop fallbacks for high-stakes financial approvals",
+  "Zero data retention — strict privacy compliance for customer financial data",
+  "Transparent audit logs and explainable step-by-step execution traces",
+  "Automated fallback to human operators whenever validation scores drop below 98%",
 ];
 
 const faqs = [
   {
-    q: "How accurate are the AI agents?",
-    a: "We implement retrieval-augmented generation (RAG) and strict validation guardrails to minimize hallucinations, achieving over 95%+ accuracy in enterprise benchmarks.",
+    q: "How do your AI agents handle M-Pesa Daraja callbacks and downtime?",
+    a: "Our agents feature resilient queueing (Redis/RabbitMQ) with exponential backoff and automated reconciliation algorithms that re-query M-Pesa status APIs during network delays.",
   },
   {
-    q: "What data do you need from us?",
-    a: "We need access to your product documentation, standard operating procedures, or API endpoints. All data ingestion is private and secure.",
+    q: "Can the OCR agents parse low-quality scans of Kenyan National IDs and KRA certificates?",
+    a: "Yes. We combine specialized pre-processing image filters with multi-modal vision models to accurately extract names, ID numbers, and KRA PINs even from wrinkled or low-light smartphone uploads.",
   },
   {
-    q: "Can agents integrate with our existing CRM or Helpdesk?",
-    a: "Yes. Our agents connect seamlessly with Zendesk, Intercom, Salesforce, HubSpot, Slack, and custom REST APIs.",
+    q: "Are the KRA eTIMS integrations fully compliant with tax regulations?",
+    a: "Yes. Our eTIMS workflows sign electronic tax receipts, validate control numbers, and embed official QR verification codes directly into client invoicing systems.",
   },
   {
-    q: "What does ongoing maintenance look like?",
-    a: "We provide continuous prompt optimization, vector index rebalancing, and model evaluation to adapt to new product updates.",
+    q: "Can agents integrate with local ERPs and legacy accounting systems?",
+    a: "Yes. We build custom API connectors for Sage, QuickBooks, SAP, Odoo, and custom PostgreSQL/Node.js backends.",
   },
   {
-    q: "Is my data used to train public AI models?",
-    a: "Never. We use enterprise zero-retention API endpoints (OpenAI Enterprise, Anthropic Commercial, AWS Bedrock) ensuring client data remains strictly private.",
+    q: "Is our financial and customer data safe from model training?",
+    a: "Absolutely. We exclusively deploy zero-retention enterprise API endpoints (OpenAI Enterprise, Anthropic Commercial, AWS Bedrock), ensuring your data is never used to train public models.",
   },
 ];
 
@@ -115,19 +163,19 @@ export default function AiAgentsWorkflowsPage() {
         <Header />
 
         {/* Hero Section */}
-        <section className="max-w-[1240px] mx-auto pt-8 pb-20 flex flex-col items-center text-center">
+        <section className="max-w-[1240px] mx-auto pt-8 pb-16 flex flex-col items-center text-center">
           <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-purple-500/10 border border-purple-500/20 text-xs font-semibold text-purple-600 mb-6">
             <Sparkles className="w-3.5 h-3.5" />
-            <span>AI Systems & Automation</span>
+            <span>AI Systems & Regional Infrastructure</span>
           </div>
 
-          <h1 className="text-4xl sm:text-6xl md:text-7xl font-bold text-apple-ink tracking-tight leading-[1.08] max-w-[920px] mb-6">
-            Intelligent Agents. <br />
-            <span className="text-neutral-400">Automate What Matters.</span>
+          <h1 className="text-4xl sm:text-6xl md:text-7xl font-bold text-apple-ink tracking-tight leading-[1.08] max-w-[960px] mb-6">
+            Intelligent Agents Engineered for <br />
+            <span className="text-purple-600">M-Pesa, KRA, BRS & OCR Rails.</span>
           </h1>
 
-          <p className="text-lg sm:text-xl text-neutral-600 max-w-[720px] mb-10 leading-relaxed font-normal">
-            Custom AI agents and automated workflows that eliminate manual operational overhead and unlock new capability tiers.
+          <p className="text-lg sm:text-xl text-neutral-600 max-w-[760px] mb-10 leading-relaxed font-normal">
+            We don't build generic AI wrappers. We engineer autonomous agents and workflows integrated directly into M-Pesa Daraja, KRA eTIMS, BRS lookup, Paystack, and document OCR systems.
           </p>
 
           <div className="flex flex-wrap items-center justify-center gap-4">
@@ -135,15 +183,71 @@ export default function AiAgentsWorkflowsPage() {
               href="/company/contact"
               className="px-7 py-3.5 rounded-full bg-black text-white font-semibold text-sm hover:bg-neutral-800 transition-all shadow-lg active:scale-95 flex items-center gap-2"
             >
-              <span>Explore AI Solutions</span>
+              <span>Build Production AI Rails</span>
               <ArrowRight className="w-4 h-4" />
             </a>
             <a
-              href="#agent-types"
+              href="#production-rails"
               className="px-7 py-3.5 rounded-full bg-neutral-100 text-apple-ink font-semibold text-sm hover:bg-neutral-200 transition-all"
             >
-              View Agent Types
+              Explore Rails & Systems
             </a>
+          </div>
+        </section>
+
+        {/* Production Financial & Government Rails Section */}
+        <section id="production-rails" className="max-w-[1240px] mx-auto py-16 border-t border-black/[0.06]">
+          <div className="mb-12">
+            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-black/5 border border-black/5 text-xs font-semibold text-apple-ink mb-3">
+              <ShieldCheck className="w-3.5 h-3.5 text-purple-600" />
+              <span>Real Production Infrastructure</span>
+            </div>
+            <h2 className="text-2xl sm:text-4xl font-bold text-apple-ink tracking-tight">
+              Integrated with the rails your business runs on.
+            </h2>
+            <p className="mt-3 text-sm text-neutral-600 max-w-[680px] font-normal leading-relaxed">
+              Our AI architectures connect natively to regional payment gateways, compliance registries, and computer vision engines.
+            </p>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            {productionRails.map((rail, idx) => {
+              const Icon = rail.icon;
+              return (
+                <div
+                  key={idx}
+                  className="p-6 rounded-2xl bg-white border border-black/10 shadow-sm flex flex-col justify-between gap-6 hover:border-black/20 hover:shadow-md transition-all"
+                >
+                  <div className="flex flex-col gap-4">
+                    <div className="flex items-center justify-between">
+                      <div className={`w-10 h-10 rounded-xl flex items-center justify-center ${rail.accent}`}>
+                        <Icon className="w-5 h-5" />
+                      </div>
+                      <span className={`text-[11px] font-semibold px-2.5 py-0.5 rounded-full border ${rail.accent}`}>
+                        {rail.badge}
+                      </span>
+                    </div>
+
+                    <div>
+                      <h3 className="text-lg font-bold text-apple-ink">
+                        {rail.title}
+                      </h3>
+                      <p className="text-xs font-semibold text-purple-600 mb-2">
+                        {rail.subtitle}
+                      </p>
+                      <p className="text-xs text-neutral-600 leading-relaxed font-normal">
+                        {rail.desc}
+                      </p>
+                    </div>
+                  </div>
+
+                  <div className="pt-3 border-t border-black/5 flex items-center gap-2 text-xs font-semibold text-apple-ink">
+                    <CheckCircle2 className="w-4 h-4 text-emerald-600" />
+                    <span>Production Production-Ready API Connector</span>
+                  </div>
+                </div>
+              );
+            })}
           </div>
         </section>
 
@@ -247,7 +351,7 @@ export default function AiAgentsWorkflowsPage() {
                   </span>
                 </div>
                 <h4 className="text-2xl font-bold mb-4">
-                  Enterprise-Grade Security & Deterministic Execution
+                  Enterprise-Grade Security & Financial Compliance
                 </h4>
               </div>
 
