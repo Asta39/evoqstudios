@@ -37,7 +37,6 @@ const productionRails = [
     desc: "Instant payment callbacks, automated ledger balancing, and AI fallback agents handling high-concurrency mobile money transactions.",
     badge: "Financial Infrastructure",
     icon: CreditCard,
-    accent: "bg-emerald-500/10 text-emerald-600 border-emerald-500/20",
   },
   {
     title: "KRA eTIMS & iTax Compliance",
@@ -45,7 +44,6 @@ const productionRails = [
     desc: "Real-time compliance agents that validate electronic tax invoices, verify KRA PINs, and sign eTIMS payloads directly into ERP systems.",
     badge: "Tax Infrastructure",
     icon: QrCode,
-    accent: "bg-rose-500/10 text-rose-600 border-rose-500/20",
   },
   {
     title: "BRS & KYC Verification",
@@ -53,7 +51,6 @@ const productionRails = [
     desc: "Automated business verification workflows checking company registration numbers, director IDs, and legal status via official API rails.",
     badge: "Government & Legal",
     icon: Building2,
-    accent: "bg-blue-500/10 text-blue-600 border-blue-500/20",
   },
   {
     title: "Document & National ID OCR",
@@ -61,7 +58,6 @@ const productionRails = [
     desc: "Computer vision and vision-LLMs parsing Kenyan National IDs, KRA certificates, utility bills, and multi-page bank statements into structured JSON.",
     badge: "Document AI",
     icon: ScanLine,
-    accent: "bg-purple-500/10 text-purple-600 border-purple-500/20",
   },
   {
     title: "Paystack & Pan-African Gateways",
@@ -69,7 +65,6 @@ const productionRails = [
     desc: "Seamless integration with Paystack, Flutterwave, and regional banking webhooks for multi-currency settlement and automated subscription billing.",
     badge: "Payment Rails",
     icon: Zap,
-    accent: "bg-amber-500/10 text-amber-600 border-amber-500/20",
   },
 ];
 
@@ -216,14 +211,14 @@ export default function AiAgentsWorkflowsPage() {
               return (
                 <div
                   key={idx}
-                  className="p-6 rounded-2xl bg-white border border-black/10 shadow-sm flex flex-col justify-between gap-6 hover:border-black/20 hover:shadow-md transition-all"
+                  className="p-6 rounded-2xl bg-neutral-50/80 border border-black/[0.06] flex flex-col justify-between gap-6 hover:bg-white hover:border-purple-500/30 hover:shadow-md transition-all"
                 >
                   <div className="flex flex-col gap-4">
                     <div className="flex items-center justify-between">
-                      <div className={`w-10 h-10 rounded-xl flex items-center justify-center ${rail.accent}`}>
+                      <div className="w-10 h-10 rounded-xl bg-purple-600 text-white flex items-center justify-center">
                         <Icon className="w-5 h-5" />
                       </div>
-                      <span className={`text-[11px] font-semibold px-2.5 py-0.5 rounded-full border ${rail.accent}`}>
+                      <span className="text-[11px] font-semibold px-2.5 py-0.5 rounded-full border border-purple-500/20 bg-purple-500/10 text-purple-600">
                         {rail.badge}
                       </span>
                     </div>
@@ -242,8 +237,8 @@ export default function AiAgentsWorkflowsPage() {
                   </div>
 
                   <div className="pt-3 border-t border-black/5 flex items-center gap-2 text-xs font-semibold text-apple-ink">
-                    <CheckCircle2 className="w-4 h-4 text-emerald-600" />
-                    <span>Production Production-Ready API Connector</span>
+                    <CheckCircle2 className="w-4 h-4 text-purple-600" />
+                    <span>Production-Ready API Connector</span>
                   </div>
                 </div>
               );
