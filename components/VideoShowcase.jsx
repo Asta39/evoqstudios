@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import Image from "next/image";
 
 export default function VideoShowcase() {
   const [isVideoError, setIsVideoError] = useState(false);
@@ -11,7 +12,7 @@ export default function VideoShowcase() {
         <div className="relative w-full aspect-[16/10] sm:aspect-[16/9.5] rounded-[20px] overflow-hidden bg-neutral-50 flex items-center justify-center border border-black/[0.04]">
           {!isVideoError ? (
             <video
-              poster="/Screenshot%202026-07-25%20at%2011.49.24%20AM.png"
+              poster="/dashboard-preview.png"
               autoPlay
               loop
               muted
@@ -22,10 +23,11 @@ export default function VideoShowcase() {
               <source src="/herovideo.mp4" type="video/mp4" />
             </video>
           ) : (
-            <img
-              src="/Screenshot%202026-07-25%20at%2011.49.24%20AM.png"
+            <Image
+              src="/dashboard-preview.png"
               alt="Evoq System Dashboard Preview"
-              className="w-full h-full object-cover object-top"
+              fill
+              className="object-cover object-top"
             />
           )}
         </div>

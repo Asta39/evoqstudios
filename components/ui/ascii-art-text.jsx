@@ -58,13 +58,15 @@ export function AsciiArtHeroBackground() {
         </pre>
 
         {/* Hero Title & Subheadline */}
-        <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/10 border border-white/15 text-xs font-mono text-apple-blue mb-4">
-          <span>ASCII_STORY_PROTOCOL_V2</span>
-        </div>
+        <span className="text-xs font-mono text-apple-blue mb-4 block">
+          ASCII_STORY_PROTOCOL_V2
+        </span>
 
         <h1 className="text-3xl sm:text-5xl md:text-6xl font-bold tracking-tight text-white max-w-[800px] mb-4">
           We Build the Future, <br />
-          <span className="text-neutral-400">Pixel & Symbol by Symbol.</span>
+          <span className="font-cursive text-white text-5xl sm:text-6xl md:text-7xl font-normal">
+            Pixel & Symbol by Symbol.
+          </span>
         </h1>
 
         <p className="text-sm sm:text-base text-neutral-300 max-w-[620px] leading-relaxed font-normal">

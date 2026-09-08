@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useState } from "react";
-import { CheckCircle2, Activity } from "lucide-react";
+import { CheckCircle2 } from "lucide-react";
 
 const colorMapping = {
   Operational: 'bg-emerald-500',
@@ -96,10 +96,9 @@ export function ZenoShowcaseSection() {
   return (
     <section className="max-w-[1240px] mx-auto py-16 border-t border-black/[0.06]">
       <div className="mb-12">
-        <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-emerald-500/10 border border-emerald-500/20 text-xs font-semibold text-emerald-600 mb-3">
-          <Activity className="w-3.5 h-3.5" />
-          <span>System Showcase • Zeno Platform</span>
-        </div>
+        <span className="text-xs font-semibold uppercase tracking-widest text-neutral-400 mb-3 block">
+          System Showcase • Zeno Platform
+        </span>
         <h3 className="text-2xl sm:text-4xl font-bold text-apple-ink tracking-tight mb-3">
           Zeno: Unified Enterprise Operating System
         </h3>

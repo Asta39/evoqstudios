@@ -3,7 +3,8 @@
 import { motion } from "framer-motion";
 import Image from "next/image";
 import Link from "next/link";
-import { ArrowUpRight, MessageSquare, Mail, Github, Twitter, Linkedin } from "lucide-react";
+import { ArrowUpRight, MessageSquare, Mail, Github } from "lucide-react";
+import { projects } from "../../lib/projects";
 
 export function CinematicFooter() {
   return (
@@ -28,7 +29,7 @@ export function CinematicFooter() {
                 Evoq Studio
               </span>
             </div>
-            <h2 className="text-3xl sm:text-4xl md:text-5xl font-semibold text-white tracking-tight leading-[1.15]">
+            <h2 className="font-cursive text-4xl sm:text-5xl md:text-6xl font-normal text-white leading-[1.15]">
               Let’s build something your competitors will try to copy next year.
             </h2>
           </div>
@@ -115,32 +116,19 @@ export function CinematicFooter() {
             </ul>
           </div>
 
-          {/* Column 3 - Stack */}
+          {/* Column 3 - Projects */}
           <div className="flex flex-col gap-4">
             <h4 className="text-xs font-semibold uppercase tracking-widest text-neutral-400">
-              Stack
+              Projects
             </h4>
             <ul className="flex flex-col gap-2.5 text-sm text-neutral-300">
-              <li>
-                <Link href="/stack/nextjs-react" className="hover:text-white transition-colors">
-                  Next.js / React
-                </Link>
-              </li>
-              <li>
-                <Link href="/stack/nodejs-python" className="hover:text-white transition-colors">
-                  Node.js / Python
-                </Link>
-              </li>
-              <li>
-                <Link href="/stack/postgresql-redis" className="hover:text-white transition-colors">
-                  PostgreSQL / Redis
-                </Link>
-              </li>
-              <li>
-                <Link href="/stack/tailwind-framer-motion" className="hover:text-white transition-colors">
-                  Tailwind / Framer Motion
-                </Link>
-              </li>
+              {projects.map((project) => (
+                <li key={project.slug}>
+                  <Link href={`/projects/${project.slug}`} className="hover:text-white transition-colors">
+                    {project.name}
+                  </Link>
+                </li>
+              ))}
             </ul>
           </div>
 
@@ -151,22 +139,20 @@ export function CinematicFooter() {
             </h4>
             <div className="flex items-center gap-3">
               <a
-                href="#"
-                className="w-10 h-10 rounded-full bg-white/5 flex items-center justify-center text-neutral-300 hover:text-white hover:bg-white/10 transition-colors border border-white/10"
-              >
-                <Twitter className="w-4 h-4" />
-              </a>
-              <a
-                href="#"
+                href="https://github.com/Asta39/evoqstudios"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="Evoq Studio on GitHub"
                 className="w-10 h-10 rounded-full bg-white/5 flex items-center justify-center text-neutral-300 hover:text-white hover:bg-white/10 transition-colors border border-white/10"
               >
                 <Github className="w-4 h-4" />
               </a>
               <a
-                href="#"
+                href="mailto:evoqcreativetecg@gmail.com"
+                aria-label="Email Evoq Studio"
                 className="w-10 h-10 rounded-full bg-white/5 flex items-center justify-center text-neutral-300 hover:text-white hover:bg-white/10 transition-colors border border-white/10"
               >
-                <Linkedin className="w-4 h-4" />
+                <Mail className="w-4 h-4" />
               </a>
             </div>
           </div>

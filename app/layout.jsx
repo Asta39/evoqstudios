@@ -1,4 +1,6 @@
 import "./globals.css";
+import { JsonLd } from "../components/JsonLd";
+import { BottomScrollBlur } from "../components/BottomScrollBlur";
 
 export const metadata = {
   metadataBase: new URL("https://evoqcreative.co.ke"),
@@ -101,6 +103,14 @@ const jsonLdSchema = {
   ],
 };
 
+const websiteSchema = {
+  "@context": "https://schema.org",
+  "@type": "WebSite",
+  name: "Evoq Studio",
+  url: "https://evoqcreative.co.ke",
+  publisher: { "@id": "https://evoqcreative.co.ke/#organization" },
+};
+
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
@@ -110,16 +120,19 @@ export default function RootLayout({ children }) {
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
         <link
-          href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap"
+          href="https://fonts.googleapis.com/css2?family=Caveat:wght@600;700&display=swap"
           rel="stylesheet"
         />
-        <script
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLdSchema) }}
+        <link rel="preconnect" href="https://api.fontshare.com" />
+        <link
+          href="https://api.fontshare.com/v2/css?f[]=clash-grotesk@200,300,400,500,600,700&display=swap"
+          rel="stylesheet"
         />
+        <JsonLd data={[jsonLdSchema, websiteSchema]} />
       </head>
       <body className="bg-white text-apple-ink antialiased selection:bg-apple-blue selection:text-white">
         {children}
+        <BottomScrollBlur />
       </body>
     </html>
   );

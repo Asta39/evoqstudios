@@ -1,7 +1,7 @@
 "use client";
 
 import React from "react";
-import { Sparkles, Bot, Database, Workflow, ArrowUpRight } from "lucide-react";
+import { Bot, Database, Workflow, ArrowUpRight } from "lucide-react";
 
 const kpiData = [
   {
@@ -52,10 +52,9 @@ export function AiKpiCardsSection() {
   return (
     <section className="max-w-[1240px] mx-auto py-16 border-t border-black/[0.06] font-sans">
       <div className="mb-12">
-        <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-purple-500/10 border border-purple-500/20 text-xs font-semibold text-purple-600 mb-3">
-          <Sparkles className="w-3.5 h-3.5" />
-          <span>Live Telemetry • AI Agent Performance</span>
-        </div>
+        <span className="text-xs font-semibold uppercase tracking-widest text-neutral-400 mb-3 block">
+          Live Telemetry • AI Agent Performance
+        </span>
         <h3 className="text-2xl sm:text-4xl font-bold text-apple-ink tracking-tight mb-2">
           Production KPI & Accuracy Metrics
         </h3>

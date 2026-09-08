@@ -1,14 +1,10 @@
 "use client";
 
 import { useState } from "react";
-import Image from "next/image";
 import Link from "next/link";
 import { motion, AnimatePresence } from "framer-motion";
 import { HugeiconsIcon } from "@hugeicons/react";
 import {
-  ArrowRight01Icon,
-  Menu01Icon,
-  Cancel01Icon,
   Globe02Icon,
   SparklesIcon,
   SecurityCheckIcon,
@@ -18,6 +14,7 @@ import {
   InformationCircleIcon,
 } from "@hugeicons/core-free-icons";
 import { ChevronDown } from "lucide-react";
+import { projects } from "../lib/projects";
 
 const menuItems = [
   {
@@ -76,75 +73,66 @@ const menuItems = [
   },
 ];
 
+const fullMenuLinks = [
+  { title: "Home", href: "/" },
+  { title: "Services", href: "/company/capabilities" },
+  { title: "Projects", href: "/projects" },
+  { title: "Company", href: "/company/about" },
+  { title: "Contact", href: "/company/contact" },
+];
+
 export default function Header() {
   const [activeSubmenu, setActiveSubmenu] = useState(null);
-  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
-  const [expandedMobileCategory, setExpandedMobileCategory] = useState(null);
-
-  const toggleMobileCategory = (title) => {
-    setExpandedMobileCategory(expandedMobileCategory === title ? null : title);
-  };
+  const [menuOpen, setMenuOpen] = useState(false);
 
   return (
     <>
-      <header className="fixed top-5 left-0 right-0 z-50 px-4 flex justify-center pointer-events-none">
-        {/* Sleek Floating Glass Nav Pill Container */}
-        <div className="pointer-events-auto relative bg-white/85 backdrop-blur-xl border border-white/70 shadow-[0_10px_35px_rgba(0,0,0,0.08)] rounded-full px-4 py-1.5 flex items-center justify-between gap-6 sm:gap-8 w-auto transition-all duration-300">
-          
-          {/* Logo */}
-          <Link href="/" className="flex items-center hover:opacity-80 transition-opacity shrink-0">
-            <Image
-              src="/evoq-logo.png"
-              alt="Evoq Studio Logo"
-              width={34}
-              height={34}
-              className="object-contain"
-              priority
-            />
+      <header className="sticky top-0 z-50 w-full bg-white/90 backdrop-blur-xl border-b border-black/[0.06]">
+        <div className="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-12 h-16 flex items-center justify-between">
+          {/* Wordmark */}
+          <Link href="/" className="font-bold text-lg tracking-tight text-apple-ink hover:opacity-70 transition-opacity shrink-0">
+            Evoq<span className="align-super text-[10px] ml-0.5">&reg;</span>
           </Link>
 
-          {/* Desktop Nav Links */}
-          <nav className="hidden sm:flex items-center gap-1 text-[14px] font-medium text-apple-ink">
+          {/* Desktop Flat Nav Links */}
+          <nav className="hidden md:flex flex-1 items-center justify-evenly px-8 text-[15px] font-normal text-apple-ink">
             {menuItems.map((item, idx) => (
               <div
                 key={item.title}
-                className="relative py-1"
+                className="relative"
                 onMouseEnter={() => setActiveSubmenu(idx)}
                 onMouseLeave={() => setActiveSubmenu(null)}
               >
-                <div className="flex items-center">
-                  <Link
-                    href={item.href}
-                    className="px-3.5 py-1.5 rounded-full hover:bg-black/5 transition-colors inline-flex items-center gap-1 text-apple-ink font-semibold whitespace-nowrap"
-                  >
-                    <span>{item.title}</span>
-                    <ChevronDown
-                      className={`w-3.5 h-3.5 transition-transform duration-200 ${
-                        activeSubmenu === idx ? "rotate-180 text-black" : "text-neutral-400"
-                      }`}
-                    />
-                  </Link>
-                </div>
+                <Link
+                  href={item.href}
+                  className="inline-flex items-center gap-1 hover:opacity-60 transition-opacity"
+                >
+                  <span>{item.title}</span>
+                  <ChevronDown
+                    className={`w-3.5 h-3.5 text-neutral-400 transition-transform duration-200 ${
+                      activeSubmenu === idx ? "rotate-180" : ""
+                    }`}
+                  />
+                </Link>
 
-                {/* Submenu Glass Dropdown Card */}
                 <AnimatePresence>
                   {activeSubmenu === idx && item.submenu && (
                     <motion.div
-                      initial={{ opacity: 0, y: 8, scale: 0.96 }}
-                      animate={{ opacity: 1, y: 0, scale: 1 }}
-                      exit={{ opacity: 0, y: 6, scale: 0.96 }}
+                      initial={{ opacity: 0, y: 8 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      exit={{ opacity: 0, y: 6 }}
                       transition={{ duration: 0.15, ease: "easeOut" }}
-                      className="absolute top-full left-1/2 -translate-x-1/2 pt-2 w-[310px] z-50"
+                      className="absolute top-full left-1/2 -translate-x-1/2 pt-3 w-[310px] z-50"
                     >
-                      <div className="bg-white/95 backdrop-blur-2xl rounded-2xl p-2 shadow-[0_20px_50px_rgba(0,0,0,0.12)] border border-black/5 flex flex-col gap-1">
+                      <div className="bg-white rounded-2xl p-2 shadow-[0_20px_50px_rgba(0,0,0,0.12)] border border-black/5 flex flex-col gap-1">
                         {item.submenu.map((sub) => (
                           <Link
                             key={sub.title}
                             href={sub.href}
                             onClick={() => setActiveSubmenu(null)}
-                            className="flex items-start gap-3 p-2.5 rounded-xl hover:bg-black/5 transition-all group/item text-left w-full"
+                            className="flex items-start gap-3 p-2.5 rounded-xl hover:bg-black/5 transition-all text-left w-full"
                           >
-                            <div className="w-8 h-8 rounded-lg bg-black/5 text-apple-ink flex items-center justify-center border border-black/5 group-hover/item:bg-white transition-colors shrink-0 mt-0.5">
+                            <div className="w-8 h-8 rounded-lg bg-black/5 text-apple-ink flex items-center justify-center border border-black/5 shrink-0 mt-0.5">
                               <HugeiconsIcon icon={sub.icon} size={16} strokeWidth={1.75} />
                             </div>
                             <div className="flex-1 min-w-0">
@@ -163,119 +151,106 @@ export default function Header() {
                 </AnimatePresence>
               </div>
             ))}
+            <Link href="/projects" className="hover:opacity-60 transition-opacity">
+              Projects<sup className="text-[11px] ml-0.5 text-neutral-400">{projects.length}</sup>
+            </Link>
+            <Link href="/company/contact" className="hover:opacity-60 transition-opacity">
+              Contact
+            </Link>
           </nav>
 
-          {/* CTA Button & Mobile Toggle */}
-          <div className="flex items-center gap-2.5 shrink-0">
-            {/* Contact Us CTA Button */}
-            <Link
-              href="/company/contact"
-              className="inline-flex items-center justify-center gap-2.5 bg-black text-white pl-4 pr-1.5 py-1.5 rounded-full text-[13px] font-medium hover:bg-neutral-800 active:scale-95 transition-all shadow-md group whitespace-nowrap"
-            >
-              <span>Contact us</span>
-              <div className="w-7 h-7 rounded-full bg-white text-black flex items-center justify-center transition-transform group-hover:translate-x-0.5 shadow-sm">
-                <HugeiconsIcon icon={ArrowRight01Icon} size={14} strokeWidth={2.5} />
-              </div>
-            </Link>
-
-            {/* Mobile Menu Toggle Icon */}
-            <button
-              onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-              className="sm:hidden w-8 h-8 rounded-full flex items-center justify-center hover:bg-black/5 text-apple-ink transition-colors"
-              aria-label="Toggle mobile menu"
-            >
-              <HugeiconsIcon icon={mobileMenuOpen ? Cancel01Icon : Menu01Icon} size={18} strokeWidth={1.75} />
-            </button>
-          </div>
-
+          {/* Hamburger — opens full-screen menu on every breakpoint */}
+          <button
+            onClick={() => setMenuOpen(true)}
+            className="w-9 h-9 flex items-center justify-center shrink-0"
+            aria-label="Open menu"
+          >
+            <span className="flex flex-col gap-[6px]">
+              <span className="block w-6 h-[2px] bg-apple-ink" />
+              <span className="block w-6 h-[2px] bg-apple-ink" />
+            </span>
+          </button>
         </div>
       </header>
 
-      {/* iOS Floating Drop Sheet Menu */}
+      {/* Full-Screen Takeover Menu */}
       <AnimatePresence>
-        {mobileMenuOpen && (
-          <>
-            {/* Soft Backdrop Overlay */}
-            <motion.div
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              exit={{ opacity: 0 }}
-              onClick={() => setMobileMenuOpen(false)}
-              className="fixed inset-0 bg-black/30 z-40 cursor-pointer pointer-events-auto backdrop-blur-xs"
-            />
-
-            {/* iOS Floating Drop Sheet Card */}
-            <motion.div
-              initial={{ opacity: 0, y: -16, scale: 0.96 }}
-              animate={{ opacity: 1, y: 0, scale: 1 }}
-              exit={{ opacity: 0, y: -12, scale: 0.96 }}
-              transition={{ type: "spring", damping: 25, stiffness: 300 }}
-              className="fixed top-20 left-4 right-4 max-w-[440px] mx-auto bg-white/95 backdrop-blur-2xl z-50 p-4 rounded-3xl shadow-[0_25px_60px_rgba(0,0,0,0.18)] border border-white/80 pointer-events-auto flex flex-col gap-3"
-            >
-              <div className="flex items-center justify-between px-2 pt-1 pb-2 border-b border-black/5">
-                <div className="flex items-center gap-2">
-                  <Image src="/evoq-logo.png" alt="Evoq Studio" width={26} height={26} className="object-contain" />
-                  <span className="text-xs font-semibold text-apple-ink">Evoq Menu</span>
-                </div>
-                <button
-                  onClick={() => setMobileMenuOpen(false)}
-                  className="w-7 h-7 rounded-full bg-black/5 text-neutral-500 hover:text-black flex items-center justify-center text-xs"
-                >
-                  <HugeiconsIcon icon={Cancel01Icon} size={14} strokeWidth={2} />
-                </button>
-              </div>
-
-              {/* Accordion Categories */}
-              <div className="flex flex-col gap-1.5">
-                {menuItems.map((item) => (
-                  <div key={item.title} className="rounded-2xl bg-neutral-50/80 border border-black/5 overflow-hidden">
-                    <button
-                      onClick={() => toggleMobileCategory(item.title)}
-                      className="w-full p-3.5 flex items-center justify-between text-left font-semibold text-sm text-apple-ink"
-                    >
-                      <span>{item.title}</span>
-                      <ChevronDown
-                        className={`w-4 h-4 transition-transform duration-200 text-neutral-400 ${
-                          expandedMobileCategory === item.title ? "rotate-180 text-black" : ""
-                        }`}
-                      />
-                    </button>
-
-                    {expandedMobileCategory === item.title && item.submenu && (
-                      <div className="px-3 pb-3 pt-1 flex flex-col gap-2 border-t border-black/5">
-                        {item.submenu.map((sub) => (
-                          <Link
-                            key={sub.title}
-                            href={sub.href}
-                            onClick={() => setMobileMenuOpen(false)}
-                            className="flex items-center gap-3 p-2.5 rounded-xl bg-white hover:bg-neutral-100 transition-colors border border-black/5"
-                          >
-                            <div className="w-7 h-7 rounded-lg bg-black/5 text-apple-ink flex items-center justify-center shrink-0">
-                              <HugeiconsIcon icon={sub.icon} size={14} strokeWidth={1.75} />
-                            </div>
-                            <div className="flex-1 min-w-0">
-                              <div className="text-xs font-semibold text-apple-ink">{sub.title}</div>
-                              <div className="text-[10px] text-neutral-500 truncate">{sub.desc}</div>
-                            </div>
-                          </Link>
-                        ))}
-                      </div>
-                    )}
-                  </div>
-                ))}
-              </div>
-
-              {/* Contact Us Primary CTA Pill inside Drop Sheet */}
+        {menuOpen && (
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 0.2 }}
+            className="fixed inset-0 z-[60] bg-white flex flex-col"
+          >
+            {/* Menu Header */}
+            <div className="flex items-center justify-between px-4 sm:px-6 lg:px-12 h-16 border-b border-black/[0.06] shrink-0">
               <Link
-                href="/company/contact"
-                onClick={() => setMobileMenuOpen(false)}
-                className="w-full py-3 bg-black text-white text-center rounded-2xl font-semibold text-xs hover:bg-neutral-800 transition-all shadow-md mt-1 flex items-center justify-center gap-2"
+                href="/"
+                onClick={() => setMenuOpen(false)}
+                className="font-bold text-lg tracking-tight text-apple-ink"
               >
-                <span>Contact us</span>
-                <HugeiconsIcon icon={ArrowRight01Icon} size={14} strokeWidth={2.5} />
+                Evoq<span className="align-super text-[10px] ml-0.5">&reg;</span>
               </Link>
-            </motion.div>
-          </>
+              <button
+                onClick={() => setMenuOpen(false)}
+                className="w-9 h-9 flex items-center justify-center relative"
+                aria-label="Close menu"
+              >
+                <span className="absolute w-6 h-[2px] bg-apple-ink rotate-45" />
+                <span className="absolute w-6 h-[2px] bg-apple-ink -rotate-45" />
+              </button>
+            </div>
+
+            {/* Centered Stacked Links */}
+            <div className="flex-1 overflow-y-auto flex flex-col items-center justify-center gap-1 py-12 px-4">
+              {fullMenuLinks.map((link) => (
+                <Link
+                  key={link.title}
+                  href={link.href}
+                  onClick={() => setMenuOpen(false)}
+                  className="text-5xl sm:text-6xl md:text-7xl font-bold text-apple-ink hover:text-neutral-400 transition-colors tracking-tight text-center"
+                >
+                  {link.title}
+                </Link>
+              ))}
+
+              <div className="mt-10 flex flex-col items-center gap-3 text-sm">
+                <a href="tel:+254115706542" className="text-neutral-500 hover:text-black transition-colors">
+                  +254 115 706 542
+                </a>
+                <a
+                  href="mailto:evoqcreativetecg@gmail.com"
+                  className="text-apple-ink font-medium underline underline-offset-4 hover:text-neutral-600 transition-colors"
+                >
+                  evoqcreativetecg@gmail.com
+                </a>
+              </div>
+
+              <div className="mt-6 flex items-center gap-6 text-xs text-neutral-400">
+                <Link href="/privacy-policy" onClick={() => setMenuOpen(false)} className="hover:text-black transition-colors">
+                  Privacy Policy
+                </Link>
+                <Link href="/terms-of-service" onClick={() => setMenuOpen(false)} className="hover:text-black transition-colors">
+                  Terms of Service
+                </Link>
+              </div>
+
+              <p className="mt-3 text-[11px] text-neutral-400">
+                &copy; {new Date().getFullYear()} Evoq Studio. All rights reserved.
+              </p>
+            </div>
+
+            {/* Bottom Dark CTA Teaser */}
+            <Link
+              href="/company/contact"
+              onClick={() => setMenuOpen(false)}
+              className="shrink-0 bg-[#0a0a0c] text-white px-4 sm:px-6 lg:px-12 py-8 sm:py-10 flex flex-col gap-1 hover:bg-neutral-900 transition-colors"
+            >
+              <span className="text-3xl sm:text-4xl font-bold tracking-tight">Let&apos;s talk</span>
+              <span className="text-sm text-neutral-400">Tell us about your project.</span>
+            </Link>
+          </motion.div>
         )}
       </AnimatePresence>
     </>

@@ -12,7 +12,6 @@ import {
   ArrowRight,
   CheckCircle2,
   Building2,
-  Boxes,
 } from "lucide-react";
 
 import { ShootingStars } from "../../../components/ui/shooting-stars";
@@ -93,9 +92,10 @@ const techBadges = [
 
 export default function CapabilitiesPage() {
   return (
+    <>
+      <Header />
     <div className="relative w-full min-h-screen bg-[#0a0a0c] selection:bg-apple-blue selection:text-white overflow-x-hidden">
-      <main className="relative z-10 w-full min-h-screen bg-white rounded-b-[2rem] sm:rounded-b-[3rem] shadow-[0_25px_60px_rgba(0,0,0,0.12)] border-b border-black/5 pt-28 pb-20 px-4 sm:px-6 lg:px-12">
-        <Header />
+      <main className="relative z-10 w-full min-h-screen bg-white rounded-b-[2rem] sm:rounded-b-[3rem] shadow-[0_25px_60px_rgba(0,0,0,0.12)] border-b border-black/5 pb-20 px-4 sm:px-6 lg:px-12">
 
         {/* Hero Section with Shooting Stars & Star Background */}
         <section className="relative w-full max-w-[1240px] mx-auto min-h-[28rem] rounded-3xl bg-neutral-950 flex flex-col items-center justify-center text-center p-8 sm:p-14 overflow-hidden border border-white/10 shadow-2xl mb-12">
@@ -103,10 +103,9 @@ export default function CapabilitiesPage() {
           <ShootingStars minSpeed={15} maxSpeed={35} starColor="#1a73e8" trailColor="#7c4dff" />
 
           <div className="relative z-10 flex flex-col items-center text-center">
-            <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-white/10 border border-white/15 text-xs font-semibold text-white mb-6">
-              <Boxes className="w-3.5 h-3.5 text-apple-blue" />
-              <span>Capabilities Index</span>
-            </div>
+            <span className="text-xs font-semibold uppercase tracking-widest text-neutral-400 mb-6 block">
+              Capabilities Index
+            </span>
 
             <h1 className="text-4xl sm:text-6xl md:text-7xl font-bold tracking-tight text-white leading-[1.08] max-w-[920px] mb-6">
               Everything We Do. <br />
@@ -179,7 +178,7 @@ export default function CapabilitiesPage() {
                 className="p-6 rounded-2xl bg-white border border-black/10 shadow-sm flex flex-col justify-between gap-4"
               >
                 <div>
-                  <span className="text-[11px] font-semibold uppercase tracking-wider text-apple-blue bg-blue-50 px-2.5 py-0.5 rounded-full inline-block mb-3">
+                  <span className="text-[11px] font-semibold uppercase tracking-wider text-apple-blue block mb-3">
                     {em.tag}
                   </span>
                   <h4 className="text-lg font-semibold text-apple-ink mb-2">
@@ -240,5 +239,6 @@ export default function CapabilitiesPage() {
 
       <CinematicFooter />
     </div>
+    </>
   );
 }

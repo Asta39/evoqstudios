@@ -1,27 +1,15 @@
 "use client";
 
-import { useState } from "react";
-import dynamic from "next/dynamic";
-import { motion } from "framer-motion";
 import {
   Palette,
-  Eye,
-  Layers,
-  Sparkles,
   CheckCircle2,
-  ChevronDown,
-  ArrowRight,
-  ShieldCheck,
   FileCheck,
 } from "lucide-react";
 
 import { Compare } from "../../../components/ui/compare";
-
-const Header = dynamic(() => import("../../../components/Header"), { ssr: false });
-const CinematicFooter = dynamic(
-  () => import("../../../components/ui/motion-footer").then((mod) => mod.CinematicFooter),
-  { ssr: false }
-);
+import { ServicePageShell } from "../../../components/ServicePageShell";
+import { ServiceHero } from "../../../components/ServiceHero";
+import { FaqAccordion } from "../../../components/FaqAccordion";
 
 const rebrandTriggers = [
   "Your visual identity no longer reflects your evolved product maturity.",
@@ -82,45 +70,21 @@ const faqs = [
 ];
 
 export default function BrandUiRebrandingPage() {
-  const [openFaq, setOpenFaq] = useState(null);
-
   return (
-    <div className="relative w-full min-h-screen bg-[#0a0a0c] selection:bg-apple-blue selection:text-white overflow-x-hidden">
-      <main className="relative z-10 w-full min-h-screen bg-white rounded-b-[2rem] sm:rounded-b-[3rem] shadow-[0_25px_60px_rgba(0,0,0,0.12)] border-b border-black/5 pt-28 pb-20 px-4 sm:px-6 lg:px-12">
-        <Header />
-
-        {/* Hero Section */}
-        <section className="max-w-[1240px] mx-auto pt-8 pb-20 flex flex-col items-center text-center">
-          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-rose-500/10 border border-rose-500/20 text-xs font-semibold text-rose-600 mb-6">
-            <Palette className="w-3.5 h-3.5" />
-            <span>Brand & UI Rebranding</span>
-          </div>
-
-          <h1 className="text-4xl sm:text-6xl md:text-7xl font-bold text-apple-ink tracking-tight leading-[1.08] max-w-[920px] mb-6">
+    <ServicePageShell>
+      <ServiceHero
+        badge={{ icon: Palette, label: "Brand & UI Rebranding", className: "bg-rose-500/10 border border-rose-500/20 text-rose-600" }}
+        title={
+          <>
             A Brand Worth Remembering. <br />
-            <span className="text-neutral-400">Redesign Your Digital Presence.</span>
-          </h1>
-
-          <p className="text-lg sm:text-xl text-neutral-600 max-w-[720px] mb-10 leading-relaxed font-normal">
-            Strategic rebranding and UI overhauls that align your visual identity with where your business is going.
-          </p>
-
-          <div className="flex flex-wrap items-center justify-center gap-4">
-            <a
-              href="/company/contact"
-              className="px-7 py-3.5 rounded-full bg-black text-white font-semibold text-sm hover:bg-neutral-800 transition-all shadow-lg active:scale-95 flex items-center gap-2"
-            >
-              <span>Start a Rebrand</span>
-              <ArrowRight className="w-4 h-4" />
-            </a>
-            <a
-              href="#when-to-rebrand"
-              className="px-7 py-3.5 rounded-full bg-neutral-100 text-apple-ink font-semibold text-sm hover:bg-neutral-200 transition-all"
-            >
-              Explore Process
-            </a>
-          </div>
-        </section>
+            <span className="text-apple-ink">Redesign Your Digital Presence.</span>
+          </>
+        }
+        description="Strategic rebranding and UI overhauls that align your visual identity with where your business is going."
+        primaryCta={{ href: "/company/contact", label: "Start a Rebrand" }}
+        secondaryCta={{ href: "#when-to-rebrand", label: "Explore Process" }}
+        titleMaxWidth="920px"
+      />
 
         {/* When to Rebrand */}
         <section id="when-to-rebrand" className="max-w-[1240px] mx-auto py-16 border-t border-black/[0.06]">
@@ -153,10 +117,9 @@ export default function BrandUiRebrandingPage() {
         {/* Before & After Refactoring Code / UI Comparison Section */}
         <section className="max-w-[1240px] mx-auto py-16 border-t border-black/[0.06]">
           <div className="mb-10 text-center">
-            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-rose-500/10 border border-rose-500/20 text-xs font-semibold text-rose-600 mb-3">
-              <Sparkles className="w-3.5 h-3.5" />
-              <span>Interactive Refactoring Audit</span>
-            </div>
+            <span className="text-xs font-semibold uppercase tracking-widest text-neutral-400 mb-3 block">
+              Interactive Refactoring Audit
+            </span>
             <h3 className="text-2xl sm:text-4xl font-bold text-apple-ink tracking-tight mb-3">
               Legacy Code vs. Evoq Refined Systems
             </h3>
@@ -255,41 +218,7 @@ export default function BrandUiRebrandingPage() {
           </div>
         </section>
 
-        {/* FAQ Section */}
-        <section className="max-w-[880px] mx-auto py-16 border-t border-black/[0.06]">
-          <h3 className="text-2xl sm:text-3xl font-semibold text-apple-ink tracking-tight text-center mb-10">
-            Frequently Asked Questions
-          </h3>
-
-          <div className="flex flex-col gap-3">
-            {faqs.map((faq, idx) => (
-              <div
-                key={idx}
-                className="rounded-2xl bg-neutral-50 border border-black/[0.06] overflow-hidden transition-all"
-              >
-                <button
-                  onClick={() => setOpenFaq(openFaq === idx ? null : idx)}
-                  className="w-full p-5 text-left flex items-center justify-between font-semibold text-sm text-apple-ink"
-                >
-                  <span>{faq.q}</span>
-                  <ChevronDown
-                    className={`w-4 h-4 transition-transform ${
-                      openFaq === idx ? "rotate-180" : ""
-                    }`}
-                  />
-                </button>
-                {openFaq === idx && (
-                  <div className="px-5 pb-5 text-xs text-neutral-600 leading-relaxed border-t border-black/[0.04] pt-3">
-                    {faq.a}
-                  </div>
-                )}
-              </div>
-            ))}
-          </div>
-        </section>
-      </main>
-
-      <CinematicFooter />
-    </div>
+      <FaqAccordion faqs={faqs} />
+    </ServicePageShell>
   );
 }

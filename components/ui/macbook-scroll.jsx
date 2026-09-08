@@ -2,6 +2,7 @@
 
 import React, { useEffect, useState, useRef } from "react";
 import { motion, useScroll, useTransform } from "framer-motion";
+import Image from "next/image";
 import { cn } from "../../lib/utils";
 import {
   Sun,
@@ -151,10 +152,11 @@ export const Lid = ({
         className="absolute inset-0 h-96 w-[32rem] rounded-2xl bg-[#010101] p-2"
       >
         <div className="absolute inset-0 rounded-lg bg-[#272729]" />
-        <img
+        <Image
           src={src}
           alt="Evoq Tech Platform Screenshot"
-          className="absolute inset-0 h-full w-full rounded-lg object-cover object-left-top"
+          fill
+          className="rounded-lg object-cover object-left-top"
         />
       </motion.div>
     </div>

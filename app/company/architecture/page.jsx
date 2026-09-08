@@ -2,19 +2,6 @@
 
 import dynamic from "next/dynamic";
 import { motion } from "framer-motion";
-import {
-  Layers,
-  Cpu,
-  ShieldCheck,
-  Zap,
-  Terminal,
-  Server,
-  Database,
-  Lock,
-  ArrowRight,
-  CheckCircle2,
-  FileCode2,
-} from "lucide-react";
 
 import { LampContainer } from "../../../components/ui/lamp";
 
@@ -52,31 +39,26 @@ const layers = [
     name: "Presentation Layer",
     tech: "Next.js 14, React Server Components, Tailwind CSS, Vercel Edge",
     desc: "High-performance SSR and static edge rendering for minimal client-side JavaScript execution.",
-    icon: Layers,
   },
   {
     name: "API Layer",
     tech: "GraphQL, tRPC, OpenAPI, REST",
     desc: "Type-safe interface layers with strict schema validation and rate limiting middleware.",
-    icon: Terminal,
   },
   {
     name: "Service Layer",
     tech: "Node.js, Python FastAPI, Docker Microservices",
     desc: "Domain-driven business logic services decoupled for independent scaling and maintenance.",
-    icon: Server,
   },
   {
     name: "Data Layer",
     tech: "PostgreSQL, Redis, AWS S3, Supabase",
     desc: "ACID-compliant relational storage paired with in-memory caching and vector search indices.",
-    icon: Database,
   },
   {
     name: "Infrastructure Layer",
     tech: "Terraform, AWS ECS, GCP, GitHub Actions CI/CD",
     desc: "Declarative infrastructure-as-code with automated blue/green deployment pipelines.",
-    icon: Cpu,
   },
 ];
 
@@ -89,12 +71,13 @@ const securityItems = [
 
 export default function ArchitecturePage() {
   return (
+    <>
+      <Header />
     <div className="relative w-full min-h-screen bg-[#0a0a0c] selection:bg-apple-blue selection:text-white overflow-x-hidden">
-      <main className="relative z-10 w-full min-h-screen bg-white rounded-b-[2rem] sm:rounded-b-[3rem] shadow-[0_25px_60px_rgba(0,0,0,0.12)] border-b border-black/5 pt-28 pb-20 px-4 sm:px-6 lg:px-12">
-        <Header />
+      <main className="relative z-10 w-full min-h-screen bg-white rounded-b-[2rem] sm:rounded-b-[3rem] shadow-[0_25px_60px_rgba(0,0,0,0.12)] border-b border-black/5 pb-20 px-4 sm:px-6 lg:px-12">
 
         {/* Hero Section with Lamp Effect */}
-        <section className="max-w-[1240px] mx-auto pt-4 pb-12">
+        <section className="max-w-[1240px] mx-auto pt-8 sm:pt-12 pb-12">
           <LampContainer>
             <motion.div
               initial={{ opacity: 0.5, y: 100 }}
@@ -106,14 +89,13 @@ export default function ArchitecturePage() {
               }}
               className="flex flex-col items-center text-center"
             >
-              <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-white/10 border border-white/15 text-xs font-semibold text-cyan-300 mb-6">
-                <FileCode2 className="w-3.5 h-3.5" />
-                <span>Architecture Philosophy</span>
-              </div>
-
-              <h1 className="bg-gradient-to-br from-slate-100 via-slate-200 to-slate-400 py-2 bg-clip-text text-center text-4xl sm:text-6xl md:text-7xl font-bold tracking-tight text-transparent leading-[1.08] max-w-[920px] mb-6">
-                How We Build. <br />
-                <span className="text-cyan-400">The Evoq Architecture Philosophy.</span>
+              <h1 className="text-center max-w-[920px] mb-6">
+                <span className="bg-gradient-to-br from-slate-100 via-slate-200 to-slate-400 py-2 bg-clip-text block text-4xl sm:text-6xl md:text-7xl font-bold tracking-tight text-transparent leading-[1.08]">
+                  How We Build.
+                </span>
+                <span className="font-cursive text-cyan-400 text-5xl sm:text-7xl md:text-8xl font-normal leading-[1.4] block mt-2 sm:mt-4">
+                  The Evoq Architecture Philosophy.
+                </span>
               </h1>
 
               <p className="text-lg sm:text-xl text-slate-300 max-w-[720px] leading-relaxed font-normal">
@@ -124,101 +106,97 @@ export default function ArchitecturePage() {
         </section>
 
         {/* Design Principles */}
-        <section className="max-w-[1240px] mx-auto py-16 border-t border-black/[0.06]">
-          <div className="mb-12">
-            <h2 className="text-xs font-semibold uppercase tracking-widest text-neutral-400 mb-2">
+        <section className="-mx-4 sm:-mx-6 lg:-mx-12 bg-[#0a0a0c] py-20 px-4 sm:px-6 lg:px-12">
+          <div className="max-w-[1240px] mx-auto">
+            <span className="text-xs font-semibold uppercase tracking-widest text-neutral-500 block mb-4">
               Non-Negotiables
-            </h2>
-            <h3 className="text-2xl sm:text-4xl font-semibold text-apple-ink tracking-tight">
+            </span>
+            <h3 className="text-4xl sm:text-5xl md:text-6xl font-bold text-white tracking-tight mb-16 max-w-[900px] leading-[1.1]">
               Engineering Principles
             </h3>
-          </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {principles.map((p, idx) => (
-              <div
-                key={idx}
-                className="p-6 rounded-2xl bg-neutral-50 border border-black/[0.06] flex flex-col gap-3"
-              >
-                <div className="w-8 h-8 rounded-lg bg-black text-white flex items-center justify-center font-bold text-xs">
-                  0{idx + 1}
+            <div className="flex flex-col border-b border-white/10">
+              {principles.map((p, idx) => (
+                <div
+                  key={idx}
+                  className="grid grid-cols-1 lg:grid-cols-12 gap-3 lg:gap-12 py-8 border-t border-white/10"
+                >
+                  <div className="lg:col-span-1 text-xs font-mono text-neutral-500">
+                    0{idx + 1}
+                  </div>
+                  <h4 className="lg:col-span-4 text-2xl sm:text-3xl font-semibold text-white">
+                    {p.title}
+                  </h4>
+                  <p className="lg:col-span-7 text-sm sm:text-base text-neutral-400 leading-relaxed self-center">
+                    {p.desc}
+                  </p>
                 </div>
-                <h4 className="text-lg font-semibold text-apple-ink">
-                  {p.title}
-                </h4>
-                <p className="text-xs text-neutral-600 leading-relaxed">
-                  {p.desc}
-                </p>
-              </div>
-            ))}
+              ))}
+            </div>
           </div>
         </section>
 
         {/* System Layers Stack */}
         <section className="max-w-[1240px] mx-auto py-16 border-t border-black/[0.06]">
           <div className="mb-12">
-            <h2 className="text-xs font-semibold uppercase tracking-widest text-neutral-400 mb-2">
+            <h2 className="text-xs font-semibold uppercase tracking-widest text-neutral-400 mb-4">
               Stack Blueprint
             </h2>
-            <h3 className="text-2xl sm:text-4xl font-semibold text-apple-ink tracking-tight">
+            <h3 className="text-4xl sm:text-5xl md:text-6xl font-bold text-apple-ink tracking-tight leading-[1.1]">
               Evoq Conceptual System Layers
             </h3>
           </div>
 
-          <div className="flex flex-col gap-4">
-            {layers.map((layer, idx) => {
-              const Icon = layer.icon;
-              return (
-                <div
-                  key={idx}
-                  className="p-6 rounded-2xl bg-white border border-black/10 shadow-sm flex flex-col md:flex-row md:items-center justify-between gap-6 hover:border-black/20 transition-all"
-                >
-                  <div className="flex items-start gap-4 max-w-[600px]">
-                    <div className="w-10 h-10 rounded-xl bg-black text-white flex items-center justify-center shrink-0">
-                      <Icon className="w-5 h-5" />
-                    </div>
-                    <div>
-                      <h4 className="text-base font-semibold text-apple-ink">
-                        {layer.name}
-                      </h4>
-                      <p className="text-xs text-neutral-600 mt-1 leading-relaxed">
-                        {layer.desc}
-                      </p>
-                    </div>
-                  </div>
-
-                  <div className="px-4 py-2 rounded-xl bg-neutral-100 text-xs font-mono font-medium text-apple-ink md:max-w-[360px] w-full text-right border border-black/5">
-                    {layer.tech}
-                  </div>
+          <div className="flex flex-col border-b border-black/[0.06]">
+            {layers.map((layer, idx) => (
+              <div
+                key={idx}
+                className="grid grid-cols-1 lg:grid-cols-12 gap-3 lg:gap-8 py-8 border-t border-black/[0.06] items-start"
+              >
+                <div className="lg:col-span-1 text-xs font-mono text-neutral-400">
+                  0{idx + 1}
                 </div>
-              );
-            })}
+                <div className="lg:col-span-4">
+                  <h4 className="text-lg sm:text-xl font-semibold text-apple-ink">
+                    {layer.name}
+                  </h4>
+                  <p className="text-sm text-neutral-500 mt-1 leading-relaxed">
+                    {layer.desc}
+                  </p>
+                </div>
+                <div className="lg:col-span-7 text-xs sm:text-sm font-mono text-neutral-500 lg:text-right self-center">
+                  {layer.tech}
+                </div>
+              </div>
+            ))}
           </div>
         </section>
 
         {/* Security & Compliance */}
         <section className="max-w-[1240px] mx-auto py-16 border-t border-black/[0.06]">
-          <div className="p-8 sm:p-12 rounded-3xl bg-neutral-900 text-white flex flex-col lg:flex-row items-center justify-between gap-8">
-            <div className="max-w-[500px]">
-              <div className="flex items-center gap-2 mb-3">
-                <Lock className="w-5 h-5 text-emerald-400" />
-                <span className="text-xs font-semibold uppercase tracking-widest text-neutral-400">
-                  Security Guarantee
-                </span>
-              </div>
-              <h3 className="text-2xl sm:text-4xl font-bold tracking-tight mb-4">
+          <div className="p-8 sm:p-12 rounded-3xl bg-neutral-900 text-white flex flex-col lg:flex-row items-start justify-between gap-12">
+            <div className="max-w-[440px]">
+              <span className="text-xs font-semibold uppercase tracking-widest text-neutral-500 mb-3 block">
+                Security Guarantee
+              </span>
+              <h3 className="text-3xl sm:text-4xl md:text-5xl font-bold tracking-tight mb-4 leading-[1.1]">
                 Enterprise Data Safety & Compliance
               </h3>
-              <p className="text-sm text-neutral-300 leading-relaxed">
+              <p className="text-sm text-neutral-400 leading-relaxed">
                 Security is built into our software development lifecycle, from automated dependency audits to zero-trust authorization patterns.
               </p>
             </div>
 
-            <div className="flex flex-col gap-3 w-full lg:w-auto">
+            <div className="flex flex-col w-full lg:w-auto lg:min-w-[420px]">
               {securityItems.map((sec, idx) => (
-                <div key={idx} className="flex items-center gap-3 text-xs text-neutral-200 bg-white/5 p-3.5 rounded-xl border border-white/10">
-                  <ShieldCheck className="w-4 h-4 text-emerald-400 shrink-0" />
-                  <span>{sec}</span>
+                <div
+                  key={idx}
+                  className="flex items-start gap-4 text-sm text-neutral-200 py-4 border-t border-white/10 last:border-b"
+                >
+                  <span className="text-xs font-mono text-neutral-500 mt-0.5 shrink-0">
+                    0{idx + 1}
+                  </span>
+                  <span className="leading-relaxed">{sec}</span>
                 </div>
               ))}
             </div>
@@ -228,5 +206,6 @@ export default function ArchitecturePage() {
 
       <CinematicFooter />
     </div>
+    </>
   );
 }

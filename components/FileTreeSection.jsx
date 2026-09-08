@@ -1,7 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { Layers, Terminal, Cpu, ArrowRight } from "lucide-react";
+import { Layers, Cpu, ArrowRight } from "lucide-react";
 import { InteractiveGridPattern } from "./magicui/interactive-grid-pattern";
 import { FilesystemItem, evoqStudioNodes } from "./ui/filesystem-item";
 
@@ -58,11 +58,10 @@ export default function FileTreeSection() {
           transition={{ duration: 0.7, delay: 0.1, ease: [0.16, 1, 0.3, 1] }}
           className="lg:col-span-6 flex flex-col gap-6"
         >
-          {/* Badge */}
-          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-black/5 border border-black/5 text-xs font-semibold text-apple-ink w-fit">
-            <Terminal className="w-3.5 h-3.5 text-apple-blue" />
-            <span>Production-Grade Architecture</span>
-          </div>
+          {/* Eyebrow */}
+          <span className="text-xs font-semibold uppercase tracking-widest text-neutral-400">
+            Production-Grade Architecture
+          </span>
 
           {/* Heading */}
           <h2 className="text-3xl sm:text-4xl md:text-5xl font-semibold text-apple-ink tracking-tight leading-[1.12]">

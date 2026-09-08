@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { Star, ChevronLeft, ChevronRight, Quote, Building2, ShieldCheck, Sparkles } from "lucide-react";
+import { Star, ChevronLeft, ChevronRight, Quote } from "lucide-react";
 
 export const testimonials = [
   {
@@ -87,10 +87,9 @@ export default function Testimonials() {
         {/* Section Header */}
         <div className="flex flex-col md:flex-row md:items-end justify-between gap-6">
           <div className="max-w-[640px]">
-            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-black/5 border border-black/5 text-xs font-semibold text-apple-ink mb-4 w-fit">
-              <Sparkles className="w-3.5 h-3.5 text-amber-500" />
-              <span>Client Success Stories</span>
-            </div>
+            <span className="text-xs font-semibold uppercase tracking-widest text-neutral-400 mb-4 block">
+              Client Success Stories
+            </span>
             <h2 className="text-3xl sm:text-4xl md:text-5xl font-semibold text-apple-ink tracking-tight leading-[1.12]">
               Trusted by ambitious leaders across industries.
             </h2>

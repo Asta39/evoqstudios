@@ -1,8 +1,5 @@
 "use client";
 
-import { useState } from "react";
-import dynamic from "next/dynamic";
-import { motion } from "framer-motion";
 import {
   Server,
   Database,
@@ -10,18 +7,12 @@ import {
   Zap,
   ShieldCheck,
   RefreshCw,
-  ChevronDown,
-  ArrowRight,
-  CheckCircle2,
   AlertTriangle,
 } from "lucide-react";
 import { ZenoShowcaseSection } from "../../../components/ZenoShowcaseSection";
-
-const Header = dynamic(() => import("../../../components/Header"), { ssr: false });
-const CinematicFooter = dynamic(
-  () => import("../../../components/ui/motion-footer").then((mod) => mod.CinematicFooter),
-  { ssr: false }
-);
+import { ServicePageShell } from "../../../components/ServicePageShell";
+import { ServiceHero } from "../../../components/ServiceHero";
+import { FaqAccordion } from "../../../components/FaqAccordion";
 
 const problemPoints = [
   {
@@ -118,45 +109,21 @@ const faqs = [
 ];
 
 export default function SystemDevelopmentPage() {
-  const [openFaq, setOpenFaq] = useState(null);
-
   return (
-    <div className="relative w-full min-h-screen bg-[#0a0a0c] selection:bg-apple-blue selection:text-white overflow-x-hidden">
-      <main className="relative z-10 w-full min-h-screen bg-white rounded-b-[2rem] sm:rounded-b-[3rem] shadow-[0_25px_60px_rgba(0,0,0,0.12)] border-b border-black/5 pt-28 pb-20 px-4 sm:px-6 lg:px-12">
-        <Header />
-
-        {/* Hero Section */}
-        <section className="max-w-[1240px] mx-auto pt-8 pb-20 flex flex-col items-center text-center">
-          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-black/5 border border-black/5 text-xs font-semibold text-apple-ink mb-6">
-            <Server className="w-3.5 h-3.5 text-apple-blue" />
-            <span>Systems Engineering</span>
-          </div>
-
-          <h1 className="text-4xl sm:text-6xl md:text-7xl font-bold text-apple-ink tracking-tight leading-[1.08] max-w-[900px] mb-6">
-            Systems That Scale. <br />
-            <span className="text-neutral-400">Build the Backbone of Your Business.</span>
-          </h1>
-
-          <p className="text-lg sm:text-xl text-neutral-600 max-w-[700px] mb-10 leading-relaxed font-normal">
-            Custom software systems designed for reliability, high-concurrency performance, and long-term enterprise growth.
-          </p>
-
-          <div className="flex flex-wrap items-center justify-center gap-4">
-            <a
-              href="/company/contact"
-              className="px-7 py-3.5 rounded-full bg-black text-white font-semibold text-sm hover:bg-neutral-800 transition-all shadow-lg active:scale-95 flex items-center gap-2"
-            >
-              <span>Discuss Your System</span>
-              <ArrowRight className="w-4 h-4" />
-            </a>
-            <a
-              href="#case-study"
-              className="px-7 py-3.5 rounded-full bg-neutral-100 text-apple-ink font-semibold text-sm hover:bg-neutral-200 transition-all"
-            >
-              View Case Studies
-            </a>
-          </div>
-        </section>
+    <ServicePageShell>
+      <ServiceHero
+          badge={{ icon: Server, label: "Systems Engineering", className: "bg-black/5 border border-black/5 text-apple-ink", iconClassName: "text-apple-blue" }}
+          title={
+            <>
+              Systems That Scale. <br />
+              <span className="text-apple-ink">Build the Backbone of Your Business.</span>
+            </>
+          }
+          description="Custom software systems designed for reliability, high-concurrency performance, and long-term enterprise growth."
+          primaryCta={{ href: "/company/contact", label: "Discuss Your System" }}
+          secondaryCta={{ href: "#case-study", label: "View Case Studies" }}
+          titleMaxWidth="900px"
+        />
 
         {/* The Problem Section */}
         <section className="max-w-[1240px] mx-auto py-16 border-t border-black/[0.06]">
@@ -291,41 +258,7 @@ export default function SystemDevelopmentPage() {
           </div>
         </section>
 
-        {/* FAQ Accordion */}
-        <section className="max-w-[880px] mx-auto py-16 border-t border-black/[0.06]">
-          <h3 className="text-2xl sm:text-3xl font-semibold text-apple-ink tracking-tight text-center mb-10">
-            Frequently Asked Questions
-          </h3>
-
-          <div className="flex flex-col gap-3">
-            {faqs.map((faq, idx) => (
-              <div
-                key={idx}
-                className="rounded-2xl bg-neutral-50 border border-black/[0.06] overflow-hidden transition-all"
-              >
-                <button
-                  onClick={() => setOpenFaq(openFaq === idx ? null : idx)}
-                  className="w-full p-5 text-left flex items-center justify-between font-semibold text-sm text-apple-ink"
-                >
-                  <span>{faq.q}</span>
-                  <ChevronDown
-                    className={`w-4 h-4 transition-transform ${
-                      openFaq === idx ? "rotate-180" : ""
-                    }`}
-                  />
-                </button>
-                {openFaq === idx && (
-                  <div className="px-5 pb-5 text-xs text-neutral-600 leading-relaxed border-t border-black/[0.04] pt-3">
-                    {faq.a}
-                  </div>
-                )}
-              </div>
-            ))}
-          </div>
-        </section>
-      </main>
-
-      <CinematicFooter />
-    </div>
+      <FaqAccordion faqs={faqs} />
+    </ServicePageShell>
   );
 }

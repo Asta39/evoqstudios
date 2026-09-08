@@ -39,16 +39,19 @@ module.exports = {
       },
       fontFamily: {
         sans: [
+          'Clash Grotesk',
           'SF Pro Text',
           'SF Pro Display',
           'Inter',
           '-apple-system',
           'BlinkMacSystemFont',
           'sans-serif'
-        ]
+        ],
+        cursive: ['Caveat', 'cursive'],
       },
       animation: {
         orbit: 'orbit calc(var(--duration) * 1s) linear infinite',
+        ripple: 'ripple 3s ease-in-out infinite',
       },
       keyframes: {
         orbit: {
@@ -58,6 +61,10 @@ module.exports = {
           '100%': {
             transform: 'rotate(calc(var(--angle) * 1deg + 360deg)) translateY(calc(var(--radius) * 1px)) rotate(calc(var(--angle) * -1deg - 360deg))',
           },
+        },
+        ripple: {
+          '0%, 100%': { transform: 'translate(-50%, -50%) scale(1)' },
+          '50%': { transform: 'translate(-50%, -50%) scale(0.9)' },
         },
       },
     },

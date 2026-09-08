@@ -10,7 +10,6 @@ import {
   Users,
   Compass,
   ArrowRight,
-  CheckCircle2,
   Building,
 } from "lucide-react";
 
@@ -74,9 +73,10 @@ const studioCulture = [
 
 export default function AboutPage() {
   return (
+    <>
+      <Header />
     <div className="relative w-full min-h-screen bg-[#0a0a0c] selection:bg-apple-blue selection:text-white overflow-x-hidden">
-      <main className="relative z-10 w-full min-h-screen bg-white rounded-b-[2rem] sm:rounded-b-[3rem] shadow-[0_25px_60px_rgba(0,0,0,0.12)] border-b border-black/5 pt-28 pb-20 px-4 sm:px-6 lg:px-12">
-        <Header />
+      <main className="relative z-10 w-full min-h-screen bg-white rounded-b-[2rem] sm:rounded-b-[3rem] shadow-[0_25px_60px_rgba(0,0,0,0.12)] border-b border-black/5 pb-20 px-4 sm:px-6 lg:px-12">
 
         {/* ASCII Art Hero Section */}
         <section className="max-w-[1240px] mx-auto pt-4 pb-16">
@@ -137,33 +137,33 @@ export default function AboutPage() {
         </section>
 
         {/* Values Section */}
-        <section className="max-w-[1240px] mx-auto py-16 border-t border-black/[0.06]">
-          <div className="mb-12">
-            <h2 className="text-xs font-semibold uppercase tracking-widest text-neutral-400 mb-2">
-              Values
-            </h2>
-            <h3 className="text-2xl sm:text-4xl font-semibold text-apple-ink tracking-tight">
+        <section className="-mx-4 sm:-mx-6 lg:-mx-12 bg-[#0a0a0c] py-20 px-4 sm:px-6 lg:px-12">
+          <div className="max-w-[1240px] mx-auto">
+            <span className="text-xs font-semibold uppercase tracking-widest text-neutral-500 block mb-4">
+              What we do
+            </span>
+            <h3 className="font-cursive text-5xl sm:text-6xl md:text-7xl font-normal text-white mb-16 max-w-[900px] leading-[1.1]">
               The principles that guide our craft.
             </h3>
-          </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {values.map((v, idx) => (
-              <div
-                key={idx}
-                className="p-6 rounded-2xl bg-neutral-50 border border-black/[0.06] flex flex-col gap-3"
-              >
-                <div className="w-8 h-8 rounded-lg bg-black text-white flex items-center justify-center font-bold text-xs">
-                  0{idx + 1}
+            <div className="flex flex-col border-b border-white/10">
+              {values.map((v, idx) => (
+                <div
+                  key={idx}
+                  className="grid grid-cols-1 lg:grid-cols-12 gap-3 lg:gap-12 py-8 border-t border-white/10"
+                >
+                  <div className="lg:col-span-1 text-xs font-mono text-neutral-500">
+                    0{idx + 1}
+                  </div>
+                  <h4 className="lg:col-span-4 text-2xl sm:text-3xl font-semibold text-white">
+                    {v.title}
+                  </h4>
+                  <p className="lg:col-span-7 text-sm sm:text-base text-neutral-400 leading-relaxed self-center">
+                    {v.desc}
+                  </p>
                 </div>
-                <h4 className="text-lg font-semibold text-apple-ink">
-                  {v.title}
-                </h4>
-                <p className="text-xs text-neutral-600 leading-relaxed">
-                  {v.desc}
-                </p>
-              </div>
-            ))}
+              ))}
+            </div>
           </div>
         </section>
 
@@ -229,11 +229,16 @@ export default function AboutPage() {
               </p>
             </div>
 
-            <div className="flex flex-col gap-3 w-full lg:w-auto">
+            <div className="flex flex-col w-full lg:w-auto lg:min-w-[420px]">
               {studioCulture.map((c, idx) => (
-                <div key={idx} className="flex items-center gap-3 text-xs text-neutral-200 bg-white/5 p-3 rounded-xl border border-white/10">
-                  <CheckCircle2 className="w-4 h-4 text-emerald-400 shrink-0" />
-                  <span>{c}</span>
+                <div
+                  key={idx}
+                  className="flex items-start gap-4 text-sm text-neutral-200 py-4 border-t border-white/10 last:border-b"
+                >
+                  <span className="text-xs font-mono text-neutral-500 mt-0.5 shrink-0">
+                    0{idx + 1}
+                  </span>
+                  <span className="leading-relaxed">{c}</span>
                 </div>
               ))}
             </div>
@@ -243,5 +248,6 @@ export default function AboutPage() {
 
       <CinematicFooter />
     </div>
+    </>
   );
 }

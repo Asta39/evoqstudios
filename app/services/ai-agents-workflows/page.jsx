@@ -1,8 +1,5 @@
 "use client";
 
-import { useState } from "react";
-import dynamic from "next/dynamic";
-import { motion } from "framer-motion";
 import {
   Sparkles,
   MessageSquare,
@@ -11,26 +8,13 @@ import {
   ShieldCheck,
   Code2,
   Lock,
-  ChevronDown,
-  ArrowRight,
   CheckCircle2,
-  QrCode,
-  ScanLine,
-  CreditCard,
-  Building2,
-  Zap,
-  Globe,
-  Server,
-  Banknote,
 } from "lucide-react";
 
 import { AiKpiCardsSection } from "../../../components/AiKpiCardsSection";
-
-const Header = dynamic(() => import("../../../components/Header"), { ssr: false });
-const CinematicFooter = dynamic(
-  () => import("../../../components/ui/motion-footer").then((mod) => mod.CinematicFooter),
-  { ssr: false }
-);
+import { ServicePageShell } from "../../../components/ServicePageShell";
+import { ServiceHero } from "../../../components/ServiceHero";
+import { FaqAccordion } from "../../../components/FaqAccordion";
 
 const agentTypes = [
   {
@@ -145,45 +129,22 @@ const faqs = [
 ];
 
 export default function AiAgentsWorkflowsPage() {
-  const [openFaq, setOpenFaq] = useState(null);
-
   return (
-    <div className="relative w-full min-h-screen bg-[#0a0a0c] selection:bg-apple-blue selection:text-white overflow-x-hidden">
-      <main className="relative z-10 w-full min-h-screen bg-white rounded-b-[2rem] sm:rounded-b-[3rem] shadow-[0_25px_60px_rgba(0,0,0,0.12)] border-b border-black/5 pt-28 pb-20 px-4 sm:px-6 lg:px-12">
-        <Header />
-
-        {/* Hero Section */}
-        <section className="max-w-[1240px] mx-auto pt-8 pb-16 flex flex-col items-center text-center">
-          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-purple-500/10 border border-purple-500/20 text-xs font-semibold text-purple-600 mb-6">
-            <Sparkles className="w-3.5 h-3.5" />
-            <span>AI Systems & Regional Infrastructure</span>
-          </div>
-
-          <h1 className="text-4xl sm:text-6xl md:text-7xl font-bold text-apple-ink tracking-tight leading-[1.08] max-w-[960px] mb-6">
+    <ServicePageShell>
+      <ServiceHero
+        badge={{ icon: Sparkles, label: "AI Systems & Regional Infrastructure", className: "bg-purple-500/10 border border-purple-500/20 text-purple-600" }}
+        title={
+          <>
             Intelligent Agents Engineered for <br />
             <span className="text-purple-600">M-Pesa, KRA, BRS & OCR Rails.</span>
-          </h1>
-
-          <p className="text-lg sm:text-xl text-neutral-600 max-w-[760px] mb-10 leading-relaxed font-normal">
-            We don't build generic AI wrappers. We engineer autonomous agents and workflows integrated directly into M-Pesa Daraja, KRA eTIMS, BRS lookup, Paystack, and document OCR systems.
-          </p>
-
-          <div className="flex flex-wrap items-center justify-center gap-4">
-            <a
-              href="/company/contact"
-              className="px-7 py-3.5 rounded-full bg-black text-white font-semibold text-sm hover:bg-neutral-800 transition-all shadow-lg active:scale-95 flex items-center gap-2"
-            >
-              <span>Build Production AI Rails</span>
-              <ArrowRight className="w-4 h-4" />
-            </a>
-            <a
-              href="#kenyan-rails"
-              className="px-7 py-3.5 rounded-full bg-neutral-100 text-apple-ink font-semibold text-sm hover:bg-neutral-200 transition-all"
-            >
-              Explore Production Rails
-            </a>
-          </div>
-        </section>
+          </>
+        }
+        description="We don't build generic AI wrappers. We engineer autonomous agents and workflows integrated directly into M-Pesa Daraja, KRA eTIMS, BRS lookup, Paystack, and document OCR systems."
+        primaryCta={{ href: "/company/contact", label: "Build Production AI Rails" }}
+        secondaryCta={{ href: "#kenyan-rails", label: "Explore Production Rails" }}
+        titleMaxWidth="960px"
+        paddingBottom="pb-16"
+      />
 
         {/* Agent Architectures Reframed for Kenya */}
         <section id="agent-types" className="max-w-[1240px] mx-auto py-16 border-t border-black/[0.06]">
@@ -223,10 +184,9 @@ export default function AiAgentsWorkflowsPage() {
         <section id="kenyan-rails" className="max-w-[1240px] mx-auto py-16 border-t border-black/[0.06]">
           <div className="p-8 sm:p-12 rounded-3xl bg-neutral-900 text-white flex flex-col gap-8">
             <div className="max-w-[720px]">
-              <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-purple-500/20 border border-purple-500/30 text-xs font-semibold text-purple-300 mb-3">
-                <Banknote className="w-3.5 h-3.5" />
-                <span>Regional Financial Infrastructure</span>
-              </div>
+              <span className="text-xs font-semibold uppercase tracking-widest text-neutral-400 mb-3 block">
+                Regional Financial Infrastructure
+              </span>
               <h3 className="text-2xl sm:text-4xl font-bold tracking-tight mb-4">
                 Built on the rails your business runs on.
               </h3>
@@ -338,41 +298,7 @@ export default function AiAgentsWorkflowsPage() {
           </div>
         </section>
 
-        {/* FAQ Section */}
-        <section className="max-w-[880px] mx-auto py-16 border-t border-black/[0.06]">
-          <h3 className="text-2xl sm:text-3xl font-semibold text-apple-ink tracking-tight text-center mb-10">
-            Frequently Asked Questions
-          </h3>
-
-          <div className="flex flex-col gap-3">
-            {faqs.map((faq, idx) => (
-              <div
-                key={idx}
-                className="rounded-2xl bg-neutral-50 border border-black/[0.06] overflow-hidden transition-all"
-              >
-                <button
-                  onClick={() => setOpenFaq(openFaq === idx ? null : idx)}
-                  className="w-full p-5 text-left flex items-center justify-between font-semibold text-sm text-apple-ink"
-                >
-                  <span>{faq.q}</span>
-                  <ChevronDown
-                    className={`w-4 h-4 transition-transform ${
-                      openFaq === idx ? "rotate-180" : ""
-                    }`}
-                  />
-                </button>
-                {openFaq === idx && (
-                  <div className="px-5 pb-5 text-xs text-neutral-600 leading-relaxed border-t border-black/[0.04] pt-3">
-                    {faq.a}
-                  </div>
-                )}
-              </div>
-            ))}
-          </div>
-        </section>
-      </main>
-
-      <CinematicFooter />
-    </div>
+      <FaqAccordion faqs={faqs} />
+    </ServicePageShell>
   );
 }

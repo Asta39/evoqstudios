@@ -1,0 +1,27 @@
+# Evoq Studio
+
+> Evoq Studio is an independent digital engineering studio based in Nairobi, Kenya, crafting high-performance web applications, custom enterprise systems, brand rebrandings, and intelligent AI agent workflows.
+
+## Services
+
+- [System Development](https://evoqcreative.co.ke/services/system-development): Custom software systems designed for reliability, high-concurrency performance, and long-term enterprise growth.
+- [Website Development](https://evoqcreative.co.ke/services/website-development): Performance-first websites with pixel-perfect design, dynamic motion, and seamless headless integration.
+- [AI Agents & Workflows](https://evoqcreative.co.ke/services/ai-agents-workflows): Autonomous AI agents and workflows integrated into M-Pesa Daraja, KRA eTIMS, BRS lookup, Paystack, and document OCR systems.
+- [Brand & UI Rebranding](https://evoqcreative.co.ke/services/brand-ui-rebranding): Strategic rebranding and UI overhauls that align visual identity with business growth.
+
+## Company
+
+- [About](https://evoqcreative.co.ke/company/about): The team and studio culture behind Evoq Studio.
+- [Architecture Philosophy](https://evoqcreative.co.ke/company/architecture): How Evoq Studio approaches systems engineering.
+- [Capabilities](https://evoqcreative.co.ke/company/capabilities): Full-stack digital execution, strategy through cloud deployment.
+- [Contact](https://evoqcreative.co.ke/company/contact): Get in touch with the founders.
+
+## Projects
+
+- [Lexreg](https://evoqcreative.co.ke/projects/lexreg): Real-time regulatory filing engine for compliance teams.
+- [Luxe Roam](https://evoqcreative.co.ke/projects/luxe-roam): Bespoke travel itinerary engine with WhatsApp booking.
+- [Luna Graphics](https://evoqcreative.co.ke/projects/luna-graphics): Automated order pipeline for a print shop.
+- [Luna Politics](https://evoqcreative.co.ke/projects/luna-politics): Civic engagement platform built for high-traffic campaign moments.
+- [Zeno Books](https://evoqcreative.co.ke/projects/zeno-books): Invoicing and accounting core of the Zeno operating system.
+- [Luxe & Allure Events](https://evoqcreative.co.ke/projects/luxe-allure-events): Booking system that lifted inquiry conversion by 40%.
+- [Nova Luxury Events](https://evoqcreative.co.ke/projects/nova-luxury-events): High-traffic-resilient platform for luxury event launches.

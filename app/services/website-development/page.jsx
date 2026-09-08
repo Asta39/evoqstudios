@@ -1,28 +1,19 @@
 "use client";
 
-import { useState } from "react";
-import dynamic from "next/dynamic";
-import { motion } from "framer-motion";
 import {
   Globe,
   Layout,
   ShoppingBag,
   BookOpen,
   Sliders,
-  ChevronDown,
-  ArrowRight,
   Gauge,
   CheckCircle,
-  Zap,
 } from "lucide-react";
 
 import { LunaGraphicsSearchConsoleSection } from "../../../components/LunaGraphicsSearchConsoleSection";
-
-const Header = dynamic(() => import("../../../components/Header"), { ssr: false });
-const CinematicFooter = dynamic(
-  () => import("../../../components/ui/motion-footer").then((mod) => mod.CinematicFooter),
-  { ssr: false }
-);
+import { ServicePageShell } from "../../../components/ServicePageShell";
+import { ServiceHero } from "../../../components/ServiceHero";
+import { FaqAccordion } from "../../../components/FaqAccordion";
 
 const websiteTypes = [
   {
@@ -104,45 +95,21 @@ const faqs = [
 ];
 
 export default function WebsiteDevelopmentPage() {
-  const [openFaq, setOpenFaq] = useState(null);
-
   return (
-    <div className="relative w-full min-h-screen bg-[#0a0a0c] selection:bg-apple-blue selection:text-white overflow-x-hidden">
-      <main className="relative z-10 w-full min-h-screen bg-white rounded-b-[2rem] sm:rounded-b-[3rem] shadow-[0_25px_60px_rgba(0,0,0,0.12)] border-b border-black/5 pt-28 pb-20 px-4 sm:px-6 lg:px-12">
-        <Header />
-
-        {/* Hero Section */}
-        <section className="max-w-[1240px] mx-auto pt-8 pb-20 flex flex-col items-center text-center">
-          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-black/5 border border-black/5 text-xs font-semibold text-apple-ink mb-6">
-            <Globe className="w-3.5 h-3.5 text-emerald-500" />
-            <span>Website Engineering</span>
-          </div>
-
-          <h1 className="text-4xl sm:text-6xl md:text-7xl font-bold text-apple-ink tracking-tight leading-[1.08] max-w-[920px] mb-6">
+    <ServicePageShell>
+      <ServiceHero
+        badge={{ icon: Globe, label: "Website Engineering", className: "bg-black/5 border border-black/5 text-apple-ink", iconClassName: "text-emerald-500" }}
+        title={
+          <>
             Websites That Work Harder. <br />
-            <span className="text-neutral-400">Digital Experiences Built to Convert.</span>
-          </h1>
-
-          <p className="text-lg sm:text-xl text-neutral-600 max-w-[720px] mb-10 leading-relaxed font-normal">
-            Performance-first websites with pixel-perfect design, dynamic motion, and seamless headless integration.
-          </p>
-
-          <div className="flex flex-wrap items-center justify-center gap-4">
-            <a
-              href="/company/contact"
-              className="px-7 py-3.5 rounded-full bg-black text-white font-semibold text-sm hover:bg-neutral-800 transition-all shadow-lg active:scale-95 flex items-center gap-2"
-            >
-              <span>Start Your Project</span>
-              <ArrowRight className="w-4 h-4" />
-            </a>
-            <a
-              href="#what-we-build"
-              className="px-7 py-3.5 rounded-full bg-neutral-100 text-apple-ink font-semibold text-sm hover:bg-neutral-200 transition-all"
-            >
-              Explore Offerings
-            </a>
-          </div>
-        </section>
+            <span className="text-apple-ink">Digital Experiences Built to Convert.</span>
+          </>
+        }
+        description="Performance-first websites with pixel-perfect design, dynamic motion, and seamless headless integration."
+        primaryCta={{ href: "/company/contact", label: "Start Your Project" }}
+        secondaryCta={{ href: "#what-we-build", label: "Explore Offerings" }}
+        titleMaxWidth="920px"
+      />
 
         {/* What We Build */}
         <section id="what-we-build" className="max-w-[1240px] mx-auto py-16 border-t border-black/[0.06]">
@@ -265,41 +232,7 @@ export default function WebsiteDevelopmentPage() {
           </div>
         </section>
 
-        {/* FAQ Section */}
-        <section className="max-w-[880px] mx-auto py-16 border-t border-black/[0.06]">
-          <h3 className="text-2xl sm:text-3xl font-semibold text-apple-ink tracking-tight text-center mb-10">
-            Frequently Asked Questions
-          </h3>
-
-          <div className="flex flex-col gap-3">
-            {faqs.map((faq, idx) => (
-              <div
-                key={idx}
-                className="rounded-2xl bg-neutral-50 border border-black/[0.06] overflow-hidden transition-all"
-              >
-                <button
-                  onClick={() => setOpenFaq(openFaq === idx ? null : idx)}
-                  className="w-full p-5 text-left flex items-center justify-between font-semibold text-sm text-apple-ink"
-                >
-                  <span>{faq.q}</span>
-                  <ChevronDown
-                    className={`w-4 h-4 transition-transform ${
-                      openFaq === idx ? "rotate-180" : ""
-                    }`}
-                  />
-                </button>
-                {openFaq === idx && (
-                  <div className="px-5 pb-5 text-xs text-neutral-600 leading-relaxed border-t border-black/[0.04] pt-3">
-                    {faq.a}
-                  </div>
-                )}
-              </div>
-            ))}
-          </div>
-        </section>
-      </main>
-
-      <CinematicFooter />
-    </div>
+      <FaqAccordion faqs={faqs} />
+    </ServicePageShell>
   );
 }

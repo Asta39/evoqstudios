@@ -6,7 +6,7 @@
   body {
     background-color: #ffffff;
     color: #1d1d1f;
-    font-family: SF Pro Text, Inter, -apple-system, BlinkMacSystemFont, sans-serif;
+    font-family: "Clash Grotesk", SF Pro Text, Inter, -apple-system, BlinkMacSystemFont, sans-serif;
     font-size: 17px;
     line-height: 1.47;
     letter-spacing: -0.022em;
@@ -15,7 +15,7 @@
   }
 
   h1, h2, h3, h4, h5, h6 {
-    font-family: SF Pro Display, Inter, -apple-system, BlinkMacSystemFont, sans-serif;
+    font-family: "Clash Grotesk", SF Pro Display, Inter, -apple-system, BlinkMacSystemFont, sans-serif;
     font-weight: 600;
   }
 }

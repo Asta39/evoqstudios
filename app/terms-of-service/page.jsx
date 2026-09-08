@@ -1,7 +1,7 @@
 "use client";
 
 import dynamic from "next/dynamic";
-import { FileText, Scale, CheckCircle2, ShieldAlert } from "lucide-react";
+import { FileText } from "lucide-react";
 
 const Header = dynamic(() => import("../../components/Header"), { ssr: false });
 const CinematicFooter = dynamic(
@@ -47,16 +47,16 @@ const termsSections = [
 
 export default function TermsOfServicePage() {
   return (
+    <>
+      <Header />
     <div className="relative w-full min-h-screen bg-[#0a0a0c] selection:bg-apple-blue selection:text-white overflow-x-hidden">
-      <main className="relative z-10 w-full min-h-screen bg-white rounded-b-[2rem] sm:rounded-b-[3rem] shadow-[0_25px_60px_rgba(0,0,0,0.12)] border-b border-black/5 pt-28 pb-20 px-4 sm:px-6 lg:px-12">
-        <Header />
+      <main className="relative z-10 w-full min-h-screen bg-white rounded-b-[2rem] sm:rounded-b-[3rem] shadow-[0_25px_60px_rgba(0,0,0,0.12)] border-b border-black/5 pb-20 px-4 sm:px-6 lg:px-12">
 
         {/* Hero Section */}
         <section className="max-w-[900px] mx-auto pt-8 pb-12 text-center">
-          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-black/5 border border-black/5 text-xs font-semibold text-apple-ink mb-6">
-            <Scale className="w-3.5 h-3.5 text-apple-blue" />
-            <span>Legal Agreement</span>
-          </div>
+          <span className="text-xs font-semibold uppercase tracking-widest text-neutral-400 mb-6 block">
+            Legal Agreement
+          </span>
 
           <h1 className="text-4xl sm:text-5xl font-bold text-apple-ink tracking-tight mb-4">
             Terms of Service
@@ -103,5 +103,6 @@ export default function TermsOfServicePage() {
 
       <CinematicFooter />
     </div>
+    </>
   );
 }

@@ -1,3 +1,5 @@
+import { projects } from "../lib/projects";
+
 export const dynamic = "force-static";
 
 export default function sitemap() {
@@ -13,10 +15,8 @@ export default function sitemap() {
     "/company/capabilities",
     "/company/architecture",
     "/company/contact",
-    "/stack/nextjs-react",
-    "/stack/nodejs-python",
-    "/stack/postgresql-redis",
-    "/stack/tailwind-framer-motion",
+    "/projects",
+    ...projects.map((p) => `/projects/${p.slug}`),
     "/privacy-policy",
     "/terms-of-service",
   ];
@@ -25,6 +25,6 @@ export default function sitemap() {
     url: `${baseUrl}${route}`,
     lastModified: new Date().toISOString(),
     changeFrequency: route === "" ? "daily" : "weekly",
-    priority: route === "" ? 1.0 : route.startsWith("/services") ? 0.9 : 0.8,
+    priority: route === "" ? 1.0 : route.startsWith("/services") ? 0.9 : route.startsWith("/projects") ? 0.85 : 0.8,
   }));
 }

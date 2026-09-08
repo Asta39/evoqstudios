@@ -2,19 +2,18 @@
 
 import { useState } from "react";
 import dynamic from "next/dynamic";
-import { motion } from "framer-motion";
 import {
   Mail,
   MessageSquare,
   Globe,
   Send,
   CheckCircle2,
-  ChevronDown,
-  Sparkles,
   MapPin,
 } from "lucide-react";
 
 import WorldMap from "../../../components/ui/world-map";
+import { FaqAccordion } from "../../../components/FaqAccordion";
+import { Ripple } from "../../../components/ui/ripple";
 
 const Header = dynamic(() => import("../../../components/Header"), { ssr: false });
 const CinematicFooter = dynamic(
@@ -43,7 +42,6 @@ const faqs = [
 
 export default function ContactPage() {
   const [submitted, setSubmitted] = useState(false);
-  const [openFaq, setOpenFaq] = useState(null);
   const [formData, setFormData] = useState({
     name: "",
     email: "",
@@ -52,44 +50,57 @@ export default function ContactPage() {
     budget: "$10k–$25k",
     timeline: "1–2 months",
     message: "",
+    website: "", // honeypot — real users never see or fill this field
   });
 
   const handleSubmit = (e) => {
     e.preventDefault();
+
+    if (formData.website.trim() !== "") {
+      // Honeypot triggered — silently drop the submission.
+      setSubmitted(true);
+      return;
+    }
+
+    const name = formData.name.trim().slice(0, 100);
+    const email = formData.email.trim().slice(0, 150);
+    const company = formData.company.trim().slice(0, 100);
+    const message = formData.message.trim().slice(0, 2000);
+
     setSubmitted(true);
 
     const messageText =
       `*New Evoq Studio Project Inquiry*\n\n` +
-      `👤 *Name:* ${formData.name}\n` +
-      `✉️ *Email:* ${formData.email}\n` +
-      `🏢 *Company:* ${formData.company || "N/A"}\n` +
+      `👤 *Name:* ${name}\n` +
+      `✉️ *Email:* ${email}\n` +
+      `🏢 *Company:* ${company || "N/A"}\n` +
       `🚀 *Project Type:* ${formData.projectType}\n` +
       `💰 *Budget Range:* ${formData.budget}\n` +
       `⏱️ *Timeline:* ${formData.timeline}\n\n` +
-      `📝 *Project Details:*\n${formData.message || "No additional details provided."}`;
+      `📝 *Project Details:*\n${message || "No additional details provided."}`;
 
     const whatsappUrl = `https://wa.me/254115706542?text=${encodeURIComponent(messageText)}`;
     window.open(whatsappUrl, "_blank");
   };
 
   return (
+    <>
+      <Header />
     <div className="relative w-full min-h-screen bg-[#0a0a0c] selection:bg-apple-blue selection:text-white overflow-x-hidden">
-      <main className="relative z-10 w-full min-h-screen bg-white rounded-b-[2rem] sm:rounded-b-[3rem] shadow-[0_25px_60px_rgba(0,0,0,0.12)] border-b border-black/5 pt-28 pb-20 px-4 sm:px-6 lg:px-12">
-        <Header />
+      <main className="relative z-10 w-full min-h-screen bg-white rounded-b-[2rem] sm:rounded-b-[3rem] shadow-[0_25px_60px_rgba(0,0,0,0.12)] border-b border-black/5 pb-20 px-4 sm:px-6 lg:px-12">
 
         {/* Hero Section */}
-        <section className="max-w-[1240px] mx-auto pt-8 pb-16 flex flex-col items-center text-center">
-          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-black/5 border border-black/5 text-xs font-semibold text-apple-ink mb-6">
-            <MessageSquare className="w-3.5 h-3.5 text-apple-blue" />
-            <span>Get In Touch</span>
-          </div>
+        <section className="relative max-w-[1240px] mx-auto pt-8 pb-16 flex flex-col items-center text-center overflow-hidden">
+          <Ripple mainCircleSize={140} numCircles={7} color="#0066cc" />
 
-          <h1 className="text-4xl sm:text-6xl md:text-7xl font-bold text-apple-ink tracking-tight leading-[1.08] max-w-[920px] mb-6">
+          <h1 className="relative z-10 text-4xl sm:text-6xl md:text-7xl font-bold text-apple-ink tracking-tight leading-[1.08] max-w-[920px] mb-6">
             Let's Talk. <br />
-            <span className="text-neutral-400">Tell Us What You're Building.</span>
+            <span className="font-cursive text-apple-ink text-5xl sm:text-7xl md:text-8xl font-normal">
+              Tell Us What You're Building.
+            </span>
           </h1>
 
-          <p className="text-lg sm:text-xl text-neutral-600 max-w-[640px] mb-8 leading-relaxed font-normal">
+          <p className="relative z-10 text-lg sm:text-xl text-neutral-600 max-w-[640px] mb-8 leading-relaxed font-normal">
             We respond within one business day with technical insights and initial project estimates.
           </p>
         </section>
@@ -102,6 +113,18 @@ export default function ContactPage() {
             <div className="lg:col-span-7 bg-neutral-50 p-6 sm:p-10 rounded-3xl border border-black/[0.08] shadow-sm">
               {!submitted ? (
                 <form onSubmit={handleSubmit} className="flex flex-col gap-6">
+                  {/* Honeypot: hidden from sighted users and screen readers, but visible to bots that fill every field */}
+                  <input
+                    type="text"
+                    name="website"
+                    tabIndex={-1}
+                    autoComplete="off"
+                    aria-hidden="true"
+                    value={formData.website}
+                    onChange={(e) => setFormData({ ...formData, website: e.target.value })}
+                    className="absolute left-[-9999px] w-px h-px opacity-0"
+                  />
+
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
                     <div>
                       <label className="text-xs font-semibold text-apple-ink uppercase tracking-wider block mb-2">
@@ -110,6 +133,7 @@ export default function ContactPage() {
                       <input
                         required
                         type="text"
+                        maxLength={100}
                         placeholder="John Doe"
                         value={formData.name}
                         onChange={(e) => setFormData({ ...formData, name: e.target.value })}
@@ -123,6 +147,7 @@ export default function ContactPage() {
                       <input
                         required
                         type="email"
+                        maxLength={150}
                         placeholder="john@company.com"
                         value={formData.email}
                         onChange={(e) => setFormData({ ...formData, email: e.target.value })}
@@ -138,6 +163,7 @@ export default function ContactPage() {
                       </label>
                       <input
                         type="text"
+                        maxLength={100}
                         placeholder="Acme Corp"
                         value={formData.company}
                         onChange={(e) => setFormData({ ...formData, company: e.target.value })}
@@ -202,6 +228,7 @@ export default function ContactPage() {
                     </label>
                     <textarea
                       rows={5}
+                      maxLength={2000}
                       placeholder="Tell us about your goals, target audience, and key features..."
                       value={formData.message}
                       onChange={(e) => setFormData({ ...formData, message: e.target.value })}
@@ -328,41 +355,11 @@ export default function ContactPage() {
           />
         </section>
 
-        {/* FAQ Section */}
-        <section className="max-w-[880px] mx-auto py-16 border-t border-black/[0.06]">
-          <h3 className="text-2xl sm:text-3xl font-semibold text-apple-ink tracking-tight text-center mb-10">
-            Frequently Asked Questions
-          </h3>
-
-          <div className="flex flex-col gap-3">
-            {faqs.map((faq, idx) => (
-              <div
-                key={idx}
-                className="rounded-2xl bg-neutral-50 border border-black/[0.06] overflow-hidden transition-all"
-              >
-                <button
-                  onClick={() => setOpenFaq(openFaq === idx ? null : idx)}
-                  className="w-full p-5 text-left flex items-center justify-between font-semibold text-sm text-apple-ink"
-                >
-                  <span>{faq.q}</span>
-                  <ChevronDown
-                    className={`w-4 h-4 transition-transform ${
-                      openFaq === idx ? "rotate-180" : ""
-                    }`}
-                  />
-                </button>
-                {openFaq === idx && (
-                  <div className="px-5 pb-5 text-xs text-neutral-600 leading-relaxed border-t border-black/[0.04] pt-3">
-                    {faq.a}
-                  </div>
-                )}
-              </div>
-            ))}
-          </div>
-        </section>
+        <FaqAccordion faqs={faqs} />
       </main>
 
       <CinematicFooter />
     </div>
+    </>
   );
 }
