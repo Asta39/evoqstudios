@@ -9,6 +9,8 @@ const COLOR_MAP = {
   emerald: "from-emerald-400 via-emerald-500 to-teal-600",
   rose: "from-rose-400 via-rose-500 to-pink-600",
   purple: "from-purple-400 via-purple-500 to-indigo-600",
+  orange: "from-orange-400 via-orange-500 to-red-600",
+  cyan: "from-cyan-400 via-cyan-500 to-blue-600",
 };
 
 export function ProjectCard({ project }) {

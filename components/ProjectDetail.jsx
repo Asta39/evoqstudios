@@ -15,6 +15,8 @@ const GRADIENT_MAP = {
   emerald: "from-emerald-400 via-emerald-500 to-teal-600",
   rose: "from-rose-400 via-rose-500 to-pink-600",
   purple: "from-purple-400 via-purple-500 to-indigo-600",
+  orange: "from-orange-400 via-orange-500 to-red-600",
+  cyan: "from-cyan-400 via-cyan-500 to-blue-600",
 };
 
 function ModuleRow({ label, children }) {
@@ -79,22 +81,42 @@ export function ProjectDetail({ project }) {
           </span>
           <span className="text-lg font-normal text-apple-ink">{project.name}</span>
         </div>
-        <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-          {[0, 1].map((i) => (
-            <div key={i} className="relative aspect-square rounded-2xl overflow-hidden border border-black/[0.06]">
-              {project.image ? (
+        {project.gallery && project.gallery.length > 0 ? (
+          <div className="grid grid-cols-2 sm:grid-cols-3 gap-4">
+            {project.gallery.map((src, i) => (
+              <div
+                key={i}
+                className={`relative aspect-video rounded-2xl overflow-hidden border border-black/[0.06] ${
+                  i === 0 ? "col-span-2 sm:col-span-3" : ""
+                }`}
+              >
                 <Image
-                  src={project.image}
+                  src={src}
                   alt={`${project.name} preview ${i + 1}`}
                   fill
-                  className={`object-cover ${i === 1 ? "scale-125 object-left-top" : ""}`}
+                  className="object-cover object-top"
                 />
-              ) : (
-                <div className={`absolute inset-0 bg-gradient-to-br ${gradient} ${i === 1 ? "opacity-80" : ""}`} />
-              )}
-            </div>
-          ))}
-        </div>
+              </div>
+            ))}
+          </div>
+        ) : (
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+            {[0, 1].map((i) => (
+              <div key={i} className="relative aspect-square rounded-2xl overflow-hidden border border-black/[0.06]">
+                {project.image ? (
+                  <Image
+                    src={project.image}
+                    alt={`${project.name} preview ${i + 1}`}
+                    fill
+                    className={`object-cover ${i === 1 ? "scale-125 object-left-top" : ""}`}
+                  />
+                ) : (
+                  <div className={`absolute inset-0 bg-gradient-to-br ${gradient} ${i === 1 ? "opacity-80" : ""}`} />
+                )}
+              </div>
+            ))}
+          </div>
+        )}
       </section>
 
       {/* Challenges */}
@@ -103,9 +125,18 @@ export function ProjectDetail({ project }) {
         <p className="text-base text-neutral-500 leading-relaxed">{project.approach}</p>
       </ModuleRow>
 
-      {/* Decorative Gradient Banner */}
+      {/* Closing Banner */}
       <section className="max-w-[1240px] mx-auto pb-16">
-        <div className={`h-40 sm:h-56 w-full rounded-3xl bg-gradient-to-br ${gradient}`} />
+        <div className={`relative h-40 sm:h-56 w-full rounded-3xl overflow-hidden bg-gradient-to-br ${gradient}`}>
+          {(project.gallery?.[project.gallery.length - 1] || project.image) && (
+            <Image
+              src={project.gallery?.[project.gallery.length - 1] || project.image}
+              alt={`${project.name} preview`}
+              fill
+              className="object-cover object-top"
+            />
+          )}
+        </div>
       </section>
 
       {/* Final Thoughts */}
