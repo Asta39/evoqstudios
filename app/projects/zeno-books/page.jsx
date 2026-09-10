@@ -222,26 +222,27 @@ export default function ZenoBooksPage() {
         </div>
 
         {/* Core Workflows */}
-        <section className="max-w-[1240px] mx-auto py-16 border-t border-black/[0.06]">
-          <div className="flex items-center gap-2 mb-8">
-            <span className="w-6 h-6 rounded-full bg-emerald-500 flex items-center justify-center text-white text-xs font-bold">
-              Z
-            </span>
-            <span className="text-lg font-normal text-apple-ink">Core workflows</span>
+        <div className="max-w-[1240px] mx-auto">
+          <div className="pt-16">
+            <h2 className="text-xs font-semibold uppercase tracking-widest text-neutral-400 mb-2">
+              Core Workflows
+            </h2>
           </div>
-          <div className="flex flex-col gap-4">
-            {workflows.map((w) => (
-              <div key={w.title} className="rounded-2xl border border-black/[0.06] bg-neutral-50 p-6">
-                <h4 className="text-sm font-semibold text-apple-ink mb-2">{w.title}</h4>
-                <p className="font-mono text-xs sm:text-sm text-neutral-500 leading-relaxed">{w.steps}</p>
+          {workflows.map((w) => (
+            <div key={w.title} className="grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-12 py-10 border-t border-black/[0.06]">
+              <div className="lg:col-span-3 h-fit">
+                <span className="text-sm font-semibold text-apple-ink">{w.title}</span>
               </div>
-            ))}
-          </div>
-        </section>
+              <div className="lg:col-span-9">
+                <p className="text-sm text-neutral-500 leading-relaxed">{w.steps}</p>
+              </div>
+            </div>
+          ))}
+        </div>
 
         {/* Module Grid */}
-        <section className="max-w-[1240px] mx-auto py-16 border-t border-black/[0.06]">
-          <div className="mb-12">
+        <div className="max-w-[1240px] mx-auto">
+          <div className="pt-16 pb-8 border-t border-black/[0.06]">
             <h2 className="text-xs font-semibold uppercase tracking-widest text-neutral-400 mb-2">
               System Reference
             </h2>
@@ -250,30 +251,29 @@ export default function ZenoBooksPage() {
             </h3>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {modules.map((m) => (
-              <div
-                key={m.num}
-                className="p-6 rounded-2xl bg-white border border-black/10 shadow-sm flex flex-col gap-3 hover:border-black/20 transition-all"
-              >
-                <div className="flex items-center gap-2.5">
-                  <span className="w-6 h-6 rounded-full bg-black text-white flex items-center justify-center shrink-0 text-[10px] font-bold">
-                    {m.num}
-                  </span>
-                  <h4 className="text-base font-semibold text-apple-ink">{m.title}</h4>
+          {modules.map((m) => (
+            <div key={m.num} className="grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-12 py-10 border-t border-black/[0.06]">
+              <div className="lg:col-span-3 flex items-start gap-2.5 h-fit">
+                <span className="w-6 h-6 rounded-full bg-black text-white flex items-center justify-center shrink-0 text-[10px] font-bold">
+                  {m.num}
+                </span>
+                <div className="flex flex-col gap-2">
+                  <span className="text-sm font-semibold text-apple-ink">{m.title}</span>
+                  <div className="flex flex-wrap gap-1.5">
+                    {m.tags.map((t) => (
+                      <span key={t} className="text-[10px] font-semibold uppercase tracking-wide text-neutral-400 bg-neutral-100 rounded-full px-2 py-0.5">
+                        {t}
+                      </span>
+                    ))}
+                  </div>
                 </div>
-                <div className="flex flex-wrap gap-1.5">
-                  {m.tags.map((t) => (
-                    <span key={t} className="text-[10px] font-semibold uppercase tracking-wide text-neutral-500 bg-neutral-100 rounded-full px-2 py-0.5">
-                      {t}
-                    </span>
-                  ))}
-                </div>
-                <p className="text-xs text-neutral-600 leading-relaxed font-normal">{m.body}</p>
               </div>
-            ))}
-          </div>
-        </section>
+              <div className="lg:col-span-9">
+                <p className="text-sm text-neutral-500 leading-relaxed">{m.body}</p>
+              </div>
+            </div>
+          ))}
+        </div>
 
         {/* Closing Banner */}
         <section className="max-w-[1240px] mx-auto pb-16">
