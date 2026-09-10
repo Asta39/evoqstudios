@@ -2,9 +2,10 @@
 
 import Image from "next/image";
 import Link from "next/link";
-import { Plus, ArrowRight } from "lucide-react";
+import { Plus, ArrowRight, ArrowUpRight } from "lucide-react";
 import { ServicePageShell } from "./ServicePageShell";
 import { ProjectCard } from "./ProjectCard";
+import { LiquidGlassViewport, LiquidGlassButton } from "./ui/liquid-glass";
 import { getAdjacentProjects } from "../lib/projects";
 
 const GRADIENT_MAP = {
@@ -128,16 +129,28 @@ export function ProjectDetail({ project }) {
 
       {/* Closing Banner */}
       <section className="max-w-[1240px] mx-auto pb-16">
-        <div className={`relative h-40 sm:h-56 w-full rounded-3xl overflow-hidden bg-gradient-to-br ${gradient}`}>
-          {(project.gallery?.[project.gallery.length - 1] || project.image) && (
-            <Image
-              src={project.gallery?.[project.gallery.length - 1] || project.image}
-              alt={`${project.name} preview`}
-              fill
-              className="object-cover object-top"
-            />
-          )}
-        </div>
+        {(() => {
+          const bannerSrc = project.gallery?.[project.gallery.length - 1] || project.image;
+          return (
+            <LiquidGlassViewport
+              bgImage={bannerSrc}
+              className={`h-40 sm:h-56 w-full rounded-3xl bg-gradient-to-br ${gradient}`}
+            >
+              {project.liveUrl && (
+                <LiquidGlassButton
+                  as="a"
+                  href={project.liveUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="absolute bottom-4 right-4 sm:bottom-6 sm:right-6 h-11 px-5 rounded-full z-30"
+                >
+                  <span>View Live Project</span>
+                  <ArrowUpRight className="w-3.5 h-3.5" />
+                </LiquidGlassButton>
+              )}
+            </LiquidGlassViewport>
+          );
+        })()}
       </section>
 
       {/* Final Thoughts */}
