@@ -113,6 +113,8 @@ export const evoqStudioNodes = [
           { name: "layout.jsx" },
           { name: "page.jsx" },
           { name: "globals.css" },
+          { name: "sitemap.js" },
+          { name: "robots.js" },
           {
             name: "services",
             nodes: [
@@ -132,21 +134,16 @@ export const evoqStudioNodes = [
             ],
           },
           {
-            name: "stack",
+            name: "projects",
             nodes: [
-              { name: "nextjs-react/page.jsx" },
-              { name: "nodejs-python/page.jsx" },
-              { name: "postgresql-redis/page.jsx" },
-              { name: "tailwind-framer-motion/page.jsx" },
+              { name: "page.jsx" },
+              { name: "[slug]/page.jsx" },
+              { name: "zeno-books/page.jsx" },
+              { name: "zeno-events/page.jsx" },
             ],
           },
-          {
-            name: "legal",
-            nodes: [
-              { name: "privacy-policy/page.jsx" },
-              { name: "terms-of-service/page.jsx" },
-            ],
-          },
+          { name: "privacy-policy/page.jsx" },
+          { name: "terms-of-service/page.jsx" },
         ],
       },
       {
@@ -158,6 +155,10 @@ export const evoqStudioNodes = [
           { name: "FileTreeSection.jsx" },
           { name: "Features.jsx" },
           { name: "TechOrbit.jsx" },
+          { name: "ProjectCard.jsx" },
+          { name: "ProjectDetail.jsx" },
+          { name: "ProjectsSection.jsx" },
+          { name: "ServicePageShell.jsx" },
           { name: "ZenoShowcaseSection.jsx" },
           { name: "LunaGraphicsSearchConsoleSection.jsx" },
           { name: "AiKpiCardsSection.jsx" },
@@ -167,8 +168,9 @@ export const evoqStudioNodes = [
               { name: "interactive-terminal.jsx" },
               { name: "filesystem-item.jsx" },
               { name: "motion-footer.jsx" },
+              { name: "macbook-scroll.jsx" },
               { name: "testimonials.jsx" },
-              { name: "liquid-glass.jsx" },
+              { name: "world-map.jsx" },
             ],
           },
           {
@@ -183,13 +185,18 @@ export const evoqStudioNodes = [
       },
       {
         name: "lib",
-        nodes: [{ name: "utils.js" }],
+        nodes: [
+          { name: "projects.js" },
+          { name: "seo.js" },
+          { name: "utils.js" },
+        ],
       },
       {
         name: "public",
         nodes: [
           { name: "evoq-logo.png" },
-          { name: "herovideo.mp4" },
+          { name: "videos/hero-bg.mp4" },
+          { name: "gallery/" },
         ],
       },
       { name: "next.config.mjs" },
