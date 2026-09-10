@@ -51,12 +51,12 @@ const sections = [
     • Right of Access & Portability: Request copies of all personal data held by Evoq Studio in a structured JSON format.
     • Right to Erasure: Request the permanent deletion of your project inquiries and contact history ("Right to be Forgotten").
     • Right to Correction: Request immediate rectification of inaccurate contact details.
-    To exercise any of these rights, contact our Data Protection Officer at evoqcreativetecg@gmail.com.`,
+    To exercise any of these rights, contact our Data Protection Officer at evoqcreativetech@gmail.com.`,
   },
   {
     title: "Policy Updates & Contact",
     content: `We may update this Privacy Policy periodically to reflect changes in our technical practices or legal requirements. Updated policies will be posted on this page with a revised "Effective Date".
-    For any questions regarding this policy, please reach out to us at evoqcreativetecg@gmail.com.`,
+    For any questions regarding this policy, please reach out to us at evoqcreativetech@gmail.com.`,
   },
 ];
 
@@ -112,10 +112,10 @@ export default function PrivacyPolicyPage() {
               </div>
             </div>
             <a
-              href="mailto:evoqcreativetecg@gmail.com"
+              href="mailto:evoqcreativetech@gmail.com"
               className="px-4 py-2 rounded-xl bg-white text-black font-semibold text-xs hover:bg-neutral-200 transition-colors shrink-0"
             >
-              evoqcreativetecg@gmail.com
+              evoqcreativetech@gmail.com
             </a>
           </div>
         </section>

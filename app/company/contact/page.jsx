@@ -272,11 +272,11 @@ export default function ContactPage() {
 
                 <div className="flex flex-col gap-4 text-xs">
                   <a
-                    href="mailto:evoqcreativetecg@gmail.com"
+                    href="mailto:evoqcreativetech@gmail.com"
                     className="flex items-center gap-3 hover:text-white transition-colors"
                   >
                     <Mail className="w-4 h-4 text-neutral-400 shrink-0" />
-                    <span className="font-mono text-neutral-200 hover:underline">evoqcreativetecg@gmail.com</span>
+                    <span className="font-mono text-neutral-200 hover:underline">evoqcreativetech@gmail.com</span>
                   </a>
                   <a
                     href="https://wa.me/254115706542"

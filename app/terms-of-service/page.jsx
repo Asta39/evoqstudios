@@ -97,10 +97,10 @@ export default function TermsOfServicePage() {
               </div>
             </div>
             <a
-              href="mailto:evoqcreativetecg@gmail.com"
+              href="mailto:evoqcreativetech@gmail.com"
               className="px-4 py-2 rounded-xl bg-white text-black font-semibold text-xs hover:bg-neutral-200 transition-colors shrink-0"
             >
-              evoqcreativetecg@gmail.com
+              evoqcreativetech@gmail.com
             </a>
           </div>
         </section>

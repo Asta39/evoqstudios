@@ -148,7 +148,7 @@ export function CinematicFooter() {
                 <Github className="w-4 h-4" />
               </a>
               <a
-                href="mailto:evoqcreativetecg@gmail.com"
+                href="mailto:evoqcreativetech@gmail.com"
                 aria-label="Email Evoq Studio"
                 className="w-10 h-10 rounded-full bg-white/5 flex items-center justify-center text-neutral-300 hover:text-white hover:bg-white/10 transition-colors border border-white/10"
               >

@@ -220,10 +220,10 @@ export default function Header() {
                   +254 115 706 542
                 </a>
                 <a
-                  href="mailto:evoqcreativetecg@gmail.com"
+                  href="mailto:evoqcreativetech@gmail.com"
                   className="text-apple-ink font-medium underline underline-offset-4 hover:text-neutral-600 transition-colors"
                 >
-                  evoqcreativetecg@gmail.com
+                  evoqcreativetech@gmail.com
                 </a>
               </div>
 

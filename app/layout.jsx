@@ -78,7 +78,7 @@ const jsonLdSchema = {
   "@id": "https://evoqcreative.co.ke/#organization",
   url: "https://evoqcreative.co.ke",
   telephone: "+254115706542",
-  email: "evoqcreativetecg@gmail.com",
+  email: "evoqcreativetech@gmail.com",
   priceRange: "$$$",
   address: {
     "@type": "PostalAddress",
