@@ -37,7 +37,7 @@ export default function Home() {
           title={
             <span className="text-apple-ink font-bold">
               Production Systems Showcase. <br />
-              <span className="font-cursive font-normal text-neutral-400">Architected for Speed & Reliability.</span>
+              <span className="text-neutral-400">Architected for Speed & Reliability.</span>
             </span>
           }
           showGradient={false}
