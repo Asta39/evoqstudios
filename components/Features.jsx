@@ -28,10 +28,6 @@ const FeatureBento = () => {
             <div className="absolute top-0 left-0 w-full h-full bg-gradient-to-t from-black/60 to-transparent" />
 
             <div className="relative z-10 space-y-3">
-              <div className="inline-flex items-center gap-2 bg-white/20 backdrop-blur-sm rounded-full px-4 py-1.5 text-sm font-medium">
-                <span className="w-2 h-2 bg-green-400 rounded-full animate-pulse" />
-                Now Taking Projects
-              </div>
               <h3 className="text-5xl font-bold tracking-tight">
                 Systems That
                 <br />
