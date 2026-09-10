@@ -81,10 +81,6 @@ const FeatureBento = () => {
           {/* Stats Card 2 */}
           <div className="bg-gray-950 rounded-3xl p-8 text-white flex flex-col justify-center gap-3 relative overflow-hidden group">
             <div className="absolute inset-0 bg-gradient-to-br from-purple-600/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
-            <span className="absolute top-5 right-5 flex w-3 h-3">
-              <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-blue-400 opacity-75"></span>
-              <span className="relative inline-flex w-3 h-3 rounded-full bg-blue-500"></span>
-            </span>
             <div className="relative z-10">
               <span className="text-5xl font-black bg-gradient-to-r from-blue-200 to-blue-600 bg-clip-text text-transparent">
                 4 yrs+
