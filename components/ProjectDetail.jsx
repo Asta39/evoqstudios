@@ -5,7 +5,7 @@ import Link from "next/link";
 import { Plus, ArrowRight } from "lucide-react";
 import { ServicePageShell } from "./ServicePageShell";
 import { ProjectCard } from "./ProjectCard";
-import { getAdjacentProjects, projects } from "../lib/projects";
+import { getAdjacentProjects } from "../lib/projects";
 
 const GRADIENT_MAP = {
   amber: "from-amber-400 via-amber-500 to-orange-600",
@@ -156,7 +156,7 @@ export function ProjectDetail({ project }) {
           <div>
             <h2 className="text-5xl sm:text-6xl font-bold text-apple-ink tracking-tight">Next projects.</h2>
             <span className="text-lg font-mono text-neutral-400 mt-1 block">
-              ({projects[0].year}&ndash;{projects[projects.length - 1].year}&copy;)
+              (2024&ndash;{new Date().getFullYear()}&copy;)
             </span>
           </div>
           <Link

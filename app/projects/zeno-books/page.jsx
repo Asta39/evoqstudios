@@ -3,7 +3,7 @@ import Link from "next/link";
 import { ArrowRight } from "lucide-react";
 import { ServicePageShell } from "../../../components/ServicePageShell";
 import { ProjectCard } from "../../../components/ProjectCard";
-import { getProject, getAdjacentProjects, projects } from "../../../lib/projects";
+import { getProject, getAdjacentProjects } from "../../../lib/projects";
 import { buildMetadata, breadcrumbJsonLd } from "../../../lib/seo";
 import { JsonLd } from "../../../components/JsonLd";
 
@@ -333,7 +333,7 @@ export default function ZenoBooksPage() {
             <div>
               <h2 className="text-5xl sm:text-6xl font-bold text-apple-ink tracking-tight">Next projects.</h2>
               <span className="text-lg font-mono text-neutral-400 mt-1 block">
-                ({projects[0].year}&ndash;{projects[projects.length - 1].year}&copy;)
+                (2024&ndash;{new Date().getFullYear()}&copy;)
               </span>
             </div>
             <Link
