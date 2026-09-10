@@ -69,10 +69,10 @@ const industries = [
 ];
 
 const techBadges = [
-  { cat: "Frontend", tools: ["Next.js 14", "React", "Tailwind CSS", "Framer Motion", "TypeScript"] },
-  { cat: "Backend", tools: ["Node.js", "Python", "FastAPI", "Express", "GraphQL", "tRPC"] },
-  { cat: "Database & Cloud", tools: ["PostgreSQL", "Redis", "Supabase", "AWS ECS", "Vercel", "Docker"] },
-  { cat: "AI & Data", tools: ["OpenAI GPT-4", "Claude 3.5", "LangChain", "Pinecone", "n8n"] },
+  { cat: "Frontend", tools: ["Next.js 16", "React 19", "TypeScript", "Tailwind CSS 4", "Framer Motion"] },
+  { cat: "Backend", tools: ["Node.js", "Drizzle ORM", "Supabase", "Postgres.js", "Resend"] },
+  { cat: "Database & Cloud", tools: ["PostgreSQL", "Supabase", "Vercel", "AWS", "Sentry"] },
+  { cat: "AI & Data", tools: ["Claude", "GPT-4o", "Groq", "OCR Pipelines"] },
 ];
 
 export default function CapabilitiesPage() {
