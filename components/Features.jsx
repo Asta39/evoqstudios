@@ -1,7 +1,8 @@
 "use client";
 
 import { HugeiconsIcon } from "@hugeicons/react";
-import { CodeIcon, SparklesIcon } from "@hugeicons/core-free-icons";
+import { SparklesIcon } from "@hugeicons/core-free-icons";
+import { projects } from "../lib/projects";
 
 const FeatureBento = () => {
   return (
@@ -44,11 +45,8 @@ const FeatureBento = () => {
           <div className="bg-gradient-to-br from-blue-300 to-blue-700 rounded-3xl p-8 flex flex-col justify-between relative overflow-hidden group transition-all">
             <div className="absolute -right-8 -top-8 w-32 h-32 bg-white/20 rounded-full blur-2xl transition-transform duration-500" />
             <div className="relative z-10">
-              <div className="w-14 h-14 text-white rounded-2xl bg-blue-600 backdrop-blur-sm flex items-center justify-center text-2xl mb-4">
-                <HugeiconsIcon icon={CodeIcon} size={24} strokeWidth={1.5} />
-              </div>
-              <h4 className="text-4xl font-black text-white mb-2">120+</h4>
-              <p className="text-neutral-100 font-medium">Systems Shipped</p>
+              <h4 className="text-4xl font-black text-white mb-2">{projects.length}</h4>
+              <p className="text-neutral-100 font-medium">Production Systems Shipped</p>
             </div>
           </div>
 
