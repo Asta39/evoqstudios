@@ -35,9 +35,19 @@ export function ProjectCard({ project }) {
         </div>
       </div>
 
-      {/* Preview Image / Gradient Placeholder */}
+      {/* Preview Video / Image / Gradient Placeholder */}
       <div className="relative aspect-[4/3] w-full overflow-hidden">
-        {project.image ? (
+        {project.video ? (
+          <video
+            src={project.video}
+            poster={project.image || undefined}
+            autoPlay
+            loop
+            muted
+            playsInline
+            className="absolute inset-0 w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+          />
+        ) : project.image ? (
           <Image
             src={project.image}
             alt={`${project.name} project preview`}
