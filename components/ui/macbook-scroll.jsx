@@ -32,10 +32,11 @@ export const MacbookScroll = ({
   const ref = useRef(null);
   const { scrollYProgress } = useScroll({
     target: ref,
-    offset: ["start start", "end start"],
+    offset: ["start start", "end end"],
   });
 
   const [isMobile, setIsMobile] = useState(false);
+  const [pinRange, setPinRange] = useState(0);
 
   useEffect(() => {
     if (typeof window !== "undefined" && window.innerWidth < 768) {
@@ -43,82 +44,81 @@ export const MacbookScroll = ({
     }
   }, []);
 
-  const scaleX = useTransform(
-    scrollYProgress,
-    [0, 0.3],
-    [1.2, isMobile ? 1 : 1.5]
-  );
-  const scaleY = useTransform(
-    scrollYProgress,
-    [0, 0.3],
-    [0.6, isMobile ? 1 : 1.5]
-  );
-  const translate = useTransform(scrollYProgress, [0, 1], [0, 1500]);
+  useEffect(() => {
+    const updatePinRange = () => {
+      if (ref.current) {
+        setPinRange(Math.max(ref.current.offsetHeight - window.innerHeight, 0));
+      }
+    };
+    updatePinRange();
+    window.addEventListener("resize", updatePinRange);
+    return () => window.removeEventListener("resize", updatePinRange);
+  }, []);
+
+  // Position: sticky breaks under an ancestor with overflow-x-hidden (it implicitly
+  // creates a scroll container), so the "pin" is emulated with a scroll-driven
+  // translateY that cancels the page scroll for the duration of this section.
+  const pinTranslate = useTransform(scrollYProgress, [0, 1], [0, pinRange]);
   const rotate = useTransform(scrollYProgress, [0.1, 0.12, 0.3], [-28, -28, 0]);
-  const textTransform = useTransform(scrollYProgress, [0, 0.3], [0, 100]);
-  const textOpacity = useTransform(scrollYProgress, [0, 0.2], [1, 0]);
+  const imageTranslate = useTransform(scrollYProgress, [0.15, 1], [0, 600]);
+  const imageScale = useTransform(scrollYProgress, [0.15, 1], [1, 1.6]);
 
   return (
-    <div
-      ref={ref}
-      className="flex min-h-[200vh] shrink-0 scale-[0.4] transform flex-col items-center justify-start py-0 [perspective:800px] sm:scale-50 md:scale-100 md:py-80"
-    >
-      <motion.h2
-        style={{
-          translateY: textTransform,
-          opacity: textOpacity,
-        }}
-        className="mb-20 text-center text-3xl font-bold text-neutral-800 dark:text-white"
-      >
-        {title || (
-          <span>
-            Enterprise Systems & Platforms. <br /> Built for Speed & Precision.
-          </span>
-        )}
-      </motion.h2>
-      {/* Lid */}
-      <Lid
-        src={src}
-        scaleX={scaleX}
-        scaleY={scaleY}
-        rotate={rotate}
-        translate={translate}
-      />
-      {/* Base area */}
-      <div className="relative -z-10 h-[22rem] w-[32rem] overflow-hidden rounded-2xl bg-gray-200 dark:bg-[#272729]">
-        {/* above keyboard bar */}
-        <div className="relative h-10 w-full">
-          <div className="absolute inset-x-0 mx-auto h-4 w-[80%] bg-[#050505]" />
-        </div>
-        <div className="relative flex">
-          <div className="mx-auto h-full w-[10%] overflow-hidden">
-            <SpeakerGrid />
-          </div>
-          <div className="mx-auto h-full w-[80%]">
-            <Keypad />
-          </div>
-          <div className="mx-auto h-full w-[10%] overflow-hidden">
-            <SpeakerGrid />
-          </div>
-        </div>
-        <Trackpad />
-        <div className="absolute inset-x-0 bottom-0 mx-auto h-2 w-20 rounded-tl-3xl rounded-tr-3xl bg-gradient-to-t from-[#272729] to-[#050505]" />
-        {showGradient && (
-          <div className="absolute inset-x-0 bottom-0 z-50 h-40 w-full bg-gradient-to-t from-white via-white to-transparent dark:from-black dark:via-black"></div>
-        )}
-        {badge && <div className="absolute bottom-4 left-4">{badge}</div>}
+    <section className="relative bg-white py-16 sm:py-20 border-t border-black/[0.06]">
+      <div className="max-w-[1240px] mx-auto px-4 mb-8 sm:mb-12 text-center">
+        <h2 className="text-4xl sm:text-5xl md:text-6xl font-bold tracking-tight text-apple-ink">
+          {title || (
+            <span>
+              Enterprise Systems & Platforms. <br /> Built for Speed & Precision.
+            </span>
+          )}
+        </h2>
       </div>
-    </div>
+      <div ref={ref} className="relative min-h-[180vh] sm:min-h-[220vh]">
+        <motion.div
+          style={{ translateY: pinTranslate }}
+          className="absolute inset-x-0 top-16 sm:top-20 flex justify-center"
+        >
+          <div className="flex shrink-0 scale-[0.4] transform flex-col items-center justify-center [perspective:800px] sm:scale-50 md:scale-100">
+            {/* Lid */}
+            <Lid
+              src={src}
+              rotate={rotate}
+              imageTranslate={imageTranslate}
+              imageScale={imageScale}
+            />
+            {/* Base area */}
+            <div className="relative -z-10 h-[22rem] w-[32rem] overflow-hidden rounded-2xl bg-gray-200 dark:bg-[#272729]">
+              {/* above keyboard bar */}
+              <div className="relative h-10 w-full">
+                <div className="absolute inset-x-0 mx-auto h-4 w-[80%] bg-[#050505]" />
+              </div>
+              <div className="relative flex">
+                <div className="mx-auto h-full w-[10%] overflow-hidden">
+                  <SpeakerGrid />
+                </div>
+                <div className="mx-auto h-full w-[80%]">
+                  <Keypad />
+                </div>
+                <div className="mx-auto h-full w-[10%] overflow-hidden">
+                  <SpeakerGrid />
+                </div>
+              </div>
+              <Trackpad />
+              <div className="absolute inset-x-0 bottom-0 mx-auto h-2 w-20 rounded-tl-3xl rounded-tr-3xl bg-gradient-to-t from-[#272729] to-[#050505]" />
+              {showGradient && (
+                <div className="absolute inset-x-0 bottom-0 z-50 h-40 w-full bg-gradient-to-t from-white via-white to-transparent dark:from-black dark:via-black"></div>
+              )}
+              {badge && <div className="absolute bottom-4 left-4">{badge}</div>}
+            </div>
+          </div>
+        </motion.div>
+      </div>
+    </section>
   );
 };
 
-export const Lid = ({
-  scaleX,
-  scaleY,
-  rotate,
-  translate,
-  src,
-}) => {
+export const Lid = ({ rotate, imageTranslate, imageScale, src }) => {
   return (
     <div className="relative [perspective:800px]">
       <div
@@ -142,22 +142,31 @@ export const Lid = ({
       </div>
       <motion.div
         style={{
-          scaleX: scaleX,
-          scaleY: scaleY,
           rotateX: rotate,
-          translateY: translate,
           transformStyle: "preserve-3d",
           transformOrigin: "top",
         }}
         className="absolute inset-0 h-96 w-[32rem] rounded-2xl bg-[#010101] p-2"
       >
         <div className="absolute inset-0 rounded-lg bg-[#272729]" />
-        <Image
-          src={src}
-          alt="Evoq Tech Platform Screenshot"
-          fill
-          className="rounded-lg object-cover object-left-top"
-        />
+      </motion.div>
+      {/* Screenshot: starts framed in the screen, then slides out below and grows */}
+      <motion.div
+        style={{
+          translateY: imageTranslate,
+          scale: imageScale,
+          transformOrigin: "center top",
+        }}
+        className="absolute inset-0 h-96 w-[32rem] p-2 z-30"
+      >
+        <div className="relative h-full w-full rounded-lg overflow-hidden shadow-2xl">
+          <Image
+            src={src}
+            alt="Evoq Tech Platform Screenshot"
+            fill
+            className="rounded-lg object-cover object-left-top"
+          />
+        </div>
       </motion.div>
     </div>
   );
