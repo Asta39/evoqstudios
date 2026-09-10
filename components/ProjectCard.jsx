@@ -11,6 +11,7 @@ const COLOR_MAP = {
   purple: "from-purple-400 via-purple-500 to-indigo-600",
   orange: "from-orange-400 via-orange-500 to-red-600",
   cyan: "from-cyan-400 via-cyan-500 to-blue-600",
+  slate: "from-slate-400 via-slate-500 to-slate-700",
 };
 
 export function ProjectCard({ project }) {
