@@ -1,7 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { Layers, Cpu, ArrowRight } from "lucide-react";
+import { Layers, Cpu } from "lucide-react";
 import { InteractiveGridPattern } from "./magicui/interactive-grid-pattern";
 import { FilesystemItem, evoqStudioNodes } from "./ui/filesystem-item";
 
@@ -103,17 +103,6 @@ export default function FileTreeSection() {
                 </p>
               </div>
             </div>
-          </div>
-
-          {/* CTA Link */}
-          <div className="pt-2">
-            <a
-              href="#contact"
-              className="inline-flex items-center gap-2 text-sm font-semibold text-apple-ink hover:text-apple-blue transition-colors group"
-            >
-              <span>Explore our stack</span>
-              <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />
-            </a>
           </div>
         </motion.div>
       </div>
