@@ -1,14 +1,6 @@
 "use client";
 
-import {
-  Server,
-  Database,
-  Cpu,
-  Zap,
-  ShieldCheck,
-  RefreshCw,
-  AlertTriangle,
-} from "lucide-react";
+import { Server } from "lucide-react";
 import { ZenoShowcaseSection } from "../../../components/ZenoShowcaseSection";
 import { ServicePageShell } from "../../../components/ServicePageShell";
 import { ServiceHero } from "../../../components/ServiceHero";
@@ -54,32 +46,26 @@ const approachSteps = [
 
 const capabilities = [
   {
-    icon: Server,
     title: "API Design & Development",
     desc: "RESTful and GraphQL APIs engineered for high-frequency throughput and deterministic security.",
   },
   {
-    icon: Cpu,
     title: "Microservices Architecture",
     desc: "Decoupled domain services that deploy independently and scale horizontally under load spikes.",
   },
   {
-    icon: Database,
     title: "Database Design & Optimization",
     desc: "Schema normalization, indexing strategies, partition management, and failover replication.",
   },
   {
-    icon: Zap,
     title: "Cloud Infrastructure & IaC",
     desc: "AWS, GCP, and Vercel deployments orchestrated via Terraform and automated GitHub Actions.",
   },
   {
-    icon: RefreshCw,
     title: "Legacy Modernization",
     desc: "Refactor and migrate aging monoliths to modern serverless or containerized stacks with zero downtime.",
   },
   {
-    icon: ShieldCheck,
     title: "System Integration",
     desc: "Connect legacy ERPs, payment gateways, and third-party APIs into unified, resilient workflows.",
   },
@@ -136,19 +122,21 @@ export default function SystemDevelopmentPage() {
             </h3>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+          <div>
             {problemPoints.map((item, idx) => (
               <div
                 key={idx}
-                className="p-6 rounded-2xl bg-neutral-50 border border-black/[0.06] flex flex-col justify-between gap-4"
+                className="grid grid-cols-1 lg:grid-cols-12 gap-4 lg:gap-12 py-8 border-t border-black/[0.06] last:border-b"
               >
-                <div className="w-10 h-10 rounded-xl bg-rose-500/10 text-rose-600 flex items-center justify-center">
-                  <AlertTriangle className="w-5 h-5" />
-                </div>
-                <div>
-                  <h4 className="text-lg font-semibold text-apple-ink mb-2">
+                <div className="lg:col-span-3 flex items-center gap-2.5 h-fit">
+                  <span className="w-6 h-6 rounded-full bg-rose-600 text-white flex items-center justify-center shrink-0 text-[10px] font-bold">
+                    {String(idx + 1).padStart(2, "0")}
+                  </span>
+                  <h4 className="text-lg font-semibold text-apple-ink">
                     {item.title}
                   </h4>
+                </div>
+                <div className="lg:col-span-9">
                   <p className="text-sm text-neutral-600 leading-relaxed font-normal">
                     {item.desc}
                   </p>
@@ -169,21 +157,25 @@ export default function SystemDevelopmentPage() {
             </h3>
           </div>
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+          <div>
             {approachSteps.map((step) => (
               <div
                 key={step.num}
-                className="p-6 rounded-2xl bg-white border border-black/10 shadow-sm flex flex-col gap-4 relative overflow-hidden group hover:border-black/20 transition-all"
+                className="grid grid-cols-1 lg:grid-cols-12 gap-4 lg:gap-12 py-8 border-t border-black/[0.06] last:border-b"
               >
-                <span className="text-4xl font-bold text-neutral-200 group-hover:text-black transition-colors font-mono">
-                  {step.num}
-                </span>
-                <h4 className="text-lg font-semibold text-apple-ink">
-                  {step.title}
-                </h4>
-                <p className="text-xs text-neutral-600 leading-relaxed">
-                  {step.desc}
-                </p>
+                <div className="lg:col-span-3 flex items-center gap-2.5 h-fit">
+                  <span className="w-6 h-6 rounded-full bg-black text-white flex items-center justify-center shrink-0 text-[10px] font-bold">
+                    {step.num}
+                  </span>
+                  <h4 className="text-lg font-semibold text-apple-ink">
+                    {step.title}
+                  </h4>
+                </div>
+                <div className="lg:col-span-9">
+                  <p className="text-sm text-neutral-600 leading-relaxed">
+                    {step.desc}
+                  </p>
+                </div>
               </div>
             ))}
           </div>
@@ -200,26 +192,27 @@ export default function SystemDevelopmentPage() {
             </h3>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {capabilities.map((cap, idx) => {
-              const IconComp = cap.icon;
-              return (
-                <div
-                  key={idx}
-                  className="p-6 rounded-2xl bg-neutral-50/70 border border-black/[0.06] hover:bg-white hover:shadow-md transition-all flex flex-col gap-3"
-                >
-                  <div className="w-10 h-10 rounded-xl bg-black text-white flex items-center justify-center">
-                    <IconComp className="w-5 h-5" />
-                  </div>
+          <div>
+            {capabilities.map((cap, idx) => (
+              <div
+                key={idx}
+                className="grid grid-cols-1 lg:grid-cols-12 gap-4 lg:gap-12 py-8 border-t border-black/[0.06] last:border-b"
+              >
+                <div className="lg:col-span-3 flex items-center gap-2.5 h-fit">
+                  <span className="w-6 h-6 rounded-full bg-black text-white flex items-center justify-center shrink-0 text-[10px] font-bold">
+                    {String(idx + 1).padStart(2, "0")}
+                  </span>
                   <h4 className="text-base font-semibold text-apple-ink">
                     {cap.title}
                   </h4>
-                  <p className="text-xs text-neutral-600 leading-relaxed">
+                </div>
+                <div className="lg:col-span-9">
+                  <p className="text-sm text-neutral-600 leading-relaxed">
                     {cap.desc}
                   </p>
                 </div>
-              );
-            })}
+              </div>
+            ))}
           </div>
         </section>
 

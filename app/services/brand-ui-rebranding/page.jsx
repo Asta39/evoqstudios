@@ -97,15 +97,15 @@ export default function BrandUiRebrandingPage() {
             </h3>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          <div>
             {rebrandTriggers.map((trigger, idx) => (
               <div
                 key={idx}
-                className="p-6 rounded-2xl bg-neutral-50 border border-black/[0.06] flex items-start gap-4"
+                className="flex items-center gap-4 py-6 border-t border-black/[0.06] last:border-b"
               >
-                <div className="w-8 h-8 rounded-full bg-rose-500/10 text-rose-600 flex items-center justify-center shrink-0 font-bold text-xs">
-                  0{idx + 1}
-                </div>
+                <span className="w-6 h-6 rounded-full bg-rose-600 text-white flex items-center justify-center shrink-0 text-[10px] font-bold">
+                  {String(idx + 1).padStart(2, "0")}
+                </span>
                 <p className="text-sm font-medium text-apple-ink leading-relaxed">
                   {trigger}
                 </p>
@@ -151,18 +151,25 @@ export default function BrandUiRebrandingPage() {
             </h3>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          <div>
             {serviceBreakdown.map((item, idx) => (
               <div
                 key={idx}
-                className="p-6 rounded-2xl bg-white border border-black/10 shadow-sm flex flex-col gap-2 hover:border-black/20 transition-all"
+                className="grid grid-cols-1 lg:grid-cols-12 gap-4 lg:gap-12 py-8 border-t border-black/[0.06] last:border-b"
               >
-                <h4 className="text-base font-semibold text-apple-ink">
-                  {item.title}
-                </h4>
-                <p className="text-xs text-neutral-600 leading-relaxed font-normal">
-                  {item.desc}
-                </p>
+                <div className="lg:col-span-3 flex items-center gap-2.5 h-fit">
+                  <span className="w-6 h-6 rounded-full bg-black text-white flex items-center justify-center shrink-0 text-[10px] font-bold">
+                    {String(idx + 1).padStart(2, "0")}
+                  </span>
+                  <h4 className="text-base font-semibold text-apple-ink">
+                    {item.title}
+                  </h4>
+                </div>
+                <div className="lg:col-span-9">
+                  <p className="text-sm text-neutral-600 leading-relaxed font-normal">
+                    {item.desc}
+                  </p>
+                </div>
               </div>
             ))}
           </div>
@@ -176,9 +183,9 @@ export default function BrandUiRebrandingPage() {
                 The 6-Step Rebrand Journey
               </h3>
 
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+              <div>
                 {processSteps.map((step) => (
-                  <div key={step.num} className="p-4 rounded-xl bg-neutral-50 border border-black/5">
+                  <div key={step.num} className="py-5 border-t border-black/[0.06] last:border-b">
                     <span className="text-xs font-mono font-bold text-rose-600 block mb-1">
                       PHASE {step.num}
                     </span>

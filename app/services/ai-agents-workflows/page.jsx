@@ -1,15 +1,6 @@
 "use client";
 
-import {
-  Sparkles,
-  MessageSquare,
-  FileText,
-  Workflow,
-  ShieldCheck,
-  Code2,
-  Lock,
-  CheckCircle2,
-} from "lucide-react";
+import { Sparkles, Lock, CheckCircle2 } from "lucide-react";
 
 import { AiKpiCardsSection } from "../../../components/AiKpiCardsSection";
 import { ServicePageShell } from "../../../components/ServicePageShell";
@@ -20,27 +11,22 @@ const agentTypes = [
   {
     title: "WhatsApp-First Support Agents",
     desc: "24/7 intelligent conversational agents on the channel your customers actually use — trained on your catalog, brand voice, and Kenyan English + Swahili + Sheng.",
-    icon: MessageSquare,
   },
   {
     title: "Document Intelligence Agents",
     desc: "OCR + LLM pipelines that parse CR12s, KRA PIN certificates, BRS filings, contracts, and lease agreements — extracting key fields and flagging compliance anomalies.",
-    icon: FileText,
   },
   {
     title: "Operations Automation (M-Pesa + Paystack + KRA)",
     desc: "Connect internal tools, webhooks, and regional payment rails to execute multi-step business actions automatically — reconciliation, payout splits, and fiscal logging.",
-    icon: Workflow,
   },
   {
     title: "Customer Data & KYC Agents",
     desc: "Clean, classify, and enrich inbound customer records at scale — including automated KYC checks against CR12, Kenya Sanctions List, and OpenCorporates.",
-    icon: ShieldCheck,
   },
   {
     title: "Internal Engineering Copilots",
     desc: "Repo-aware assistants fine-tuned on your internal architecture, conventions, and the local regulatory context your code lives in.",
-    icon: Code2,
   },
 ];
 
@@ -157,26 +143,27 @@ export default function AiAgentsWorkflowsPage() {
             </h3>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {agentTypes.map((item, idx) => {
-              const Icon = item.icon;
-              return (
-                <div
-                  key={idx}
-                  className="p-6 rounded-2xl bg-neutral-50/80 border border-black/[0.06] flex flex-col gap-4 hover:bg-white hover:border-purple-500/30 hover:shadow-md transition-all"
-                >
-                  <div className="w-10 h-10 rounded-xl bg-purple-600 text-white flex items-center justify-center">
-                    <Icon className="w-5 h-5" />
-                  </div>
+          <div>
+            {agentTypes.map((item, idx) => (
+              <div
+                key={idx}
+                className="grid grid-cols-1 lg:grid-cols-12 gap-4 lg:gap-12 py-8 border-t border-black/[0.06] last:border-b"
+              >
+                <div className="lg:col-span-3 flex items-center gap-2.5 h-fit">
+                  <span className="w-6 h-6 rounded-full bg-purple-600 text-white flex items-center justify-center shrink-0 text-[10px] font-bold">
+                    {String(idx + 1).padStart(2, "0")}
+                  </span>
                   <h4 className="text-lg font-semibold text-apple-ink">
                     {item.title}
                   </h4>
-                  <p className="text-xs text-neutral-600 leading-relaxed font-normal">
+                </div>
+                <div className="lg:col-span-9">
+                  <p className="text-sm text-neutral-600 leading-relaxed font-normal">
                     {item.desc}
                   </p>
                 </div>
-              );
-            })}
+              </div>
+            ))}
           </div>
         </section>
 
@@ -224,21 +211,25 @@ export default function AiAgentsWorkflowsPage() {
             </h3>
           </div>
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-4">
+          <div>
             {buildSteps.map((step) => (
               <div
                 key={step.num}
-                className="p-5 rounded-2xl bg-white border border-black/10 flex flex-col gap-3"
+                className="grid grid-cols-1 lg:grid-cols-12 gap-4 lg:gap-12 py-8 border-t border-black/[0.06] last:border-b"
               >
-                <span className="text-xs font-mono font-bold text-purple-600">
-                  STEP {step.num}
-                </span>
-                <h4 className="text-sm font-semibold text-apple-ink">
-                  {step.title}
-                </h4>
-                <p className="text-xs text-neutral-500 leading-normal">
-                  {step.desc}
-                </p>
+                <div className="lg:col-span-3 flex items-center gap-2.5 h-fit">
+                  <span className="w-6 h-6 rounded-full bg-purple-600 text-white flex items-center justify-center shrink-0 text-[10px] font-bold">
+                    {step.num}
+                  </span>
+                  <h4 className="text-sm font-semibold text-apple-ink">
+                    {step.title}
+                  </h4>
+                </div>
+                <div className="lg:col-span-9">
+                  <p className="text-sm text-neutral-500 leading-relaxed">
+                    {step.desc}
+                  </p>
+                </div>
               </div>
             ))}
           </div>
@@ -252,9 +243,9 @@ export default function AiAgentsWorkflowsPage() {
               <h3 className="text-2xl sm:text-3xl font-semibold text-apple-ink mb-6">
                 Proven Regional Impact Scenarios
               </h3>
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+              <div>
                 {useCases.map((uc, idx) => (
-                  <div key={idx} className="p-5 rounded-2xl bg-neutral-50/90 border border-black/[0.06] flex flex-col gap-2 hover:bg-white hover:shadow-sm transition-all">
+                  <div key={idx} className="py-6 border-t border-black/[0.06] last:border-b flex flex-col gap-2">
                     <span className="text-xs font-semibold uppercase tracking-wider text-purple-600 block">
                       {uc.sector}
                     </span>

@@ -1,14 +1,6 @@
 "use client";
 
-import {
-  Globe,
-  Layout,
-  ShoppingBag,
-  BookOpen,
-  Sliders,
-  Gauge,
-  CheckCircle,
-} from "lucide-react";
+import { Globe, Gauge, CheckCircle } from "lucide-react";
 
 import { LunaGraphicsSearchConsoleSection } from "../../../components/LunaGraphicsSearchConsoleSection";
 import { ServicePageShell } from "../../../components/ServicePageShell";
@@ -19,27 +11,22 @@ const websiteTypes = [
   {
     title: "Marketing Sites",
     desc: "High-impact landing pages that articulate your positioning and drive high-converting leads.",
-    icon: Layout,
   },
   {
     title: "Product Sites",
     desc: "Feature-rich interactive showcases for SaaS products, Developer APIs, and digital platforms.",
-    icon: Globe,
   },
   {
     title: "E-Commerce",
     desc: "Custom Shopify & Headless storefronts optimized for blazing checkout velocity and high AOV.",
-    icon: ShoppingBag,
   },
   {
     title: "Portfolio & Editorial",
     desc: "Content-heavy digital publications and studio portfolios with bespoke typography.",
-    icon: BookOpen,
   },
   {
     title: "Internal Tools",
     desc: "Custom web applications, dashboards, and operational portals your team actually enjoys using.",
-    icon: Sliders,
   },
 ];
 
@@ -122,26 +109,27 @@ export default function WebsiteDevelopmentPage() {
             </h3>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {websiteTypes.map((item, idx) => {
-              const Icon = item.icon;
-              return (
-                <div
-                  key={idx}
-                  className="p-6 rounded-2xl bg-neutral-50/80 border border-black/[0.06] flex flex-col gap-4 hover:bg-white hover:shadow-md transition-all"
-                >
-                  <div className="w-10 h-10 rounded-xl bg-black text-white flex items-center justify-center">
-                    <Icon className="w-5 h-5" />
-                  </div>
+          <div>
+            {websiteTypes.map((item, idx) => (
+              <div
+                key={idx}
+                className="grid grid-cols-1 lg:grid-cols-12 gap-4 lg:gap-12 py-8 border-t border-black/[0.06] last:border-b"
+              >
+                <div className="lg:col-span-3 flex items-center gap-2.5 h-fit">
+                  <span className="w-6 h-6 rounded-full bg-black text-white flex items-center justify-center shrink-0 text-[10px] font-bold">
+                    {String(idx + 1).padStart(2, "0")}
+                  </span>
                   <h4 className="text-lg font-semibold text-apple-ink">
                     {item.title}
                   </h4>
-                  <p className="text-xs text-neutral-600 leading-relaxed font-normal">
+                </div>
+                <div className="lg:col-span-9">
+                  <p className="text-sm text-neutral-600 leading-relaxed font-normal">
                     {item.desc}
                   </p>
                 </div>
-              );
-            })}
+              </div>
+            ))}
           </div>
         </section>
 

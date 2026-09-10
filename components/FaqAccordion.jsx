@@ -12,25 +12,22 @@ export function FaqAccordion({ faqs }) {
         Frequently Asked Questions
       </h3>
 
-      <div className="flex flex-col gap-3">
+      <div>
         {faqs.map((faq, idx) => (
-          <div
-            key={idx}
-            className="rounded-2xl bg-neutral-50 border border-black/[0.06] overflow-hidden transition-all"
-          >
+          <div key={idx} className="border-t border-black/[0.06] last:border-b">
             <button
               onClick={() => setOpenFaq(openFaq === idx ? null : idx)}
-              className="w-full p-5 text-left flex items-center justify-between font-semibold text-sm text-apple-ink"
+              className="w-full py-5 text-left flex items-center justify-between gap-4 font-semibold text-sm text-apple-ink"
             >
               <span>{faq.q}</span>
               <ChevronDown
-                className={`w-4 h-4 transition-transform ${
+                className={`w-4 h-4 shrink-0 transition-transform ${
                   openFaq === idx ? "rotate-180" : ""
                 }`}
               />
             </button>
             {openFaq === idx && (
-              <div className="px-5 pb-5 text-xs text-neutral-600 leading-relaxed border-t border-black/[0.04] pt-3">
+              <div className="pb-5 text-xs text-neutral-600 leading-relaxed">
                 {faq.a}
               </div>
             )}

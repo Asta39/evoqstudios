@@ -2,17 +2,7 @@
 
 import dynamic from "next/dynamic";
 import { motion } from "framer-motion";
-import {
-  Layers,
-  Lightbulb,
-  Palette,
-  Code2,
-  Cpu,
-  TrendingUp,
-  ArrowRight,
-  CheckCircle2,
-  Building2,
-} from "lucide-react";
+import { Building2 } from "lucide-react";
 
 import { ShootingStars } from "../../../components/ui/shooting-stars";
 import { StarsBackground } from "../../../components/ui/stars-background";
@@ -25,27 +15,22 @@ const CinematicFooter = dynamic(
 
 const capabilityCategories = [
   {
-    icon: Lightbulb,
     title: "Strategy",
     items: ["Product Strategy", "Technical Roadmapping", "System Audit", "Digital Transformation Consulting"],
   },
   {
-    icon: Palette,
     title: "Design",
     items: ["Brand Identity & Systems", "UI/UX Architecture", "Interactive Prototyping", "Motion & Micro-interactions"],
   },
   {
-    icon: Code2,
     title: "Engineering",
     items: ["Next.js Frontend", "Node.js & Python Backends", "GraphQL / REST APIs", "Database & IaC Cloud"],
   },
   {
-    icon: Cpu,
     title: "AI & Automation",
     items: ["LLM & RAG Integration", "Custom AI Support Agents", "Workflow Automation (n8n/Make)", "Data Pipelines"],
   },
   {
-    icon: TrendingUp,
     title: "Growth",
     items: ["Core Web Vitals SEO", "Conversion Optimization", "Vercel Edge Caching", "Analytics & Tracking"],
   },
@@ -129,34 +114,29 @@ export default function CapabilitiesPage() {
             </h3>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {capabilityCategories.map((cat, idx) => {
-              const Icon = cat.icon;
-              return (
-                <div
-                  key={idx}
-                  className="p-6 rounded-2xl bg-neutral-50 border border-black/[0.06] flex flex-col gap-4"
-                >
-                  <div className="flex items-center gap-3">
-                    <div className="w-9 h-9 rounded-xl bg-black text-white flex items-center justify-center">
-                      <Icon className="w-4.5 h-4.5" />
-                    </div>
-                    <h4 className="text-lg font-semibold text-apple-ink">
-                      {cat.title}
-                    </h4>
-                  </div>
-
-                  <ul className="flex flex-col gap-2 pt-2 border-t border-black/[0.04]">
-                    {cat.items.map((item, i) => (
-                      <li key={i} className="flex items-center gap-2 text-xs text-neutral-700 font-medium">
-                        <CheckCircle2 className="w-3.5 h-3.5 text-emerald-600 shrink-0" />
-                        <span>{item}</span>
-                      </li>
-                    ))}
-                  </ul>
+          <div>
+            {capabilityCategories.map((cat, idx) => (
+              <div
+                key={idx}
+                className="grid grid-cols-1 lg:grid-cols-12 gap-4 lg:gap-12 py-8 border-t border-black/[0.06] last:border-b"
+              >
+                <div className="lg:col-span-3 flex items-center gap-2.5 h-fit">
+                  <span className="w-6 h-6 rounded-full bg-black text-white flex items-center justify-center shrink-0 text-[10px] font-bold">
+                    {String(idx + 1).padStart(2, "0")}
+                  </span>
+                  <h4 className="text-lg font-semibold text-apple-ink">
+                    {cat.title}
+                  </h4>
                 </div>
-              );
-            })}
+                <div className="lg:col-span-9 flex flex-wrap gap-x-6 gap-y-2">
+                  {cat.items.map((item, i) => (
+                    <span key={i} className="text-sm text-neutral-600 font-medium">
+                      {item}
+                    </span>
+                  ))}
+                </div>
+              </div>
+            ))}
           </div>
         </section>
 
@@ -171,20 +151,27 @@ export default function CapabilitiesPage() {
             </h3>
           </div>
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+          <div>
             {engagementModels.map((em, idx) => (
               <div
                 key={idx}
-                className="p-6 rounded-2xl bg-white border border-black/10 shadow-sm flex flex-col justify-between gap-4"
+                className="grid grid-cols-1 lg:grid-cols-12 gap-4 lg:gap-12 py-8 border-t border-black/[0.06] last:border-b"
               >
-                <div>
-                  <span className="text-[11px] font-semibold uppercase tracking-wider text-apple-blue block mb-3">
-                    {em.tag}
+                <div className="lg:col-span-3 flex items-start gap-2.5 h-fit">
+                  <span className="w-6 h-6 rounded-full bg-black text-white flex items-center justify-center shrink-0 text-[10px] font-bold">
+                    {String(idx + 1).padStart(2, "0")}
                   </span>
-                  <h4 className="text-lg font-semibold text-apple-ink mb-2">
-                    {em.title}
-                  </h4>
-                  <p className="text-xs text-neutral-600 leading-relaxed">
+                  <div>
+                    <span className="text-[11px] font-semibold uppercase tracking-wider text-apple-blue block mb-1">
+                      {em.tag}
+                    </span>
+                    <h4 className="text-base font-semibold text-apple-ink">
+                      {em.title}
+                    </h4>
+                  </div>
+                </div>
+                <div className="lg:col-span-9">
+                  <p className="text-sm text-neutral-600 leading-relaxed">
                     {em.desc}
                   </p>
                 </div>
