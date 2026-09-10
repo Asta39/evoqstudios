@@ -1,7 +1,5 @@
 "use client";
 
-import { HugeiconsIcon } from "@hugeicons/react";
-import { SparklesIcon } from "@hugeicons/core-free-icons";
 import { projects } from "../lib/projects";
 
 const FeatureBento = () => {
@@ -42,19 +40,16 @@ const FeatureBento = () => {
           </div>
 
           {/* Stats Card 1 */}
-          <div className="bg-gradient-to-br from-blue-300 to-blue-700 rounded-3xl p-8 flex flex-col justify-between relative overflow-hidden group transition-all">
+          <div className="bg-gradient-to-br from-blue-300 to-blue-700 rounded-3xl p-8 flex flex-col justify-center relative overflow-hidden group transition-all">
             <div className="absolute -right-8 -top-8 w-32 h-32 bg-white/20 rounded-full blur-2xl transition-transform duration-500" />
             <div className="relative z-10">
-              <h4 className="text-4xl font-black text-white mb-2">{projects.length}</h4>
-              <p className="text-neutral-100 font-medium">Production Systems Shipped</p>
+              <h4 className="text-8xl sm:text-9xl font-black text-white leading-none mb-3">{projects.length}</h4>
+              <p className="text-white text-xl font-bold tracking-tight">Production Platforms Shipped</p>
             </div>
           </div>
 
           {/* Feature Card */}
-          <div className="bg-white rounded-3xl p-8 flex flex-col justify-between border border-neutral-200 transition-all group">
-            <div className="w-12 h-12 rounded-lg bg-gradient-to-br from-blue-500 to-cyan-400 flex items-center justify-center text-white text-xl font-bold transition-transform">
-              <HugeiconsIcon icon={SparklesIcon} size={24} strokeWidth={1.5} />
-            </div>
+          <div className="bg-white rounded-3xl p-8 flex flex-col justify-center border border-neutral-200 transition-all group">
             <div className="space-y-2">
               <h4 className="text-2xl font-bold text-[#1d1d1f]">
                 AI That Works
