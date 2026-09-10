@@ -9,6 +9,25 @@ import { JsonLd } from "../../../components/JsonLd";
 
 const project = getProject("zeno-books");
 
+const gallery = [
+  { src: "/gallery/zeno-books-1.png", alt: "Home dashboard — KPI cards, invoice/quote overview" },
+  { src: "/gallery/zeno-books-2.png", alt: "Customers & Vendors list" },
+  { src: "/gallery/zeno-books-3.png", alt: "Quotes — status totals and list" },
+  { src: "/gallery/zeno-books-4.png", alt: "Invoices — Draft/Pending/Partial/Overdue/Paid totals" },
+  { src: "/gallery/zeno-books-5.png", alt: "Payments Received and Credit Notes" },
+  { src: "/gallery/zeno-books-6.png", alt: "Expenses and Expense Claims" },
+  { src: "/gallery/zeno-books-7.png", alt: "Bills and Purchase Orders" },
+  { src: "/gallery/zeno-books-8.png", alt: "Items, Stock & Warehouses" },
+  { src: "/gallery/zeno-books-9.png", alt: "Bank & M-Pesa — accounts, reconcile, transfer" },
+  { src: "/gallery/zeno-books-10.png", alt: "Accountant — Chart of Accounts and journal tools" },
+  { src: "/gallery/zeno-books-11.png", alt: "Reports & Analytics" },
+  { src: "/gallery/zeno-books-12.png", alt: "Payroll runs and employees" },
+  { src: "/gallery/zeno-books-13.png", alt: "Recurring Templates" },
+  { src: "/gallery/zeno-books-14.png", alt: "Staff & Roles — the full permission matrix, live" },
+  { src: "/gallery/zeno-books-15.png", alt: "Settings & Billing" },
+  { src: "/gallery/zeno-books-16.png", alt: "Campaigns — compose and send" },
+];
+
 export function generateMetadata() {
   return buildMetadata({
     title: `${project.name} — Case Study`,
@@ -191,14 +210,20 @@ export default function ZenoBooksPage() {
           </div>
         </div>
 
-        {/* Hero Screenshot */}
+        {/* Image Gallery */}
         <section className="max-w-[1240px] mx-auto py-16">
-          <div className="relative aspect-video rounded-2xl overflow-hidden border border-black/[0.06] shadow-sm">
-            <Image src="/showcase-zeno.png" alt="Zeno Books home dashboard" fill className="object-cover object-top" />
+          <div className="grid grid-cols-2 sm:grid-cols-3 gap-4">
+            {gallery.map((g, i) => (
+              <div
+                key={g.src}
+                className={`relative aspect-video rounded-2xl overflow-hidden border border-black/[0.06] ${
+                  i === 0 ? "col-span-2 sm:col-span-3" : ""
+                }`}
+              >
+                <Image src={g.src} alt={g.alt} fill className="object-cover object-top" />
+              </div>
+            ))}
           </div>
-          <p className="text-sm text-neutral-400 mt-3">
-            Home dashboard — cash position, money owed, VAT due to KRA, and invoice status at a glance.
-          </p>
         </section>
 
         {/* The Big Picture */}
