@@ -66,7 +66,7 @@ export default function FileTreeSection() {
           {/* Heading */}
           <h2 className="text-3xl sm:text-4xl md:text-5xl font-semibold text-apple-ink tracking-tight leading-[1.12]">
             Crafted for speed. <br />
-            <span className="text-neutral-400">Structured for scale.</span>
+            <span className="font-cursive text-neutral-400 font-normal">Structured for scale.</span>
           </h2>
 
           {/* Subheading / Description */}
