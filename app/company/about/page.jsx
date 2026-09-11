@@ -123,7 +123,7 @@ export default function AboutPage() {
                 "/showcase-nova.jpg",
               ]}
               imageLinks={[
-                "https://zenoaccounts.com",
+                "https://zenobooks.co.ke",
                 "https://lunagraphics.co.ke",
                 "https://novaluxuryeventske.com",
               ]}
