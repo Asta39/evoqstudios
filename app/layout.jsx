@@ -85,7 +85,7 @@ const jsonLdSchema = {
   priceRange: "$$$",
   address: {
     "@type": "PostalAddress",
-    addressLocality: "Nairobi",
+    addressLocality: "Nairobi CBD",
     addressCountry: "KE",
   },
   geo: {
