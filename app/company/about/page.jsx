@@ -16,10 +16,9 @@ import {
 import { AsciiArtHeroBackground } from "../../../components/ui/ascii-art-text";
 import { ImagesBadge } from "../../../components/ui/images-badge";
 
-const Header = dynamic(() => import("../../../components/Header"), { ssr: false });
+const Header = dynamic(() => import("../../../components/Header"));
 const CinematicFooter = dynamic(
-  () => import("../../../components/ui/motion-footer").then((mod) => mod.CinematicFooter),
-  { ssr: false }
+  () => import("../../../components/ui/motion-footer").then((mod) => mod.CinematicFooter)
 );
 
 const values = [

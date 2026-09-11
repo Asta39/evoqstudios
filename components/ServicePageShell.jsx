@@ -2,10 +2,9 @@
 
 import dynamic from "next/dynamic";
 
-const Header = dynamic(() => import("./Header"), { ssr: false });
+const Header = dynamic(() => import("./Header"));
 const CinematicFooter = dynamic(
-  () => import("./ui/motion-footer").then((mod) => mod.CinematicFooter),
-  { ssr: false }
+  () => import("./ui/motion-footer").then((mod) => mod.CinematicFooter)
 );
 
 export function ServicePageShell({ children }) {

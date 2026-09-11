@@ -7,10 +7,9 @@ import { Building2 } from "lucide-react";
 import { ShootingStars } from "../../../components/ui/shooting-stars";
 import { StarsBackground } from "../../../components/ui/stars-background";
 
-const Header = dynamic(() => import("../../../components/Header"), { ssr: false });
+const Header = dynamic(() => import("../../../components/Header"));
 const CinematicFooter = dynamic(
-  () => import("../../../components/ui/motion-footer").then((mod) => mod.CinematicFooter),
-  { ssr: false }
+  () => import("../../../components/ui/motion-footer").then((mod) => mod.CinematicFooter)
 );
 
 const capabilityCategories = [

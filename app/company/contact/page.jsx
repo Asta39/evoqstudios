@@ -15,10 +15,9 @@ import WorldMap from "../../../components/ui/world-map";
 import { FaqAccordion } from "../../../components/FaqAccordion";
 import { Ripple } from "../../../components/ui/ripple";
 
-const Header = dynamic(() => import("../../../components/Header"), { ssr: false });
+const Header = dynamic(() => import("../../../components/Header"));
 const CinematicFooter = dynamic(
-  () => import("../../../components/ui/motion-footer").then((mod) => mod.CinematicFooter),
-  { ssr: false }
+  () => import("../../../components/ui/motion-footer").then((mod) => mod.CinematicFooter)
 );
 
 const faqs = [

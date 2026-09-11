@@ -3,10 +3,9 @@
 import dynamic from "next/dynamic";
 import { FileText } from "lucide-react";
 
-const Header = dynamic(() => import("../../components/Header"), { ssr: false });
+const Header = dynamic(() => import("../../components/Header"));
 const CinematicFooter = dynamic(
-  () => import("../../components/ui/motion-footer").then((mod) => mod.CinematicFooter),
-  { ssr: false }
+  () => import("../../components/ui/motion-footer").then((mod) => mod.CinematicFooter)
 );
 
 const termsSections = [

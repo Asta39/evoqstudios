@@ -5,10 +5,9 @@ import { motion } from "framer-motion";
 
 import { LampContainer } from "../../../components/ui/lamp";
 
-const Header = dynamic(() => import("../../../components/Header"), { ssr: false });
+const Header = dynamic(() => import("../../../components/Header"));
 const CinematicFooter = dynamic(
-  () => import("../../../components/ui/motion-footer").then((mod) => mod.CinematicFooter),
-  { ssr: false }
+  () => import("../../../components/ui/motion-footer").then((mod) => mod.CinematicFooter)
 );
 
 const principles = [

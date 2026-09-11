@@ -2,21 +2,19 @@
 
 import dynamic from "next/dynamic";
 
-const Header = dynamic(() => import("../components/Header"), { ssr: false });
-const VideoHero = dynamic(() => import("../components/VideoHero"), { ssr: false });
-const VideoShowcase = dynamic(() => import("../components/VideoShowcase"), { ssr: false });
+const Header = dynamic(() => import("../components/Header"));
+const VideoHero = dynamic(() => import("../components/VideoHero"));
+const VideoShowcase = dynamic(() => import("../components/VideoShowcase"));
 const ProjectsSection = dynamic(
-  () => import("../components/ProjectsSection").then((mod) => mod.ProjectsSection),
-  { ssr: false }
+  () => import("../components/ProjectsSection").then((mod) => mod.ProjectsSection)
 );
-const Features = dynamic(() => import("../components/Features"), { ssr: false });
-const TechOrbit = dynamic(() => import("../components/TechOrbit"), { ssr: false });
-const FileTreeSection = dynamic(() => import("../components/FileTreeSection"), { ssr: false });
-const MacbookScroll = dynamic(() => import("../components/ui/macbook-scroll").then((mod) => mod.MacbookScroll), { ssr: false });
-const Testimonials = dynamic(() => import("../components/ui/testimonials"), { ssr: false });
+const Features = dynamic(() => import("../components/Features"));
+const TechOrbit = dynamic(() => import("../components/TechOrbit"));
+const FileTreeSection = dynamic(() => import("../components/FileTreeSection"));
+const MacbookScroll = dynamic(() => import("../components/ui/macbook-scroll").then((mod) => mod.MacbookScroll));
+const Testimonials = dynamic(() => import("../components/ui/testimonials"));
 const CinematicFooter = dynamic(
-  () => import("../components/ui/motion-footer").then((mod) => mod.CinematicFooter),
-  { ssr: false }
+  () => import("../components/ui/motion-footer").then((mod) => mod.CinematicFooter)
 );
 
 export default function Home() {
