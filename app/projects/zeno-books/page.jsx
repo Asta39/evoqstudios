@@ -31,7 +31,8 @@ const gallery = [
 export function generateMetadata() {
   return buildMetadata({
     title: `${project.name} — Case Study`,
-    description: project.tagline,
+    description:
+      "Zeno Books is the invoicing and double-entry accounting core of the Zeno platform — quotes, invoices, KRA-compliant VAT, and M-Pesa reconciliation, built in.",
     path: `/projects/${project.slug}`,
   });
 }

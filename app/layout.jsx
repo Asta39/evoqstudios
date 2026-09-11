@@ -4,12 +4,15 @@ import { BottomScrollBlur } from "../components/BottomScrollBlur";
 
 export const metadata = {
   metadataBase: new URL("https://www.evoqstudioke.com"),
+  alternates: {
+    canonical: "/",
+  },
   title: {
     default: "Evoq Studio — Software Engineering, Digital Platforms & AI Systems",
     template: "%s | Evoq Studio",
   },
   description:
-    "Evoq Studio is an independent digital engineering studio in Nairobi, Kenya, crafting high-performance web applications, custom enterprise systems, brand rebrandings, and intelligent AI agent workflows.",
+    "Evoq Studio is an independent digital engineering studio in Nairobi, Kenya, building high-performance web apps, enterprise systems, and AI agent workflows.",
   keywords: [
     "Evoq Studio",
     "System Development",

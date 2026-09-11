@@ -12,7 +12,8 @@ const project = getProject("zeno-events");
 export function generateMetadata() {
   return buildMetadata({
     title: `${project.name} — Case Study`,
-    description: project.tagline,
+    description:
+      "Zeno Events is the event operations module of the Zeno platform — leads, quotes, event inventory, contracts, and a client portal, all in one system.",
     path: `/projects/${project.slug}`,
   });
 }

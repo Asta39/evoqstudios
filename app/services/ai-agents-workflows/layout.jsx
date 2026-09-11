@@ -1,5 +1,6 @@
-import { buildMetadata, breadcrumbJsonLd, serviceJsonLd } from "../../../lib/seo";
+import { buildMetadata, breadcrumbJsonLd, serviceJsonLd, faqJsonLd } from "../../../lib/seo";
 import { JsonLd } from "../../../components/JsonLd";
+import { faqs } from "./faqs";
 
 const PATH = "/services/ai-agents-workflows";
 
@@ -21,6 +22,7 @@ export default function AiAgentsWorkflowsLayout({ children }) {
             description: metadata.description,
             path: PATH,
           }),
+          faqJsonLd(faqs),
         ]}
       />
       {children}

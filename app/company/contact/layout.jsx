@@ -1,5 +1,6 @@
-import { buildMetadata, breadcrumbJsonLd } from "../../../lib/seo";
+import { buildMetadata, breadcrumbJsonLd, faqJsonLd } from "../../../lib/seo";
 import { JsonLd } from "../../../components/JsonLd";
+import { faqs } from "./faqs";
 
 export const metadata = buildMetadata({
   title: "Contact Us",
@@ -11,7 +12,12 @@ export const metadata = buildMetadata({
 export default function ContactLayout({ children }) {
   return (
     <>
-      <JsonLd data={breadcrumbJsonLd([{ name: "Home", path: "/" }, { name: "Contact", path: "/company/contact" }])} />
+      <JsonLd
+        data={[
+          breadcrumbJsonLd([{ name: "Home", path: "/" }, { name: "Contact", path: "/company/contact" }]),
+          faqJsonLd(faqs),
+        ]}
+      />
       {children}
     </>
   );
