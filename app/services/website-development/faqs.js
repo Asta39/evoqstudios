@@ -1,7 +1,7 @@
 export const faqs = [
   {
     q: "How much does a custom website cost?",
-    a: "Custom website builds start at $5,000 for focused marketing sites and range up to $25,000+ for enterprise headless applications and complex web products.",
+    a: "Custom website builds start at $800 for focused marketing sites and range up to $5,000 for enterprise headless applications and complex web products.",
   },
   {
     q: "What CMS do you recommend?",
