@@ -5,9 +5,9 @@ import { faqs } from "./faqs";
 const PATH = "/services/ai-agents-workflows";
 
 export const metadata = buildMetadata({
-  title: "AI Agents & Workflows",
+  title: "AI Agent & Workflow Development in Nairobi",
   description:
-    "Autonomous AI agents and workflows engineered into M-Pesa Daraja, KRA eTIMS, BRS lookup, Paystack, and document OCR systems — not generic AI wrappers.",
+    "Autonomous AI agents wired into M-Pesa Daraja, KRA eTIMS, BRS lookup, and OCR systems — engineered remotely from Nairobi, Kenya, not generic AI wrappers.",
   path: PATH,
 });
 

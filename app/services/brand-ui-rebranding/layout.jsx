@@ -5,9 +5,9 @@ import { faqs } from "./faqs";
 const PATH = "/services/brand-ui-rebranding";
 
 export const metadata = buildMetadata({
-  title: "Brand & UI Rebranding",
+  title: "Brand & UI Rebranding in Nairobi, Kenya",
   description:
-    "Strategic rebranding and UI overhauls that align your visual identity with where your business is going.",
+    "Strategic rebranding and UI overhauls that align your visual identity with your business — delivered remotely to clients in Nairobi and beyond.",
   path: PATH,
 });
 

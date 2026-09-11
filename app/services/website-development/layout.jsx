@@ -5,9 +5,9 @@ import { faqs } from "./faqs";
 const PATH = "/services/website-development";
 
 export const metadata = buildMetadata({
-  title: "Website Development",
+  title: "Website Development in Nairobi, Kenya",
   description:
-    "Performance-first websites with pixel-perfect design, dynamic motion, and seamless headless integration.",
+    "Performance-first websites with pixel-perfect design and headless integration, built remotely for businesses in Nairobi, Kenya and worldwide.",
   path: PATH,
 });
 

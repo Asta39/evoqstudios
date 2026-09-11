@@ -5,9 +5,9 @@ import { faqs } from "./faqs";
 const PATH = "/services/system-development";
 
 export const metadata = buildMetadata({
-  title: "System Development",
+  title: "Custom System Development in Nairobi, Kenya",
   description:
-    "Custom software systems designed for reliability, high-concurrency performance, and long-term enterprise growth.",
+    "Custom software systems for reliability, high-concurrency performance, and long-term enterprise growth — built remotely for teams in Nairobi and beyond.",
   path: PATH,
 });
 
