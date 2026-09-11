@@ -3,13 +3,13 @@ import { JsonLd } from "../components/JsonLd";
 import { BottomScrollBlur } from "../components/BottomScrollBlur";
 
 export const metadata = {
-  metadataBase: new URL("https://evoqcreative.co.ke"),
+  metadataBase: new URL("https://www.evoqstudioke.com"),
   title: {
     default: "Evoq Studio — Software Engineering, Digital Platforms & AI Systems",
     template: "%s | Evoq Studio",
   },
   description:
-    "Evoq Studio is an independent digital engineering studio crafting high-performance web applications, custom enterprise systems, brand rebrandings, and intelligent AI agent workflows.",
+    "Evoq Studio is an independent digital engineering studio in Nairobi, Kenya, crafting high-performance web applications, custom enterprise systems, brand rebrandings, and intelligent AI agent workflows.",
   keywords: [
     "Evoq Studio",
     "System Development",
@@ -20,7 +20,7 @@ export const metadata = {
     "Nairobi Kenya Tech Studio",
     "Enterprise Software Solutions",
   ],
-  authors: [{ name: "Evoq Studio", url: "https://evoqcreative.co.ke" }],
+  authors: [{ name: "Evoq Studio", url: "https://www.evoqstudioke.com" }],
   creator: "Evoq Studio",
   publisher: "Evoq Studio",
   formatDetection: {
@@ -37,11 +37,11 @@ export const metadata = {
     title: "Evoq Studio — Software Engineering, Digital Platforms & AI Systems",
     description:
       "Boutique digital studio engineering performance-first web applications, enterprise ERP systems, and autonomous AI workflows.",
-    url: "https://evoqcreative.co.ke",
+    url: "https://www.evoqstudioke.com",
     siteName: "Evoq Studio",
     images: [
       {
-        url: "/evoq-logo.png",
+        url: "/og-image.png",
         width: 1200,
         height: 630,
         alt: "Evoq Studio Digital Engineering",
@@ -55,7 +55,7 @@ export const metadata = {
     title: "Evoq Studio — Software Engineering & AI Systems",
     description:
       "High-performance systems, custom web products, and intelligent AI architectures built for ambitious teams.",
-    images: ["/evoq-logo.png"],
+    images: ["/og-image.png"],
   },
   robots: {
     index: true,
@@ -74,9 +74,9 @@ const jsonLdSchema = {
   "@context": "https://schema.org",
   "@type": "ProfessionalService",
   name: "Evoq Studio",
-  image: "https://evoqcreative.co.ke/evoq-logo.png",
-  "@id": "https://evoqcreative.co.ke/#organization",
-  url: "https://evoqcreative.co.ke",
+  image: "https://www.evoqstudioke.com/evoq-logo.png",
+  "@id": "https://www.evoqstudioke.com/#organization",
+  url: "https://www.evoqstudioke.com",
   telephone: "+254115706542",
   email: "evoqcreativetech@gmail.com",
   priceRange: "$$$",
@@ -107,8 +107,8 @@ const websiteSchema = {
   "@context": "https://schema.org",
   "@type": "WebSite",
   name: "Evoq Studio",
-  url: "https://evoqcreative.co.ke",
-  publisher: { "@id": "https://evoqcreative.co.ke/#organization" },
+  url: "https://www.evoqstudioke.com",
+  publisher: { "@id": "https://www.evoqstudioke.com/#organization" },
 };
 
 export default function RootLayout({ children }) {

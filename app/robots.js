@@ -13,6 +13,6 @@ export default function robots() {
         allow: "/",
       },
     ],
-    sitemap: "https://evoqcreative.co.ke/sitemap.xml",
+    sitemap: "https://www.evoqstudioke.com/sitemap.xml",
   };
 }

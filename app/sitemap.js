@@ -3,7 +3,7 @@ import { projects } from "../lib/projects";
 export const dynamic = "force-static";
 
 export default function sitemap() {
-  const baseUrl = "https://evoqcreative.co.ke";
+  const baseUrl = "https://www.evoqstudioke.com";
 
   const routes = [
     "",
