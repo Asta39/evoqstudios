@@ -33,7 +33,7 @@ export default function FileTreeSection() {
                 <div className="w-3 h-3 rounded-full bg-amber-400/80" />
                 <div className="w-3 h-3 rounded-full bg-emerald-400/80" />
               </div>
-              <span className="text-xs font-mono text-neutral-400 font-medium tracking-tight">
+              <span className="text-xs font-mono text-neutral-500 font-medium tracking-tight">
                 evoq-studio/structure
               </span>
               <div className="w-10" />
@@ -59,7 +59,7 @@ export default function FileTreeSection() {
           className="lg:col-span-6 flex flex-col gap-6"
         >
           {/* Eyebrow */}
-          <span className="text-xs font-semibold uppercase tracking-widest text-neutral-400">
+          <span className="text-xs font-semibold uppercase tracking-widest text-neutral-500">
             Production-Grade Architecture
           </span>
 
@@ -81,9 +81,9 @@ export default function FileTreeSection() {
                 <Layers className="w-4 h-4" />
               </div>
               <div>
-                <h4 className="text-sm font-semibold text-apple-ink">
+                <h3 className="text-sm font-semibold text-apple-ink">
                   Component-Driven Modular Design
-                </h4>
+                </h3>
                 <p className="text-xs text-neutral-500 mt-0.5 leading-normal">
                   Clean separation of concerns with isolated UI components, dynamic hooks, and utility layers.
                 </p>
@@ -95,9 +95,9 @@ export default function FileTreeSection() {
                 <Cpu className="w-4 h-4" />
               </div>
               <div>
-                <h4 className="text-sm font-semibold text-apple-ink">
+                <h3 className="text-sm font-semibold text-apple-ink">
                   Fully Interactive Folder Tree
-                </h4>
+                </h3>
                 <p className="text-xs text-neutral-500 mt-0.5 leading-normal">
                   Toggle directories on the fly. Built with smooth animations and default open state.
                 </p>

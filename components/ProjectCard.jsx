@@ -26,7 +26,7 @@ export function ProjectCard({ project }) {
       <div className="flex items-center justify-between px-5 py-3.5 border-b border-black/[0.06] bg-white">
         <div className="flex items-baseline gap-2">
           <span className="font-semibold text-apple-ink text-[15px]">{project.name}.</span>
-          <span className="text-xs text-neutral-400 font-mono">/{project.year}</span>
+          <span className="text-xs text-neutral-500 font-mono">/{project.year}</span>
         </div>
         <div className="flex items-center gap-1.5">
           <span className="w-2.5 h-2.5 rounded-full bg-red-400" />

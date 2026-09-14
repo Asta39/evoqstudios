@@ -12,7 +12,7 @@ export default function VideoShowcase() {
         <div className="relative w-full aspect-[16/10] sm:aspect-[16/9.5] rounded-[20px] overflow-hidden bg-neutral-50 flex items-center justify-center border border-black/[0.04]">
           {!isVideoError ? (
             <video
-              poster="/dashboard-preview.png"
+              poster="/dashboard-preview.webp"
               autoPlay
               loop
               muted
@@ -24,7 +24,7 @@ export default function VideoShowcase() {
             </video>
           ) : (
             <Image
-              src="/dashboard-preview.png"
+              src="/dashboard-preview.webp"
               alt="Evoq System Dashboard Preview"
               fill
               className="object-cover object-top"

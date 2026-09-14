@@ -87,7 +87,7 @@ export default function Testimonials() {
         {/* Section Header */}
         <div className="flex flex-col md:flex-row md:items-end justify-between gap-6">
           <div className="max-w-[640px]">
-            <span className="text-xs font-semibold uppercase tracking-widest text-neutral-400 mb-4 block">
+            <span className="text-xs font-semibold uppercase tracking-widest text-neutral-500 mb-4 block">
               Client Success Stories
             </span>
             <h2 className="text-3xl sm:text-4xl md:text-5xl font-semibold text-apple-ink tracking-tight leading-[1.12]">
@@ -151,9 +151,9 @@ export default function Testimonials() {
                   {current.image}
                 </div>
                 <div>
-                  <h4 className="text-base font-semibold text-apple-ink">
+                  <h3 className="text-base font-semibold text-apple-ink">
                     {current.name}
-                  </h4>
+                  </h3>
                   <p className="text-xs text-neutral-500 font-normal">
                     {current.role}, <span className="font-medium text-neutral-700">{current.company}</span>
                   </p>

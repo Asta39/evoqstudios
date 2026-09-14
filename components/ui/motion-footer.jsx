@@ -60,9 +60,9 @@ export function CinematicFooter() {
         <div className="grid grid-cols-2 md:grid-cols-4 gap-8 lg:gap-12">
           {/* Column 1 - Services */}
           <div className="flex flex-col gap-4">
-            <h4 className="text-xs font-semibold uppercase tracking-widest text-neutral-400">
+            <h3 className="text-xs font-semibold uppercase tracking-widest text-neutral-400">
               Services
-            </h4>
+            </h3>
             <ul className="flex flex-col gap-2.5 text-sm text-neutral-300">
               <li>
                 <Link href="/services/system-development" className="hover:text-white transition-colors">
@@ -89,9 +89,9 @@ export function CinematicFooter() {
 
           {/* Column 2 - Company */}
           <div className="flex flex-col gap-4">
-            <h4 className="text-xs font-semibold uppercase tracking-widest text-neutral-400">
+            <h3 className="text-xs font-semibold uppercase tracking-widest text-neutral-400">
               Company
-            </h4>
+            </h3>
             <ul className="flex flex-col gap-2.5 text-sm text-neutral-300">
               <li>
                 <Link href="/company/about" className="hover:text-white transition-colors">
@@ -118,9 +118,9 @@ export function CinematicFooter() {
 
           {/* Column 3 - Projects */}
           <div className="flex flex-col gap-4">
-            <h4 className="text-xs font-semibold uppercase tracking-widest text-neutral-400">
+            <h3 className="text-xs font-semibold uppercase tracking-widest text-neutral-400">
               Projects
-            </h4>
+            </h3>
             <ul className="flex flex-col gap-2.5 text-sm text-neutral-300">
               {projects.map((project) => (
                 <li key={project.slug}>
@@ -134,9 +134,9 @@ export function CinematicFooter() {
 
           {/* Column 4 - Connect */}
           <div className="flex flex-col gap-4">
-            <h4 className="text-xs font-semibold uppercase tracking-widest text-neutral-400">
+            <h3 className="text-xs font-semibold uppercase tracking-widest text-neutral-400">
               Connect
-            </h4>
+            </h3>
             <div className="flex items-center gap-3">
               <a
                 href="https://github.com/Asta39/evoqstudios"

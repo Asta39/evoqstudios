@@ -14,7 +14,7 @@ export function ProjectsSection() {
         {/* Section Header */}
         <div className="flex flex-col md:flex-row md:items-end justify-between gap-8">
           <div>
-            <span className="text-sm font-mono text-neutral-400 block mb-2">
+            <span className="text-sm font-mono text-neutral-500 block mb-2">
               ({String(projects.length).padStart(2, "0")})
             </span>
             <h2 className="text-5xl sm:text-6xl md:text-7xl font-bold text-apple-ink tracking-tight">

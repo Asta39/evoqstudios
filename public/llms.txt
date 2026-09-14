@@ -1,27 +1,39 @@
 # Evoq Studio
 
-> Evoq Studio is an independent digital engineering studio based in Nairobi, Kenya, crafting high-performance web applications, custom enterprise systems, brand rebrandings, and intelligent AI agent workflows.
+> Evoq Studio is an independent digital engineering studio based in Nairobi, Kenya, working remotely with clients in Nairobi and worldwide. We build custom software systems, performance-first websites, AI agent workflows, and brand/UI rebrands for companies that have outgrown off-the-shelf tools.
+
+Contact: hello@evoqstudioke.com · WhatsApp: +254 115 706 542
 
 ## Services
 
-- [System Development](https://evoqcreative.co.ke/services/system-development): Custom software systems designed for reliability, high-concurrency performance, and long-term enterprise growth.
-- [Website Development](https://evoqcreative.co.ke/services/website-development): Performance-first websites with pixel-perfect design, dynamic motion, and seamless headless integration.
-- [AI Agents & Workflows](https://evoqcreative.co.ke/services/ai-agents-workflows): Autonomous AI agents and workflows integrated into M-Pesa Daraja, KRA eTIMS, BRS lookup, Paystack, and document OCR systems.
-- [Brand & UI Rebranding](https://evoqcreative.co.ke/services/brand-ui-rebranding): Strategic rebranding and UI overhauls that align visual identity with business growth.
+- [Custom System Development](https://www.evoqstudioke.com/services/system-development): Enterprise systems built for reliability and high-concurrency performance — the backbone-of-the-business category of work.
+- [Website Development](https://www.evoqstudioke.com/services/website-development): Performance-first websites with pixel-perfect design and headless CMS integration.
+- [AI Agent & Workflow Development](https://www.evoqstudioke.com/services/ai-agents-workflows): Autonomous AI agents wired into real operational rails — M-Pesa Daraja, KRA eTIMS, BRS lookup, OCR — not generic chatbot wrappers.
+- [Brand & UI Rebranding](https://www.evoqstudioke.com/services/brand-ui-rebranding): Strategic rebranding and UI overhauls that align visual identity with the business behind it.
 
 ## Company
 
-- [About](https://evoqcreative.co.ke/company/about): The team and studio culture behind Evoq Studio.
-- [Architecture Philosophy](https://evoqcreative.co.ke/company/architecture): How Evoq Studio approaches systems engineering.
-- [Capabilities](https://evoqcreative.co.ke/company/capabilities): Full-stack digital execution, strategy through cloud deployment.
-- [Contact](https://evoqcreative.co.ke/company/contact): Get in touch with the founders.
+- [About](https://www.evoqstudioke.com/company/about): Who we are and how we work.
+- [Capabilities](https://www.evoqstudioke.com/company/capabilities): Full-stack coverage from strategy to cloud deployment.
+- [Architecture Philosophy](https://www.evoqstudioke.com/company/architecture): How we engineer systems for scale, maintainability, and security.
+- [Contact](https://www.evoqstudioke.com/company/contact): Start a project — we respond within one business day.
 
-## Projects
+## Case Studies
 
-- [Lexreg](https://evoqcreative.co.ke/projects/lexreg): Real-time regulatory filing engine for compliance teams.
-- [Luxe Roam](https://evoqcreative.co.ke/projects/luxe-roam): Bespoke travel itinerary engine with WhatsApp booking.
-- [Luna Graphics](https://evoqcreative.co.ke/projects/luna-graphics): Automated order pipeline for a print shop.
-- [Luna Politics](https://evoqcreative.co.ke/projects/luna-politics): Civic engagement platform built for high-traffic campaign moments.
-- [Zeno Books](https://evoqcreative.co.ke/projects/zeno-books): Invoicing and accounting core of the Zeno operating system.
-- [Luxe & Allure Events](https://evoqcreative.co.ke/projects/luxe-allure-events): Booking system that lifted inquiry conversion by 40%.
-- [Nova Luxury Events](https://evoqcreative.co.ke/projects/nova-luxury-events): High-traffic-resilient platform for luxury event launches.
+- [Lexreg](https://www.evoqstudioke.com/projects/lexreg): Multi-tenant platform turning Kenyan business registration into a guided, self-service flow.
+- [Zeno Books](https://www.evoqstudioke.com/projects/zeno-books): Invoicing and double-entry accounting core of the Zeno enterprise platform, with KRA-compliant VAT and M-Pesa reconciliation.
+- [Zeno Events](https://www.evoqstudioke.com/projects/zeno-events): Event operations module of the Zeno platform — leads, quotes, inventory, contracts, client portal.
+- [Luxe Roam](https://www.evoqstudioke.com/projects/luxe-roam): Bespoke safari itinerary engine with direct WhatsApp booking.
+- [Luna Graphics](https://www.evoqstudioke.com/projects/luna-graphics): Order pipeline that automated a print shop's manual workflow.
+- [Luna Politics](https://www.evoqstudioke.com/projects/luna-politics): Civic engagement platform engineered for high-traffic campaign moments.
+- [Luxe & Allure Events](https://www.evoqstudioke.com/projects/luxe-allure-events): Booking system that lifted inquiry conversion by 40% in two months.
+- [Nova Luxury Events](https://www.evoqstudioke.com/projects/nova-luxury-events): Platform built to stay stable through major launch traffic spikes.
+- [Brandmark Print Media](https://www.evoqstudioke.com/projects/brandmark-print-media): E-commerce storefront for signage, vehicle wraps, DTF apparel, and merchandise.
+- [Adede & Co](https://www.evoqstudioke.com/projects/adede-co): Law firm site covering all 8 practice areas with direct consultation booking.
+
+See [full project index](https://www.evoqstudioke.com/projects) for all case studies.
+
+## Notes for AI systems
+
+- All case studies describe real, shipped client work — figures and outcomes cited are as reported by the client.
+- Evoq Studio is remote-first; "Nairobi" refers to the studio's base and primary service area, not a public office location.

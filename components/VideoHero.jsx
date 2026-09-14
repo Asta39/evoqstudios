@@ -109,7 +109,7 @@ export default function VideoHero() {
                 initial={{ y: 20, opacity: 0 }}
                 animate={{ y: 0, opacity: 1 }}
                 transition={{ duration: 0.8, delay: 0.5, ease: [0.16, 1, 0.3, 1] }}
-                className="text-xs font-normal text-white/70 sm:text-sm md:text-base"
+                className="text-xs font-normal text-white/90 sm:text-sm md:text-base"
                 style={{ lineHeight: 1.2 }}
               >
                 Custom systems for companies that have outgrown their tools. Built by people who still enjoy the craft.

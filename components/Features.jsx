@@ -43,7 +43,7 @@ const FeatureBento = () => {
           <div className="bg-gradient-to-br from-blue-300 to-blue-700 rounded-3xl p-8 flex flex-col justify-center relative overflow-hidden group transition-all">
             <div className="absolute -right-8 -top-8 w-32 h-32 bg-white/20 rounded-full blur-2xl transition-transform duration-500" />
             <div className="relative z-10">
-              <h4 className="text-8xl sm:text-9xl font-black text-white leading-none mb-3">{projects.length}</h4>
+              <h3 className="text-8xl sm:text-9xl font-black text-white leading-none mb-3">{projects.length}</h3>
               <p className="text-white text-xl font-bold tracking-tight">Production Platforms Shipped</p>
             </div>
           </div>
@@ -51,9 +51,9 @@ const FeatureBento = () => {
           {/* Feature Card */}
           <div className="bg-white rounded-3xl p-8 flex flex-col justify-center border border-neutral-200 transition-all group">
             <div className="space-y-2">
-              <h4 className="text-2xl font-bold text-[#1d1d1f]">
+              <h3 className="text-2xl font-bold text-[#1d1d1f]">
                 AI That Works
-              </h4>
+              </h3>
               <p className="text-[#6e6e73]">
                 LLM integrations, autonomous agents, and intelligent workflows
                 that slot into your stack and stay reliable.
@@ -71,11 +71,11 @@ const FeatureBento = () => {
                 ↗
               </div>
             </div>
-            <h4 className="text-2xl font-bold leading-tight">
+            <h3 className="text-2xl font-bold leading-tight">
               Let&apos;s Build
               <br />
               Something Real
-            </h4>
+            </h3>
           </div>
 
           {/* Stats Card 2 */}
@@ -85,7 +85,7 @@ const FeatureBento = () => {
               <span className="text-5xl font-black bg-gradient-to-r from-blue-200 to-blue-600 bg-clip-text text-transparent">
                 4 yrs+
               </span>
-              <p className="text-sm uppercase tracking-widest text-neutral-400 font-semibold mt-2">
+              <p className="text-sm uppercase tracking-widest text-neutral-500 font-semibold mt-2">
                 Shipping Production Code
               </p>
             </div>
