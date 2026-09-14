@@ -14,7 +14,7 @@ export default function WorldMap({
 
   const svgMap = useMemo(() => {
     try {
-      const map = new DottedMap({ height: 100, grid: "diagonal" });
+      const map = new DottedMap({ height: 40, grid: "diagonal" });
       return map.getSVG({
         radius: 0.22,
         color: "#00000035",

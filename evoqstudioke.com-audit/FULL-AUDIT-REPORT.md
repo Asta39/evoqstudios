@@ -1,100 +1,84 @@
-# Evoq Studio — Full SEO Audit
+# SEO Audit — evoqstudioke.com (Live Production)
 
-**Audited:** `http://localhost:3000` (current codebase, post-fix — commits `775a014` and `e742558` not yet pushed to `www.evoqstudioke.com`)
-**Date:** 2026-09-11
-**Business type:** Professional Service (software/digital engineering studio), B2B, Nairobi-based
-**Method:** Manual technical audit — raw HTML fetch per route, JSON-LD validation, image/heading/canonical checks, production build inspection. No Playwright/Lighthouse pipeline available in this skill install, so Core Web Vitals are estimated from bundle size and TTFB rather than measured lab data.
+Date: 2026-09-14
+Scope: 22 URLs (full sitemap), fetched live from https://www.evoqstudioke.com
+Method: Direct HTTP fetch + HTML parsing of the deployed site (post-deploy of latest commit `7339121`).
 
-## SEO Health Score: 78/100
+## SEO Health Score: 79/100
 
-> This score reflects the **local codebase** with this session's fixes applied. The live domain is currently unpushed and would score much lower (dead canonical domain, ~15 bytes of crawlable HTML). Once pushed, the live site will match this score.
+| Category | Score | Weight |
+|---|---|---|
+| Technical SEO | 88/100 | 22% |
+| Content Quality | 82/100 | 23% |
+| On-Page SEO | 72/100 | 20% |
+| Schema / Structured Data | 88/100 | 10% |
+| Performance | 65/100 (estimated) | 10% |
+| AI Search Readiness (GEO) | 82/100 | 10% |
+| Images | 60/100 | 5% |
 
-| Category | Weight | Score | Notes |
-|---|---|---|---|
-| Technical SEO | 22% | 85/100 | Domain now correct; one real gap: homepage missing canonical tag |
-| Content Quality | 23% | 80/100 | Real, substantial per-page content now server-rendered; no location/service-intent pages |
-| On-Page SEO | 20% | 75/100 | Titles/H1s clean; 2 meta descriptions too long/short |
-| Schema/Structured Data | 10% | 75/100 | ProfessionalService + Service + Breadcrumb present; FAQPage missing despite ready content |
-| Performance (CWV) | 10% | 70/100 (estimated) | Fast TTFB; one 400KB JS chunk worth investigating |
-| AI Search Readiness | 10% | 80/100 | robots.txt explicitly allows GPTBot/ClaudeBot/PerplexityBot/Google-Extended — above average |
-| Images | 5% | 100/100 | Every `<img>` across all sampled pages has alt text |
+Performance is a lab estimate from response timing and payload size only — no real Lighthouse/CrUX run was available in this session.
 
----
+## What's Working
 
-## Top 5 Critical/High Issues
+- robots.txt is clean: explicit `Allow: /` for GPTBot, ClaudeBot, PerplexityBot, Google-Extended — deliberate AI-crawler access, ahead of most competitors.
+- sitemap.xml is well-formed, all 22 URLs present, correct `lastmod`/priority.
+- Every page has a canonical tag, `index, follow`, and a unique `<title>`.
+- Strong security headers site-wide: CSP, HSTS (`max-age=63072000`), `X-Frame-Options: DENY`, `X-Content-Type-Options: nosniff`, `Permissions-Policy`.
+- Content is server-rendered (confirmed via raw `curl` — no client-side-only shell), so crawlers see full content immediately.
+- Schema present and structurally valid on every page: `ProfessionalService`, `WebSite`, `BreadcrumbList`, `Service`, `FAQPage` (service pages + contact).
+- No missing/empty `alt` attributes found on any sampled `<img>`.
+- Case study pages have real word counts (437–695 words for standard projects, ~4,000 for the two Zeno deep-dives) — not thin content.
+- Gzip compression active and effective (contact page: 1MB raw → 43KB on the wire).
 
-1. **Homepage has no `<link rel="canonical">` tag.** Every other page gets one via `buildMetadata()`, but the homepage uses the root `layout.jsx` metadata object directly, which never sets `alternates.canonical`. Low risk on its own, but worth closing — Google should never have to guess the canonical URL for your most important page.
-2. **Homepage meta description is 201 characters** — Google truncates around 155-160, so the back half of your sentence never shows in search results. (Confirmed: currently ends mid-thought in the SERP snippet.)
-3. **Zeno Books (63 chars) and Zeno Events (49 chars) meta descriptions are too thin.** Both read as sentence fragments; there's room to describe the actual client outcome in the 120-155 char sweet spot.
-4. **No FAQPage schema, despite real FAQ content already built and shipping** on all 4 service pages and the contact page (`FaqAccordion` component, 4-5 real Q&As each). This is a near-zero-effort win: wrap the existing `faqs` arrays in FAQPage JSON-LD to become eligible for FAQ rich results.
-5. **Still zero location/service-intent content pages** (e.g. "Custom Software Development Nairobi", "ERP Development Kenya"). The site ranks for "Evoq Studio" by name; it has no page built to catch the long-tail, higher-intent searches that convert. This was flagged in the prior audit and remains unaddressed — needs content decisions from you (pricing, specifics per service) before I can build them.
+## Findings
 
-## What's Already Good (confirmed, not assumed)
+### 1. `og:image` missing on 21 of 22 pages (High)
+Only the homepage returns an `og:image` meta tag. Every other page — all 4 service pages, all 10 project case studies, About, Capabilities, Architecture, Contact, Privacy, Terms — has no image in its Open Graph/Twitter card.
 
-- **Domain now correct everywhere** — canonical, OG, JSON-LD, sitemap, robots.txt all point to the live `www.evoqstudioke.com` (this session's fix).
-- **Real server-rendered content** — homepage HTML went from ~15 bytes to ~294KB of actual crawlable text (this session's fix). Verified via raw `curl`, not just DevTools.
-- **Exactly one `<h1>` per page** across all 15 routes sampled — no duplicate/missing H1 issues anywhere.
-- **Zero missing `alt` attributes** across every image on every page sampled (home, services, about, projects index, 2 project detail pages) — genuinely clean.
-- **Service schema already implemented** on all 4 service pages (the previous audit incorrectly reported this as missing — it's real Schema.org `Service` type, correctly nested). Only `FAQPage` is genuinely absent.
-- **BreadcrumbList schema** present on every non-homepage page.
-- **robots.txt explicitly allowlists AI crawlers** (GPTBot, ClaudeBot, PerplexityBot, Google-Extended) — most sites don't bother with this; it's a real AI-search-readiness advantage.
-- **Fast TTFB** (~180ms on dev server; Vercel edge in production will be comparable or better).
-- **Titles are unique, properly templated** (`%s | Evoq Studio`), and within reasonable length on every page except the homepage default.
+**Root cause**: `lib/seo.js:4` `buildMetadata()` sets its own `openGraph: { title, description, url }` object with no `images` key. Next.js merges page metadata into the root layout's metadata by top-level key — since every page defines its own `openGraph` object, it fully replaces the root layout's `openGraph.images`, not merges with it.
 
-## Findings by Category
+Impact: any link to a service or project page shared on WhatsApp, LinkedIn, X, or Slack renders with no preview image — this is the single highest-leverage fix in this audit given how often case-study links get shared.
 
-### Technical SEO (85/100)
-- ✅ robots.txt valid, correctly disallows `/api/` and `/_next/`, explicitly allows AI crawlers.
-- ✅ sitemap.xml valid, all 22 URLs on correct domain, sensible priority/changefreq values.
-- ✅ HTTPS via Vercel, HSTS header present (`strict-transport-security: max-age=63072000`).
-- ✅ Security headers solid: X-Content-Type-Options, X-Frame-Options, Referrer-Policy, Permissions-Policy, CSP all present (from `vercel.json`).
-- ✅ Single 308 redirect apex→www (not the "two hops" the prior audit claimed — verified directly).
-- ❌ Homepage missing canonical tag (see Critical #1).
-- ⚠️ `favicon.ico` 404s on every page load (browser convention request; site uses `evoq-logo.png` via explicit `<link>` tags instead — cosmetic only, not a ranking factor, but free to fix).
+**Fix**: add a default `images: [{ url: "/og-image.png", width: 1200, height: 630 }]` inside `buildMetadata()`, so every page inherits it unless it overrides.
 
-### Content Quality (80/100)
-- ✅ All page content now in server-rendered HTML (this session's fix) — previously near-zero.
-- ✅ 10 real project case studies with genuine outcomes, quotes, and specifics (not filler).
-- ✅ Zeno Books and Zeno Events case study pages have exceptionally deep, real content (module-by-module breakdowns sourced from actual product docs).
-- ❌ No blog or location/service-intent pages — the site only has brand-name-searchable content, no long-tail acquisition surface.
-- ⚠️ Two case study pages (Zeno Books, Zeno Events) have thin meta descriptions despite very rich on-page content — the description isn't representing the page well.
+### 2. Homepage has no descriptive H1/H2 (Medium)
+`app/page.jsx` — homepage's only `<h1>` is the giant stylized wordmark `Evoq*`. The actual value proposition — *"Custom systems for companies that have outgrown their tools. Built by people who still enjoy the craft."* — is a plain `<p>`, not inside any heading tag. The first real `<h2>` appears further down the page.
 
-### On-Page SEO (75/100)
-- ✅ Title tags unique and descriptive on all 15 sampled pages.
-- ✅ Proper H1/H2 hierarchy, no duplicate H1s.
-- ❌ Homepage description too long (201 chars, truncates in SERP).
-- ❌ Zeno Books/Zeno Events descriptions too short (63/49 chars).
-- ⚠️ "Nairobi Kenya" location keyword lives only in the `keywords` meta tag (which Google ignores entirely) and now in the homepage description (fixed this session) — but not yet in any service page title/description, where it would actually help local-intent queries.
+Impact: the homepage has zero keyword-bearing heading content for the query that matters most ("Nairobi software development studio," "custom systems Kenya," etc.) at the top of the DOM.
 
-### Schema & Structured Data (75/100)
-- ✅ `ProfessionalService` schema on every page (name, telephone, email, geo, address, sameAs, knowsAbout) — valid JSON, confirmed via parse.
-- ✅ `Service` schema on all 4 service pages.
-- ✅ `BreadcrumbList` on all non-home pages.
-- ✅ `WebSite` schema on every page.
-- ❌ No `FAQPage` schema despite ready-made FAQ content on 5 pages.
-- ⚠️ `sameAs` only lists GitHub + WhatsApp — no LinkedIn/X/Instagram (only worth adding if those profiles exist and are actively maintained; don't add a corporate LinkedIn page from three job changes ago).
-- ⚠️ Schema `email` field is a Gmail address (`evoqcreativetech@gmail.com`) rather than a domain email — a very minor trust signal, cosmetic more than technical.
+**Fix**: keep the wordmark visually as-is, but wrap the tagline paragraph in an `<h2>` (or promote it into the `<h1>` alongside the wordmark via visually-hidden text) so the homepage's heading hierarchy actually carries the pitch.
 
-### Performance — estimated, not lab-measured (70/100)
-- ✅ TTFB ~180ms on dev server.
-- ⚠️ Largest JS chunk is 400KB uncompressed (likely framer-motion + hugeicons bundled together) — worth a bundle-analyzer pass if you want to chase Lighthouse score, not urgent.
-- ℹ️ **This category needs a real PageSpeed Insights / Lighthouse run against the live production URL once pushed** — dev server timing isn't representative of production edge performance, and I don't have a Lighthouse pipeline available in this tool install. Recommend running PSI manually after deploy (Action Plan item).
+### 3. 7 of 10 project case-study descriptions are too short (Medium)
+| Page | Description length |
+|---|---|
+| Luxe Roam | 56 chars |
+| Luna Politics | 68 chars |
+| Nova Luxury Events | 65 chars |
+| Adede & Co | 60 chars |
+| Luna Graphics | 69 chars |
+| Luxe & Allure Events | 69 chars |
+| Brandmark Print Media | 73 chars |
 
-### AI Search Readiness (80/100)
-- ✅ robots.txt explicitly allows GPTBot, ClaudeBot, PerplexityBot, Google-Extended.
-- ✅ Content now server-rendered and crawlable without JS execution (this session's fix) — AI crawlers that don't execute JS (most don't) can now actually read the site.
-- ❌ No `llms.txt` file (emerging convention, low-cost to add, unclear ranking impact yet).
-- ⚠️ No dedicated FAQ/Q&A structured content beyond the existing accordions — AI answer engines favor clearly-labeled Q&A pairs, which the FAQPage schema fix would also help with.
+Ideal range is ~120–155 characters. These currently use the project's one-line tagline as the meta description (same pattern already fixed for Zeno Books/Zeno Events last audit). Short descriptions mean Google fills in the rest from body text, which is unpredictable and usually reads worse in the SERP.
 
-### Images (100/100)
-- ✅ Every image across every sampled page (home: 3, about: 4, projects: 1, lexreg: 5, zeno-events: 10) has an `alt` attribute. Zero exceptions found.
-- Not independently verified: alt text *quality* (descriptive vs. generic) — spot-checked and looked genuinely descriptive (e.g., "Zeno Books home dashboard — KPI cards, invoice/quote overview" style), not just filenames.
+**Fix**: same treatment already applied to Zeno Books/Zeno Events — write a dedicated 140–155 char description per project grounded in real project facts (already documented in each project's `lib/projects.js` entry and case study body).
 
----
+### 4. Contact page ships a ~1MB world-map SVG background (Medium — performance)
+`app/company/contact/page.jsx` renders `<WorldMap>` (`components/ui/world-map.jsx`), which uses the `dotted-map` library at `height: 100` to generate a full world dot-grid as an inline SVG string, embedded directly in the page (not an external asset). Raw HTML for `/company/contact` is 1,013,592 bytes vs. 34–113KB for every other page.
 
-## Corrections to the Prior Audit
+Gzip brings the wire size down to ~43KB, so this is **not** a bandwidth problem — but it is ~1MB of DOM the browser has to parse and construct on every visit, adding real main-thread work before interactivity, on a page whose whole job is to get someone to submit a contact form quickly.
 
-In the interest of not repeating stale or inaccurate claims:
-- The prior audit said service pages have "no FAQ/Service schema" — **Service schema is present and valid** on all 4 service pages. Only FAQPage is genuinely missing.
-- The prior audit said the domain redirect goes through "two hops" — **verified directly via `curl -IL`: it's a single 308 hop**, apex → www.
-- The prior audit's other findings (dead canonical domain, broken OG image, thin/CSR content, missing location pages, Gmail in schema) were all **independently confirmed as real** against the actual codebase.
+**Fix**: lower `height` (e.g. 40–50 instead of 100 — a decorative background doesn't need continent-level dot density), or pre-render the SVG once at build time into a static file and reference it via `<img src="/world-map-bg.svg">` instead of regenerating/inlining it per request.
+
+### 5. Homepage title is 70 characters (Low)
+`Evoq Studio — Software Engineering, Digital Platforms & AI Systems` is 70 characters including the site name. Google's SERP title truncation point varies but commonly clips titles over ~60 characters. Every other page's title is comfortably under 60.
+
+**Fix**: optional trim, e.g. `Evoq Studio — Software Engineering & AI Systems` (49 chars), keeps the core positioning without risking a mid-word cut in the SERP.
+
+### 6. No `llms.txt` (Low, deferred pending confirmation)
+Still not present. Given the site already explicitly allows AI crawlers in robots.txt, an `llms.txt` would be a natural next step for AI-search visibility — same recommendation as the previous audit, still outstanding, still gated on your go-ahead since it's a net-new file with content to draft.
+
+## Corrections vs. Assumptions
+
+- The SSR fix, canonical fix, FAQPage schema, and description-length fixes from the last audit are all confirmed **live** on production — verified directly against the deployed HTML, not from memory of the local build.
+- `hello@evoqstudioke.com` is now the email everywhere it's referenced site-wide (header, footer, contact page, legal pages, schema) — confirmed in the live HTML.

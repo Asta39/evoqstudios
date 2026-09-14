@@ -8,7 +8,7 @@ export const metadata = {
     canonical: "/",
   },
   title: {
-    default: "Evoq Studio — Software Engineering, Digital Platforms & AI Systems",
+    default: "Evoq Studio — Software Engineering & AI Systems",
     template: "%s | Evoq Studio",
   },
   description:

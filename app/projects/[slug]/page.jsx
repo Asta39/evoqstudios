@@ -15,7 +15,7 @@ export async function generateMetadata({ params }) {
 
   return buildMetadata({
     title: `${project.name} — Case Study`,
-    description: project.tagline,
+    description: project.seoDescription || project.tagline,
     path: `/projects/${project.slug}`,
   });
 }
