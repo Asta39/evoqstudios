@@ -1,5 +1,8 @@
+"use client";
+
 import Link from "next/link";
 import Image from "next/image";
+import { useEffect, useRef, useState } from "react";
 
 const COLOR_MAP = {
   amber: "from-amber-400 via-amber-500 to-orange-600",
@@ -16,6 +19,23 @@ const COLOR_MAP = {
 
 export function ProjectCard({ project }) {
   const gradient = COLOR_MAP[project.color] || COLOR_MAP.blue;
+  const videoRef = useRef(null);
+  const [inView, setInView] = useState(false);
+
+  useEffect(() => {
+    if (!project.video || !videoRef.current) return;
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setInView(true);
+          observer.disconnect();
+        }
+      },
+      { rootMargin: "0px" }
+    );
+    observer.observe(videoRef.current);
+    return () => observer.disconnect();
+  }, [project.video]);
 
   return (
     <Link
@@ -39,9 +59,11 @@ export function ProjectCard({ project }) {
       <div className="relative aspect-[4/3] w-full overflow-hidden">
         {project.video ? (
           <video
-            src={project.video}
+            ref={videoRef}
+            src={inView ? project.video : undefined}
             poster={project.image || undefined}
-            autoPlay
+            preload="none"
+            autoPlay={inView}
             loop
             muted
             playsInline
