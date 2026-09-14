@@ -11,7 +11,9 @@ const ProjectsSection = dynamic(
 const Features = dynamic(() => import("../components/Features"));
 const TechOrbit = dynamic(() => import("../components/TechOrbit"));
 const FileTreeSection = dynamic(() => import("../components/FileTreeSection"));
-const MacbookScroll = dynamic(() => import("../components/ui/macbook-scroll").then((mod) => mod.MacbookScroll));
+const RecedingTextPlane = dynamic(
+  () => import("../components/ui/receding-text-plane").then((mod) => mod.RecedingTextPlane)
+);
 const Testimonials = dynamic(() => import("../components/ui/testimonials"));
 const CinematicFooter = dynamic(
   () => import("../components/ui/motion-footer").then((mod) => mod.CinematicFooter)
@@ -30,16 +32,10 @@ export default function Home() {
         <Features />
         <TechOrbit />
         <FileTreeSection />
-        <MacbookScroll
-          src="/macbook-zeno-invoices.png"
-          title={
-            <span className="text-apple-ink font-bold">
-              Production Systems Showcase. <br />
-              <span className="text-neutral-400">Architected for Speed & Reliability.</span>
-            </span>
-          }
-          showGradient={false}
-        />
+        <RecedingTextPlane className="h-[70vh] sm:h-screen bg-white">
+          Good systems are like good plumbing — you only notice when it's missing.
+          We plan for Murphy's Law, mostly out of personal experience.
+        </RecedingTextPlane>
         <Testimonials />
       </main>
 
