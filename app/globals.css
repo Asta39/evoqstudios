@@ -75,10 +75,6 @@ html::-webkit-scrollbar {
 }
 
 @media (max-width: 639px) {
-  .scroll-rail nav {
-    margin-right: -1rem;
-  }
-
   .scroll-rail [data-slot="preview-rail-tick"] {
     width: 1.75rem;
   }

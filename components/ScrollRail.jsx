@@ -149,10 +149,7 @@ export default function ScrollRail() {
       const now = performance.now();
       if (now - lastToneCheck > 120) {
         lastToneCheck = now;
-        const dark = isDarkBehind(
-          window.innerWidth - 64,
-          window.innerHeight / 2,
-        );
+        const dark = isDarkBehind(64, window.innerHeight / 2);
         setTone((prev) => {
           const next = dark ? "dark" : "light";
           return prev === next ? prev : next;
@@ -194,7 +191,7 @@ export default function ScrollRail() {
   return (
     <div
       data-tone={tone}
-      className="scroll-rail pointer-events-none fixed right-0 top-0 z-[55] h-dvh w-[min(30rem,100vw)]"
+      className="scroll-rail pointer-events-none fixed left-0 top-0 z-[55] h-dvh w-[min(30rem,100vw)]"
     >
       <PreviewRail
         items={items}
@@ -202,9 +199,9 @@ export default function ScrollRail() {
         activeId={activeId}
         onItemSelect={handleItemSelect}
         highlightActive
-        previewSide="before"
+        previewSide="after"
         className="h-full min-h-0"
-        railClassName="pointer-events-auto ml-auto"
+        railClassName="pointer-events-auto mr-auto"
         previewClassName="scroll-rail-card"
       />
     </div>
