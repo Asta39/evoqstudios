@@ -216,7 +216,7 @@ export default function ZenoEventsPage() {
         </div>
 
         {/* Image Gallery */}
-        <section className="max-w-[1240px] mx-auto py-16">
+        <section data-rail-label="Approach" className="max-w-[1240px] mx-auto py-16">
           <div className="grid grid-cols-2 sm:grid-cols-3 gap-4">
             {gallery.map((g, i) => (
               <div
@@ -306,7 +306,7 @@ export default function ZenoEventsPage() {
         </div>
 
         {/* Closing Banner */}
-        <section className="max-w-[1240px] mx-auto pb-16">
+        <section data-rail-label="Outcome" className="max-w-[1240px] mx-auto pb-16">
           <div className="relative h-40 sm:h-56 w-full rounded-3xl overflow-hidden bg-gradient-to-br from-cyan-400 via-cyan-500 to-blue-600">
             <Image src="/gallery/zeno-events-6.png" alt="Zeno Events inventory" fill className="object-cover object-top" />
           </div>

@@ -76,7 +76,7 @@ export function ProjectDetail({ project }) {
       </div>
 
       {/* Image Gallery */}
-      <section className="max-w-[1240px] mx-auto py-16">
+      <section data-rail-label="Approach" className="max-w-[1240px] mx-auto py-16">
         <div className="flex items-center justify-center gap-2 mb-8">
           <span className={`w-6 h-6 rounded-full bg-gradient-to-br ${gradient} flex items-center justify-center text-white text-xs font-bold`}>
             {project.name.charAt(0)}
@@ -128,7 +128,7 @@ export function ProjectDetail({ project }) {
       </ModuleRow>
 
       {/* Closing Banner */}
-      <section className="max-w-[1240px] mx-auto pb-16">
+      <section data-rail-label="Outcome" className="max-w-[1240px] mx-auto pb-16">
         {(() => {
           const bannerSrc = project.gallery?.[project.gallery.length - 1] || project.image;
           return (

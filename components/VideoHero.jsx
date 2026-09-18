@@ -67,7 +67,12 @@ export const WordsPullUpMultiStyle = ({ segments, className = "", style }) => {
 /* ---------------- VideoHero ---------------- */
 export default function VideoHero() {
   return (
-    <section className="h-screen w-full px-2 sm:px-4 pb-4">
+    <section
+      data-rail-label="Evoq Studio"
+      data-rail-description="Custom systems for companies that have outgrown their tools. Built by people who still enjoy the craft."
+      data-rail-tone="dark"
+      className="h-screen w-full px-2 sm:px-4 pb-4"
+    >
       <div className="relative h-full w-full overflow-hidden rounded-2xl md:rounded-[2rem]">
         
         {/* Background video */}

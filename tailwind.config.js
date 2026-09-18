@@ -9,6 +9,13 @@ module.exports = {
   theme: {
     extend: {
       colors: {
+        background: "var(--background)",
+        foreground: "var(--foreground)",
+        "muted-foreground": "var(--muted-foreground)",
+        card: "var(--card)",
+        "card-foreground": "var(--card-foreground)",
+        border: "var(--border)",
+        ring: "var(--ring)",
         apple: {
           blue: "#0066cc",
           "blue-focus": "#0071e3",

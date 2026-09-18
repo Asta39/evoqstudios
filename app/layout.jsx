@@ -1,6 +1,7 @@
 import "./globals.css";
 import { JsonLd } from "../components/JsonLd";
 import { BottomScrollBlur } from "../components/BottomScrollBlur";
+import { ScrollRailMount } from "../components/ScrollRailMount";
 
 export const metadata = {
   metadataBase: new URL("https://www.evoqstudioke.com"),
@@ -136,6 +137,7 @@ export default function RootLayout({ children }) {
       <body className="bg-white text-apple-ink antialiased selection:bg-apple-blue selection:text-white">
         {children}
         <BottomScrollBlur />
+        <ScrollRailMount />
       </body>
     </html>
   );

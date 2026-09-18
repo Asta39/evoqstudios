@@ -35,7 +35,7 @@ export default function ProjectsIndexPage() {
         </div>
       </section>
 
-      <section className="max-w-[1240px] mx-auto pb-24">
+      <section data-rail-label="All projects" className="max-w-[1240px] mx-auto pb-24">
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
           {projects.map((project) => (
             <ProjectCard key={project.slug} project={project} />

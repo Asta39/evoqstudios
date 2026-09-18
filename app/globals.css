@@ -41,3 +41,45 @@
   backdrop-filter: saturate(180%) blur(20px);
   -webkit-backdrop-filter: saturate(180%) blur(20px);
 }
+
+/* Native page scrollbar is replaced by the preview rail (components/ScrollRail.jsx) */
+html {
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+
+html::-webkit-scrollbar {
+  display: none;
+}
+
+:root {
+  --background: #ffffff;
+  --foreground: #1d1d1f;
+  --muted-foreground: #8e8e93;
+  --card: #ffffff;
+  --card-foreground: #1d1d1f;
+  --border: #e5e5ea;
+  --ring: #0071e3;
+}
+
+.scroll-rail[data-tone="dark"] {
+  --background: #0a0a0c;
+  --foreground: #ffffff;
+  --muted-foreground: rgba(255, 255, 255, 0.55);
+}
+
+.scroll-rail .scroll-rail-card {
+  --foreground: #1d1d1f;
+  --muted-foreground: #6e6e73;
+  filter: drop-shadow(0 12px 28px rgba(0, 0, 0, 0.14));
+}
+
+@media (max-width: 639px) {
+  .scroll-rail nav {
+    margin-right: -1rem;
+  }
+
+  .scroll-rail [data-slot="preview-rail-tick"] {
+    width: 1.75rem;
+  }
+}

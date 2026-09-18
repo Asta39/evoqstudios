@@ -32,7 +32,11 @@ export default function Home() {
         <Features />
         <TechOrbit />
         <FileTreeSection />
-        <RecedingTextPlane className="h-[70vh] sm:h-screen bg-white">
+        <RecedingTextPlane
+          data-rail-label="How we build"
+          data-rail-description="Good systems are like good plumbing — you only notice when it's missing."
+          className="h-[70vh] sm:h-screen bg-white"
+        >
           Good systems are like good plumbing — you only notice when it's missing.
           We plan for Murphy's Law, mostly out of personal experience.
         </RecedingTextPlane>

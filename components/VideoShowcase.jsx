@@ -24,7 +24,11 @@ export default function VideoShowcase() {
   }, []);
 
   return (
-    <section className="relative bg-white py-12 sm:py-20 px-4 overflow-hidden">
+    <section
+      data-rail-label="Platform preview"
+      data-rail-description="A look inside a production system built by Evoq Studio."
+      className="relative bg-white py-12 sm:py-20 px-4 overflow-hidden"
+    >
       <div className="relative max-w-[1080px] mx-auto bg-white rounded-[28px] p-3 sm:p-4 border border-black/[0.08] shadow-[0_20px_50px_rgba(0,0,0,0.08)] overflow-hidden">
         <div
           ref={containerRef}

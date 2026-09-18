@@ -212,7 +212,7 @@ export default function ZenoBooksPage() {
         </div>
 
         {/* Image Gallery */}
-        <section className="max-w-[1240px] mx-auto py-16">
+        <section data-rail-label="Approach" className="max-w-[1240px] mx-auto py-16">
           <div className="grid grid-cols-2 sm:grid-cols-3 gap-4">
             {gallery.map((g, i) => (
               <div
@@ -302,7 +302,7 @@ export default function ZenoBooksPage() {
         </div>
 
         {/* Closing Banner */}
-        <section className="max-w-[1240px] mx-auto pb-16">
+        <section data-rail-label="Outcome" className="max-w-[1240px] mx-auto pb-16">
           <div className="relative h-40 sm:h-56 w-full rounded-3xl overflow-hidden bg-gradient-to-br from-emerald-400 via-emerald-500 to-teal-600">
             <Image src="/macbook-zeno-invoices.png" alt="Zeno Books invoices" fill className="object-cover object-top" />
           </div>

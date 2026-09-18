@@ -8,7 +8,7 @@ import { projects } from "../../lib/projects";
 
 export function CinematicFooter() {
   return (
-    <footer className="sticky bottom-0 left-0 right-0 z-0 w-full bg-[#0a0a0c] text-white pt-20 pb-12 px-6 sm:px-12 overflow-hidden flex flex-col justify-between min-h-[85vh]">
+    <footer data-rail-label="Let's talk" data-rail-description="Start a project — we respond within one business day." className="sticky bottom-0 left-0 right-0 z-0 w-full bg-[#0a0a0c] text-white pt-20 pb-12 px-6 sm:px-12 overflow-hidden flex flex-col justify-between min-h-[85vh]">
       {/* Background Radial Glow */}
       <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full max-w-[1000px] h-[300px] bg-gradient-to-b from-apple-blue/15 via-purple-500/5 to-transparent blur-3xl pointer-events-none" />
 
