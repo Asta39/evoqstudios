@@ -43,7 +43,7 @@ const FeatureBento = () => {
           <div className="bg-gradient-to-br from-blue-300 to-blue-700 rounded-3xl p-8 flex flex-col justify-center relative overflow-hidden group transition-all">
             <div className="absolute -right-8 -top-8 w-32 h-32 bg-white/20 rounded-full blur-2xl transition-transform duration-500" />
             <div className="relative z-10">
-              <h3 className="text-8xl sm:text-9xl font-black text-white leading-none mb-3">{projects.length}</h3>
+              <h3 className="text-8xl sm:text-9xl font-black text-white leading-none mb-3">{projects.filter((p) => !p.isConcept).length}</h3>
               <p className="text-white text-xl font-bold tracking-tight">Production Platforms Shipped</p>
             </div>
           </div>

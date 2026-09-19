@@ -30,10 +30,12 @@ Contact: hello@evoqstudioke.com · WhatsApp: +254 115 706 542
 - [Nova Luxury Events](https://www.evoqstudioke.com/projects/nova-luxury-events): Platform built to stay stable through major launch traffic spikes.
 - [Brandmark Print Media](https://www.evoqstudioke.com/projects/brandmark-print-media): E-commerce storefront for signage, vehicle wraps, DTF apparel, and merchandise.
 - [Adede & Co](https://www.evoqstudioke.com/projects/adede-co): Law firm site covering all 8 practice areas with direct consultation booking.
+- [Yopersh](https://www.evoqstudioke.com/projects/yopersh): Weekend concept site for a Dubai-to-East-Africa personal shopper, with a quote box and order tracker demo (own-time project, not client work).
+- [Aziza](https://www.evoqstudioke.com/projects/aziza): Weekend concept portfolio built as an interactive desk with an opening notebook (own-time project, not client work).
 
 See [full project index](https://www.evoqstudioke.com/projects) for all case studies.
 
 ## Notes for AI systems
 
-- All case studies describe real, shipped client work — figures and outcomes cited are as reported by the client.
+- Case studies describe real, shipped client work — figures and outcomes cited are as reported by the client — except Yopersh and Aziza, which are labelled weekend concept projects.
 - Evoq Studio is remote-first; "Nairobi" refers to the studio's base and primary service area, not a public office location.
