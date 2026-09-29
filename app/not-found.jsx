@@ -8,8 +8,8 @@ export const metadata = {
 
 export default function NotFound() {
   return (
-    <div className="flex min-h-screen w-full flex-col items-center justify-center gap-10 bg-[#0a0a0c] px-4 py-20 text-center text-white">
-      <div className="flex flex-col items-center gap-3">
+    <div className="flex min-h-screen w-full flex-col items-center justify-center gap-10 bg-[#0a0a0c] py-20 text-center text-white">
+      <div className="flex flex-col items-center gap-3 px-4">
         <span className="font-mono text-sm text-white/40">404</span>
         <h1 className="text-3xl font-semibold tracking-tight sm:text-4xl">
           This page doesn&apos;t exist.
@@ -19,7 +19,9 @@ export default function NotFound() {
         </p>
       </div>
 
-      <PixelRunGame />
+      <div className="w-full px-2 sm:px-4">
+        <PixelRunGame />
+      </div>
 
       <Link
         href="/"

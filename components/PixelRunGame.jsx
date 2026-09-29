@@ -2,13 +2,13 @@
 
 import { useEffect, useRef, useState } from "react";
 
-const W = 256;
-const H = 144;
-const GROUND_Y = H - 24;
-const GRAVITY = 0.6;
-const JUMP_VELOCITY = -8.5;
-const PLAYER_SIZE = 12;
-const PLAYER_X = 28;
+const W = 384;
+const H = 240;
+const GROUND_Y = H - 40;
+const GRAVITY = 0.85;
+const JUMP_VELOCITY = -12.5;
+const PLAYER_SIZE = 20;
+const PLAYER_X = 44;
 
 export function PixelRunGame() {
   const canvasRef = useRef(null);
@@ -33,7 +33,7 @@ export function PixelRunGame() {
       playerY: GROUND_Y - PLAYER_SIZE,
       velocity: 0,
       obstacles: [],
-      speed: 2.6,
+      speed: 3.9,
       distance: 0,
       spawnTimer: 0,
       running: false,
@@ -44,7 +44,7 @@ export function PixelRunGame() {
       state.playerY = GROUND_Y - PLAYER_SIZE;
       state.velocity = 0;
       state.obstacles = [];
-      state.speed = 2.6;
+      state.speed = 3.9;
       state.distance = 0;
       state.spawnTimer = 60;
       state.running = true;
@@ -118,12 +118,12 @@ export function PixelRunGame() {
       }
 
       state.distance += state.speed;
-      state.speed = Math.min(6, 2.6 + state.distance / 900);
+      state.speed = Math.min(9, 3.9 + state.distance / 900);
 
       state.spawnTimer -= 1;
       if (state.spawnTimer <= 0) {
-        const h = 10 + Math.floor(Math.random() * 14);
-        state.obstacles.push({ x: W + 4, w: 8 + Math.floor(Math.random() * 6), h });
+        const h = 15 + Math.floor(Math.random() * 21);
+        state.obstacles.push({ x: W + 4, w: 12 + Math.floor(Math.random() * 9), h });
         state.spawnTimer = 55 + Math.random() * 45 - state.speed * 5;
       }
 
@@ -183,7 +183,7 @@ export function PixelRunGame() {
         height={H}
         role="img"
         aria-label="Pixel runner game — press space or tap to jump over obstacles"
-        className="w-full max-w-[512px] touch-none rounded-lg border border-white/10 [image-rendering:pixelated] cursor-pointer"
+        className="w-full max-w-[720px] touch-none rounded-lg border border-white/10 [image-rendering:pixelated] cursor-pointer"
         style={{ aspectRatio: `${W} / ${H}` }}
       />
       <div className="flex items-center gap-6 font-mono text-xs text-white/60">
